@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" />
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+            "Nunito+Sans:300,400,500,700,900",
+            "Quicksand:300,400,500,700",
+          ],
+        },
+      };
+
+      function font() {
+        var wf = document.createElement("script");
+
+        wf.src =
+          ("https:" == document.location.protocol ? "https" : "http") +
+          "://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js";
+        wf.type = "text/javascript";
+        wf.async = "true";
+
+        var s = document.getElementsByTagName("script")[0];
+
+        s.parentNode.insertBefore(wf, s);
+      }
+
+      font();
+    </script>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      {% include "inc/menu.html" %} {% include "inc/header.html" %}
+
+      <main class="main">{% block 'content' %}{% endblock 'content' %}</main>
+
+      {% include "inc/footer.html" %}
+    </div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/libs.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    {% include "inc/svg.html" %}
+  </body>
+</html>
