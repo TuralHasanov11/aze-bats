@@ -2,6 +2,8 @@ from django.db import models
 from ckeditor import fields as ckeditorFields
 from django import urls
 from core import helpers
+from django.db.models import signals
+from django.dispatch import receiver
 
 
 class Family(models.Model):
@@ -28,14 +30,15 @@ class Genus(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = helpers.generateUUID(self.name)
+            self.slug = helpers.generateSlug(self.name)
         return super().save(*args, **kwargs)
 
 
 class Species(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    slug = models.SlugField(max_length = 200, null=True, unique=True)
-    cover_image = models.ImageField(upload_to=None)
+    slug = models.SlugField(max_length = 200, blank=True, unique=True, null=True)
+    cover_image = models.ImageField(upload_to=helpers.uploadBatCoverImageLocation)
+    genus = models.ForeignKey(Genus, related_name="genus", on_delete=models.CASCADE)
     description = ckeditorFields.RichTextField(null=True, blank=True)
     distribution = ckeditorFields.RichTextField(null=True, blank=True)
     biology = ckeditorFields.RichTextField(null=True, blank=True)
@@ -58,10 +61,15 @@ class Species(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = helpers.generateUUID(self.name)
+            self.slug = helpers.generateSlug(self.name)
         return super().save(*args, **kwargs)
 
 
 class SpeciesImage(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=None)
+    image = models.ImageField(upload_to=helpers.uploadBatImageLocation)
+
+
+@receiver(signals.post_delete, sender=Species)
+def submissionDelete(sender, instance, **kwargs):
+    instance.cover_image.delete(False)

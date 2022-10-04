@@ -7,8 +7,15 @@
     <meta name="keywords" content="keywords" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{% block title %}{% endblock title %}</title>
+    <title>Bats - {% block title %}{% endblock title %}</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/bootstrap-utilities.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block stylesheet %}{% endblock stylesheet %}
     <script>
       WebFontConfig = {
         google: {
@@ -40,13 +47,13 @@
     <div class="page-wrapper">
       {% include "inc/menu.html" %} {% include "inc/header.html" %}
 
-      <main class="main">{% block 'content' %}{% endblock 'content' %}</main>
+      <main class="main">{% block content %} {% endblock content %}</main>
 
       {% include "inc/footer.html" %}
     </div>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/libs.min.js' %}"></script>
     <script src="{% static 'js/common.js' %}"></script>
-    {% include "inc/svg.html" %}
+    {% block scripts %}{% endblock scripts %} {% include "inc/svg.html" %}
   </body>
 </html>

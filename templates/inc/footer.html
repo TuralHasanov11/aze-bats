@@ -1,9 +1,13 @@
+{% load static %}
 <footer class="footer footer--front-3">
   <div class="container">
     <div class="row bottom-50">
       <div class="col-md-6 col-lg-4">
         <a class="logo logo--footer" href="index.html"
-          ><img class="logo__img" src="img/logo_terrarium.png" alt="logo"
+          ><img
+            class="logo__img"
+            src="{% static 'img/logo_terrarium.png' %}"
+            alt="logo"
         /></a>
         <div class="footer__details">
           <p>
@@ -110,7 +114,7 @@
       </div>
       <div class="col-sm-6 text-center text-sm-right">
         <a class="footer__link" href="#"
-          ><img src="img/footer-logo.png" alt="logo"
+          ><img src="{% static 'img/footer-logo.png' %}" alt="logo"
         /></a>
       </div>
     </div>

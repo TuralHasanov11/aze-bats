@@ -1,3 +1,4 @@
+{% load static %}
 <!-- header start-->
 <header class="header shop-header header-f3">
   <div class="header__lower">
@@ -40,28 +41,6 @@
             </li>
           </ul>
         </div>
-        <div class="header__lower-inner">
-          <ul class="lower-menu">
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Membership</a>
-            </li>
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Education</a>
-            </li>
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Map Zoo</a>
-            </li>
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Events</a>
-            </li>
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Donate</a>
-            </li>
-            <li class="lower-menu__item">
-              <a class="lower-menu__link" href="#">Foundation</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -69,7 +48,10 @@
     <div class="row align-items-center">
       <div class="col-6 col-lg-3">
         <a class="logo" href="index.html"
-          ><img class="logo__img" src="img/logo_terrarium.png" alt="logo"
+          ><img
+            class="logo__img"
+            src="{% static 'img/logo_terrarium.png' %}"
+            alt="logo"
         /></a>
       </div>
       <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center">

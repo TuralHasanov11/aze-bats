@@ -1,0 +1,127 @@
+{% extends "app.html" %} {% block content %}
+<section class="section">
+  <div class="container py-5">
+    <div class="row bottom-50">
+      <div class="col-12 bottom-20">
+        <div class="heading heading--primary heading--center">
+          <h2 class="heading__title no-margin-bottom">
+            <span>Edit - {{bat.name}}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+        <form class="form" method="post" enctype="multipart/form-data">
+          {{ form.media }}
+          <div class="row">
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.name.id_for_label }}"
+                >{{ form.name.label }}:</label
+              >
+              <input
+                class="form__field"
+                type="text"
+                name="name"
+                value="{{ form.name.value }}"
+                placeholder="Your Name"
+              />
+              {{ form.name.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.cover_image.id_for_label }}"
+                >{{ form.cover_image.label }}:</label
+              >
+              {{form.cover_image}}
+              <img
+                src="{{form.cover_image.value.url}}"
+                style="width: 60px; height: 60px"
+              />
+              {{ form.cover_image.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.is_red_book.id_for_label }}"
+                >{{ form.is_red_book.label }}:</label
+              >
+              {{form.is_red_book}} {{ form.is_red_book.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.genus.id_for_label }}"
+                >{{ form.genus.label }}:</label
+              >
+              {{form.genus}} {{ form.genus.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.description.id_for_label }}"
+                >{{ form.description.label }}:</label
+              >
+              {{form.description}} {{ form.description.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.distribution.id_for_label }}"
+                >{{ form.distribution.label }}:</label
+              >
+              {{form.distribution}} {{ form.distribution.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.biology.id_for_label }}"
+                >{{ form.biology.label }}:</label
+              >
+              {{form.biology}} {{ form.biology.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.conservation.id_for_label }}"
+                >{{ form.conservation.label }}:</label
+              >
+              {{form.conservation}} {{ form.conservation.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.habitat.id_for_label }}"
+                >{{ form.habitat.label }}:</label
+              >
+              {{form.habitat}} {{ form.habitat.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.threats.id_for_label }}"
+                >{{ form.threats.label }}:</label
+              >
+              {{form.threats}} {{ form.threats.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <button class="form__submit" type="submit">Save</button>
+            </div>
+          </div>
+          {% csrf_token %}
+        </form>
+        <form
+          method="post"
+          action="{% url 'administration:bat-delete' id=bat.id %}"
+        >
+          <button type="submit" class="form__submit btn-delete">Delete</button>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

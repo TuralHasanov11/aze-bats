@@ -1,0 +1,10 @@
+{% for message in messages %}
+<div class="alert alert--error alert--filled">
+  <div class="alert__icon">
+    <svg class="icon">
+      <use xlink:href="#close"></use>
+    </svg>
+  </div>
+  <p class="alert__text">{{message}}</p>
+</div>
+{% endfor %}

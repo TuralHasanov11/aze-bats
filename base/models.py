@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor import fields as ckeditorFields
+from core import helpers
 
 class Article(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
@@ -12,7 +13,7 @@ class Article(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    cover_image = models.ImageField(upload_to=None)
+    cover_image = models.ImageField(upload_to=helpers.uploadAuthorCoverImageLocation)
     description = ckeditorFields.RichTextField(null=True, blank=True)
 
     def __str__(self):

@@ -1,0 +1,54 @@
+{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+{% endblock stylesheet %} {% block content %}
+<section class="section elements">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-xl-10">
+        <h4 class="elements__title">Species</h4>
+        <a class="form__submit" href="{% url 'administration:bat-create'%}"
+          >Add species</a
+        >
+      </div>
+    </div>
+    <div class="card card-body my-3">
+      <div class="table-responsive">
+        <table class="table align-middle table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Genus</th>
+              <th scope="col">Image</th>
+              <th scope="col">Operations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bat in bats %}
+            <tr>
+              <td>{{bat.id}}</td>
+              <td>{{bat.name}}</td>
+              <td>{{bat.genus}}</td>
+              <td>
+                <img
+                  style="width: 60px; height: 60px"
+                  src="{{bat.cover_image.url}}"
+                  class="rounded"
+                />
+              </td>
+              <td>
+                <a
+                  class="btn btn-warning"
+                  href="{% url 'administration:bat-update' id=bat.id %}"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content%}
