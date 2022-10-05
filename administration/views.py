@@ -110,15 +110,73 @@ def articleUpdateDelete(request, id):
     return render(request, "administration/articles/update.html", {"form": form, "article":article})
 
 
-def projectUpdateDelete(request):
-    return render(request, "administration/project_update.html")
+@authDecorators.login_required
+@http.require_GET
+def projectList(request):
+    projects = activityModels.Project.objects.all()
+    return render(request, "administration/projects/list.html", {"projects":projects})
 
-def visitListCreate(request):
-    return render(request, "administration/visit_list.html")
 
-def visitUpdateDelete(request):
-    return render(request, "administration/visit_update.html")
+@authDecorators.login_required
+@http.require_http_methods(["GET", "POST"])
+def projectCreate(request):
+    if request.POST:
+        form = forms.ProjectCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("administration:project-list")
+        return render(request, "administration/projects/create.html", {"form": form})
+    else:
+        form = forms.ProjectCreateForm()
+        return render(request, "administration/projects/create.html", {"form": form})
 
-def projectListCreate(request):
-    return render(request, "administration/authors/list.html")
+
+@authDecorators.login_required
+@http.require_http_methods(["GET", "POST"])
+def projectUpdate(request, id):
+    project = get_object_or_404(activityModels.Project, id=id)
+    if request.POST:
+        form = forms.ProjectUpdateForm(instance=project, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("administration:project-update-delete", id=id)
+        return render(request, "administration/projects/update.html", {"form": form})
+    form = forms.ProjectUpdateForm(instance=project)
+    return render(request, "administration/projects/update.html", {"form": form, "project":project})
+
+
+
+@authDecorators.login_required
+@http.require_GET
+def visitList(request):
+    visits = activityModels.SiteVisit.objects.all()
+    return render(request, "administration/visits/list.html", {"visits":visits})
+
+
+@authDecorators.login_required
+@http.require_http_methods(["GET", "POST"])
+def visitCreate(request):
+    if request.POST:
+        form = forms.SiteVisitCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("administration:visit-list")
+        return render(request, "administration/visits/create.html", {"form": form})
+    else:
+        form = forms.SiteVisitCreateForm()
+        return render(request, "administration/visits/create.html", {"form": form})
+
+
+@authDecorators.login_required
+@http.require_http_methods(["GET", "POST"])
+def visitUpdate(request, id):
+    visit = get_object_or_404(activityModels.SiteVisit, id=id)
+    if request.POST:
+        form = forms.SiteVisitUpdateForm(instance=visit, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("administration:visit-update-delete", id=id)
+        return render(request, "administration/visits/update.html", {"form": form})
+    form = forms.SiteVisitUpdateForm(instance=visit)
+    return render(request, "administration/visits/update.html", {"form": form, "visit":visit}) 
 

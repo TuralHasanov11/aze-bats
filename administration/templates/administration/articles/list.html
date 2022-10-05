@@ -14,8 +14,7 @@
     </div>
     <div class="row">
       <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-        <form class="form" method="post" enctype="multipart/form-data">
-          {{ form.media }}
+        <form class="form" method="post">
           <div class="row">
             <div class="col-12 bottom-20">
               <label
@@ -35,18 +34,32 @@
             <div class="col-12 bottom-20">
               <label
                 class="elements__subtitle fs-5"
-                for="{{ form.cover_image.id_for_label }}"
-                >{{ form.cover_image.label }}:</label
+                for="{{ form.url.id_for_label }}"
+                >{{ form.url.label }}:</label
               >
-              {{form.cover_image}} {{ form.cover_image.errors }}
+              <input
+                class="form__field"
+                type="text"
+                name="url"
+                value="{{ form.url.value }}"
+                placeholder="Article link"
+              />
+              {{ form.url.errors }}
             </div>
             <div class="col-12 bottom-20">
               <label
                 class="elements__subtitle fs-5"
-                for="{{ form.description.id_for_label }}"
-                >{{ form.description.label }}:</label
+                for="{{ form.author.id_for_label }}"
+                >{{ form.author.label }}:</label
               >
-              {{form.description}} {{ form.description.errors }}
+              <input
+                class="form__field"
+                type="text"
+                name="author"
+                value="{{ form.author.value }}"
+                placeholder="Author"
+              />
+              {{ form.author.errors }}
             </div>
 
             <div class="col-12 bottom-20 text-center">
@@ -89,6 +102,10 @@
                   href="{% url 'administration:article-update-delete' id=article.id %}"
                   >Edit</a
                 >
+                <button
+                  class="btn btn-warning btn-delete"
+                  data-url="{% url 'administration:article-update-delete' id=article.id %}"
+                  >Delete</button>
               </td>
             </tr>
             {% endfor %}
@@ -100,3 +117,24 @@
 </section>
 
 {% endblock content%}
+
+
+<script type="text/javascript">
+  document.querySelectorAll('.btn-delete').forEach(el => {
+    el.addEventListener("click", function(e){        
+      const formData = new FormData();
+      formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      fetch(el.target.dataset.url, {
+        method: 'DELETE',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  })
+</script>

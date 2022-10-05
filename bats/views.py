@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from bats import models
 
 def index(request):
-    return render(request, "bats/index.html")
+    bats = models.Species.objects.all()
+    return render(request, "bats/index.html", {"bats": bats})
 
 
 def detail(request, slug:str):
-    return render(request, "bats/detail.html")
+    bat = models.Species.objects.select_related("genus.family").get(slug=slug)
+    return render(request, "bats/detail.html", {"bat": bat})
