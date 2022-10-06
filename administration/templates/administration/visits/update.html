@@ -1,0 +1,87 @@
+{% extends "app.html" %} {% block content %}
+<section class="section">
+  <div class="container py-5">
+    <div class="row bottom-50">
+      <div class="col-12 bottom-20">
+        <div class="heading heading--primary heading--center">
+          <h2 class="heading__title no-margin-bottom">
+            <span>Edit - {{visit.name}}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+        <form class="form" method="post" enctype="multipart/form-data">
+          {{ form.media }}
+          <div class="row">
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.name.id_for_label }}"
+                >{{ form.name.label }}:</label
+              >
+              <input
+                class="form__field"
+                type="text"
+                name="name"
+                value="{{ form.name.value }}"
+                placeholder="Your Name"
+              />
+              {{ form.name.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.cover_image.id_for_label }}"
+                >{{ form.cover_image.label }}:</label
+              >
+              {{form.cover_image}}
+              <img
+                src="{{form.cover_image.value.url}}"
+                style="width: 60px; height: 60px"
+              />
+              {{ form.cover_image.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.description.id_for_label }}"
+                >{{ form.description.label }}:</label
+              >
+              {{form.description}} {{ form.description.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.results.id_for_label }}"
+                  >{{ form.results.label }}:</label
+                >
+                {{form.results}} {{ form.results.errors }}
+              </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.images.id_for_label }}"
+                >{{ form.images.label }}:</label
+              >
+              {{form.images}} 
+              {% for image in visit.site_visit_images.all %}
+              <img
+                src="{{image.image.url}}"
+                style="width: 60px; height: 60px"
+              />
+              {% endfor %}
+              {{ form.images.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <button class="form__submit" type="submit">Save</button>
+            </div>
+          </div>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -11,17 +11,12 @@
         /></a>
         <div class="footer__details">
           <p>
-            <strong>Location:</strong>
-            <span>av. Washington 165, NY CA 54003</span>
-          </p>
-          <p>
             <strong>Phone:</strong>
-            <a href="tel:+31859644725">+31 85 964 47 25</a>
-            <a href="tel:+31859644725">+31 65 792 63 11</a>
+            <a href="tel:{{config_vars.phone}}">{{config_vars.phone}}</a>
           </p>
           <p>
             <strong>Email:</strong>
-            <a href="mailto:info@animalsworld.com">info@animalsworld.com</a>
+            <a href="mailto:{{config_vars.email}}">{{config_vars.email}}</a>
           </p>
         </div>
         <ul class="socials bottom-30">
@@ -47,75 +42,25 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-6 col-lg-3">
-        <h6 class="footer__title">Working hours</h6>
-        <ul class="footer__schedule">
-          <li><span>Monday</span><span>9:00am-6:00pm</span></li>
-          <li><span>Tuesday</span><span>9:00am-6:00pm</span></li>
-          <li><span>Wednesday</span><span>9:00am-6:00pm</span></li>
-          <li><span>Thursday</span><span>9:00am-6:00pm</span></li>
-          <li><span>Friday</span><span>9:00am-6:00pm</span></li>
-          <li><span>Saturday</span><span>10:00am-0:00pm</span></li>
-          <li><span>Sunday</span><span>Closed</span></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 d-none d-lg-block">
+      <div class="col-lg-5 d-none d-lg-block">
         <h6 class="footer__title">Menu</h6>
         <ul class="footer-menu footer-menu--style-2">
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Home</a>
+            <a class="footer-menu__link" href="{% url 'base:index' %}">Home</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Pages</a>
+            <a class="footer-menu__link" href="{% url 'bats:index' %}">Bats</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Animals</a>
+            <a class="footer-menu__link" href="{% url 'activities:projects' %}">Projects</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Gallery</a>
+            <a class="footer-menu__link" href="{% url 'activities:visits' %}">Site Visits</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Blog</a>
-          </li>
-          <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Contacts</a>
-          </li>
-          <li class="footer-menu__item">
-            <a class="footer-menu__link" href="#">Elements</a>
+            <a class="footer-menu__link" href="{% url 'base:articles' %}">Articles</a>
           </li>
         </ul>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <h6 class="footer__title">Newsletter</h6>
-        <form class="form newsletter-form" action="javascript:void(0);">
-          <input
-            class="form__field"
-            type="text"
-            name="name"
-            placeholder="Your name"
-          />
-          <input
-            class="form__field"
-            type="email"
-            name="email"
-            placeholder="Your E-mail"
-          />
-          <input class="form__submit" type="submit" value="Subscribe" />
-        </form>
-      </div>
-    </div>
-    <div class="row align-items-center">
-      <div class="col-sm-6 text-center text-sm-left">
-        <div class="footer-privacy">
-          <a class="footer-privacy__link" href="#">Privacy Policy</a
-          ><span class="footer-privacy__divider">|</span
-          ><a class="footer-privacy__link" href="#">Term and Condision</a>
-        </div>
-      </div>
-      <div class="col-sm-6 text-center text-sm-right">
-        <a class="footer__link" href="#"
-          ><img src="{% static 'img/footer-logo.png' %}" alt="logo"
-        /></a>
       </div>
     </div>
   </div>

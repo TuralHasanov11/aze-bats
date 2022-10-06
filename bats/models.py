@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor import fields as ckeditorFields
+from ckeditor_uploader import fields as ckeditorFields
 from django import urls
 from core import helpers
 from django.db.models import signals
@@ -37,14 +37,14 @@ class Genus(models.Model):
 class Species(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False, unique=True)
     slug = models.SlugField(max_length = 200, blank=True, unique=True, null=True)
-    cover_image = models.ImageField(upload_to=helpers.uploadBatCoverImageLocation)
+    cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
     genus = models.ForeignKey(Genus, related_name="genus", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextField(null=True, blank=True)
-    distribution = ckeditorFields.RichTextField(null=True, blank=True)
-    biology = ckeditorFields.RichTextField(null=True, blank=True)
-    conservation = ckeditorFields.RichTextField(null=True, blank=True)
-    habitat = ckeditorFields.RichTextField(null=True, blank=True)
-    threats = ckeditorFields.RichTextField(null=True, blank=True)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    distribution = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    biology = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    conservation = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    habitat = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    threats = ckeditorFields.RichTextUploadingField(null=True, blank=True)
     is_red_book = models.BooleanField(default=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -66,10 +66,14 @@ class Species(models.Model):
 
 
 class SpeciesImage(models.Model):
-    species = models.ForeignKey(Species, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=helpers.uploadBatImageLocation)
+    species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="species_images")
+    image = models.ImageField(upload_to=helpers.uploadImageLocation)
+
+    def __str__(self):
+        return str(self.species)
+    
 
 
 @receiver(signals.post_delete, sender=Species)
-def submissionDelete(sender, instance, **kwargs):
+def postSpeciesDelete(sender, instance, **kwargs):
     instance.cover_image.delete(False)

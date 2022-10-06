@@ -1,0 +1,41 @@
+{% extends 'app.html' %}
+{% load static %}
+{% block content %}
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/blog.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/blog.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <h1 class="promo-primary__title"><span>Projects</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section blog">
+    <div class="container">
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-12">
+                <div class="blog-item">
+                    <div class="blog-item__img"><img class="img--bg" src="{{project.cover_image.url}}" alt="blog"/>
+                        <div class="blog-item__date"><span>02</span><span>Nov</span></div>
+                    </div>
+                    <h4 class="blog-item__title"><a href="{% url 'activities:project' slug=project.slug %}">{{project.name}}</a></h4>
+                    <p>{{project.description|truncatechars:255}}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-12 text-center">
+                {% include "inc/pagination.html" with pagination=projects %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

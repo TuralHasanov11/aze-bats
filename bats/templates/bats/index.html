@@ -1,0 +1,51 @@
+{% extends 'app.html' %}
+{% load static %}
+
+{% block content %}
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/gallery.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/gallery.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item"><span class="promo-primary__pre-title">All Species</span>
+                        <h1 class="promo-primary__title"><span>Bats</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section gallery">
+    <div class="container">
+        <div class="row bottom-50 align-items-end">
+            <div class="col-12">
+                <ul class="filter-panel">
+                    <li class="filter-panel__item filter-panel__item--active" data-filter="*"><span>All</span></li>
+                    {% for gen in genus %}
+                    <li class="filter-panel__item" data-filter=".category_{{gen.id}}"><span>{{gen.name}}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row gallery-masonry no-gutters">
+        {% for bat in bats %}
+        <div class="category_{{bat.genus.id}} col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
+            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{bat.cover_image.url}}" data-fancybox="gallery">
+                <img class="img--bg" src="{{bat.cover_image.url}}" alt="img"/>
+                <div class="gallery-masonry__description"><span>{{bat.genus.name}}</span><span>{{bat.name}}</span></div>
+            </a>
+        </div>
+        {% endfor %}
+       
+    </div>
+    {% comment %} <div class="container top-70">
+        <div class="row">
+            <div class="col-12 text-center"><a class="button button--primary" href="#">More Animals</a></div>
+        </div>
+    </div> {% endcomment %}
+</section>
+{% endblock content %}

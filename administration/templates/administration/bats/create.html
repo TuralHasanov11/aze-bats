@@ -21,13 +21,7 @@
                 for="{{ form.name.id_for_label }}"
                 >{{ form.name.label }}:</label
               >
-              <input
-                class="form__field"
-                type="text"
-                name="name"
-                value="{{ form.name.value }}"
-                placeholder="Your Name"
-              />
+              {{form.name}}
               {{ form.name.errors }}
             </div>
             <div class="col-12 bottom-20">
@@ -39,12 +33,14 @@
               {{form.cover_image}} {{ form.cover_image.errors }}
             </div>
             <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.is_red_book.id_for_label }}"
-                >{{ form.is_red_book.label }}:</label
-              >
-              {{form.is_red_book}} {{ form.is_red_book.errors }}
+              <div class="form-check">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.is_red_book.id_for_label }}"
+                  >{{ form.is_red_book.label }}:</label
+                >
+                {{form.is_red_book}} {{ form.is_red_book.errors }}
+              </div>
             </div>
             <div class="col-12 bottom-20">
               <label

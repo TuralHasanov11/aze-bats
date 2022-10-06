@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-xl-10">
         <h4 class="elements__title">Species</h4>
-        <a class="form__submit" href="{% url 'administration:bat-create'%}"
+        <a class="form__submit text-decoration-none text-dark" href="{% url 'administration:bat-create'%}"
           >Add species</a
         >
       </div>
@@ -25,7 +25,7 @@
           </thead>
           <tbody>
             {% for bat in bats %}
-            <tr>
+            <tr class="data-row">
               <td>{{bat.id}}</td>
               <td>{{bat.name}}</td>
               <td>{{bat.genus}}</td>
@@ -39,9 +39,14 @@
               <td>
                 <a
                   class="btn btn-warning"
-                  href="{% url 'administration:bat-update' id=bat.id %}"
+                  href="{% url 'administration:bat-update-delete' id=bat.id %}"
                   >Edit</a
                 >
+                <button
+                  type="button"
+                  class="btn btn-danger btn-delete"
+                  data-url="{% url 'administration:bat-update-delete' id=bat.id %}"
+                  >Delete</button>
               </td>
             </tr>
             {% endfor %}
@@ -52,3 +57,11 @@
   </div>
 </section>
 {% endblock content%}
+
+
+{% block scripts %}
+<script>
+  let csrftoken = '{{ csrf_token }}'
+</script>
+<script src="{% static 'js/delete-table-record.js' %}"></script>
+{% endblock scripts %}

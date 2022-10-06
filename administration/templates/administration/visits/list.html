@@ -23,7 +23,7 @@
           </thead>
           <tbody>
             {% for visit in visits %}
-            <tr>
+            <tr class="data-row">
               <td>{{visit.id}}</td>
               <td>{{visit.name}}</td>
               <td>
@@ -32,6 +32,11 @@
                   href="{% url 'administration:visit-update-delete' id=visit.id %}"
                   >Edit</a
                 >
+                <button
+                  type="button"
+                  class="btn btn-danger btn-delete"
+                  data-url="{% url 'administration:visit-update-delete' id=visit.id %}"
+                  >Delete</button>
               </td>
             </tr>
             {% endfor %}
@@ -42,3 +47,10 @@
   </div>
 </section>
 {% endblock content%}
+
+{% block scripts %}
+<script>
+  let csrftoken = '{{ csrf_token }}'
+</script>
+<script src="{% static 'js/delete-table-record.js' %}"></script>
+{% endblock scripts %}

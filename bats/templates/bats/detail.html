@@ -1,0 +1,45 @@
+{% extends 'app.html' %}
+
+{% block content %}
+<section class="promo-primary">
+    <picture>
+        <source srcset="{{bat.cover_image.url}}" media="(min-width: 992px)"/><img class="img--bg" src="{{bat.cover_image.url}}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item"><span class="promo-primary__pre-title">{{bat.genus.name}}</span>
+                        <h1 class="promo-primary__title"><span>{{bat.name}}</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- promo end-->
+<!-- blog post start-->
+<section class="section blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2">
+                <div class="blog-post__top">
+                    {% comment %} Image lightbox {% endcomment %}
+                </div>
+                <h4 class="blog-post__title">Description</h4>
+                {{bat.description|safe}}
+                <h4 class="blog-post__title">Distribution</h4>
+                {{bat.distribution|safe}}
+                <h4 class="blog-post__title">Biology</h4>
+                {{bat.biology|safe}}
+                <h4 class="blog-post__title">Conservation</h4>
+                {{bat.conservation|safe}}
+                <h4 class="blog-post__title">Habitat</h4>
+                {{bat.habitat|safe}}
+                <h4 class="blog-post__title">Threats</h4>
+                {{bat.threats|safe}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

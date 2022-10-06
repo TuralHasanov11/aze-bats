@@ -1,0 +1,44 @@
+{% extends 'app.html' %}
+
+{% block content %}
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/events.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/events.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <h1 class="promo-primary__title"><span>Site Visits</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row offset-margin">
+            {% for visit in visits %}
+            <div class="col-md-6 col-xl-4">
+                <div class="events-item">
+                    <div class="events-item__img">
+                        <div class="events-item__date"><span>11</span><span>Nov</span></div><img class="img--bg" src="{% static 'visit.cover_image,url' %}" alt="img"/>
+                    </div>
+                    <h6 class="events-item__title"><a class="events-item__link" href="{% url 'activities:project' slug=visit.slug %}">{{visit.name}}</a></h6>
+                    <p>{{visit.description|truncatechars:255}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class="row top-70">
+            <div class="col-12">
+                {% include "inc/pagination.html" with pagination=visits %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

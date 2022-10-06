@@ -1,1 +1,44 @@
-{% extends 'app.html' %} {% block 'content' %} {% endblock 'content' %}
+{% extends 'app.html' %} 
+{% block 'content' %} 
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/elements.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/elements.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item"><span class="promo-primary__pre-title">Wild World</span>
+                        <h1 class="promo-primary__title"><span>Pricing</span> <span>Tables</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section elements">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10">
+                <h4 class="elements__title">Sections</h4>
+            </div>
+        </div>
+        <div class="row offset-margin">
+            {% for item in admin_nav %}
+            <div class="col-sm-6 col-md-4 col-xl-3">
+                <div class="pricing-item pricing-item--style-1 text-center">
+                    <div class="pricing-item__top">
+                        <div class="pricing-item__icon">
+                            <svg class="icon">
+                                <use xlink:href="#adult"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pricing-item__lower"><a class="pricing-item__button button button--primary" href="{% url item.route %}">{{item.text}}</a></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock 'content' %}

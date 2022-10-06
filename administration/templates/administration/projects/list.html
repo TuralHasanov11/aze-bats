@@ -23,7 +23,7 @@
           </thead>
           <tbody>
             {% for project in projects %}
-            <tr>
+            <tr class="data-row">
               <td>{{project.id}}</td>
               <td>{{project.name}}</td>
               <td>
@@ -32,6 +32,11 @@
                   href="{% url 'administration:project-update-delete' id=project.id %}"
                   >Edit</a
                 >
+                <button
+                  type="button"
+                  class="btn btn-danger btn-delete"
+                  data-url="{% url 'administration:project-update-delete' id=project.id %}"
+                  >Delete</button>
               </td>
             </tr>
             {% endfor %}
@@ -42,3 +47,11 @@
   </div>
 </section>
 {% endblock content%}
+
+
+{% block scripts %}
+<script>
+  let csrftoken = '{{ csrf_token }}'
+</script>
+<script src="{% static 'js/delete-table-record.js' %}"></script>
+{% endblock scripts %}

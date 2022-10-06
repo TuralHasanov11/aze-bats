@@ -44,12 +44,14 @@
               {{ form.cover_image.errors }}
             </div>
             <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.is_red_book.id_for_label }}"
-                >{{ form.is_red_book.label }}:</label
-              >
-              {{form.is_red_book}} {{ form.is_red_book.errors }}
+              <div class="form-check">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.is_red_book.id_for_label }}"
+                  >{{ form.is_red_book.label }}:</label
+                >
+                {{form.is_red_book}} {{ form.is_red_book.errors }}
+              </div>
             </div>
             <div class="col-12 bottom-20">
               <label
@@ -111,13 +113,6 @@
               <button class="form__submit" type="submit">Save</button>
             </div>
           </div>
-          {% csrf_token %}
-        </form>
-        <form
-          method="post"
-          action="{% url 'administration:bat-delete' id=bat.id %}"
-        >
-          <button type="submit" class="form__submit btn-delete">Delete</button>
           {% csrf_token %}
         </form>
       </div>

@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50, unique=True)),
                 ('slug', models.SlugField(blank=True, max_length=200, null=True, unique=True)),
-                ('cover_image', models.ImageField(upload_to=core.helpers.uploadBatCoverImageLocation)),
+                ('cover_image', models.ImageField(upload_to=core.helpers.uploadImageLocation)),
                 ('description', ckeditor.fields.RichTextField(blank=True, null=True)),
                 ('distribution', ckeditor.fields.RichTextField(blank=True, null=True)),
                 ('biology', ckeditor.fields.RichTextField(blank=True, null=True)),
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
             name='SpeciesImage',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to=core.helpers.uploadBatImageLocation)),
+                ('image', models.ImageField(upload_to=core.helpers.uploadImageLocation)),
                 ('species', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bats.species')),
             ],
         ),

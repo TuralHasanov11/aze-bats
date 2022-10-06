@@ -77,7 +77,7 @@
           </thead>
           <tbody>
             {% for author in authors %}
-            <tr>
+            <tr class="data-row">
               <td>{{author.id}}</td>
               <td>{{author.name}}</td>
               <td>
@@ -93,6 +93,11 @@
                   href="{% url 'administration:author-update-delete' id=author.id %}"
                   >Edit</a
                 >
+                <button
+                  type="button"
+                  class="btn btn-danger btn-delete"
+                  data-url="{% url 'administration:author-update-delete' id=author.id %}"
+                  >Delete</button>
               </td>
             </tr>
             {% endfor %}
@@ -104,3 +109,11 @@
 </section>
 
 {% endblock content%}
+
+
+{% block scripts %}
+<script>
+  let csrftoken = '{{ csrf_token }}'
+</script>
+<script src="{% static 'js/delete-table-record.js' %}"></script>
+{% endblock scripts %}

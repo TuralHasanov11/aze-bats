@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from bats import models as batModels
 from activities import models as activityModels
@@ -25,7 +26,10 @@ def batCreate(request):
     if request.POST:
         form = forms.CreateBatSpeciesForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            bat = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    batModels.SpeciesImage.objects.create(image=img, species=bat)
             return redirect("administration:bat-list")
         return render(request, "administration/bats/create.html", {"form": form})
     else:
@@ -34,24 +38,24 @@ def batCreate(request):
 
 
 @authDecorators.login_required
-@http.require_http_methods(["GET", "POST"])
-def batUpdate(request, id):
-    bat = get_object_or_404(batModels.Species, id=id)
+@http.require_http_methods(["GET", "POST", "DELETE"])
+def batUpdateDelete(request, id):
+    if request.method == "DELETE":
+        batModels.Species.objects.get(id=id).delete()
+        return HttpResponse(f"Species {id} deleted")
+
+    bat = batModels.Species.objects.prefetch_related('species_images').get(id=id)
     if request.POST:
         form = forms.UpdateBatSpeciesForm(instance=bat, data=request.POST, files=request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect("administration:bat-update", id=id)
-        return render(request, "administration/bats/update.html", {"form": form})
+            bat = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    batModels.SpeciesImage.objects.create(image=img, species=bat)
+            return redirect("administration:bat-update-delete", id=id)
+        return render(request, "administration/bats/update.html", {"form": form, "bat":bat})
     form = forms.UpdateBatSpeciesForm(instance=bat)
     return render(request, "administration/bats/update.html", {"form": form, "bat":bat})
-
-
-@authDecorators.login_required
-@http.require_POST
-def batDelete(request, id):
-    batModels.Species.objects.get(id=id).delete()
-    return redirect("administration:bat-list")
 
 
 @authDecorators.login_required
@@ -69,15 +73,19 @@ def authorListCreate(request):
 
 
 @authDecorators.login_required
-@http.require_http_methods(["GET", "POST"])
+@http.require_http_methods(["GET", "POST", "DELETE"])
 def authorUpdateDelete(request, id):
+    if request.method == "DELETE":
+        baseModels.Author.objects.get(id=id).delete()
+        return HttpResponse(f"Author {id} deleted")
+
     author = get_object_or_404(baseModels.Author, id=id)
     if request.POST:
         form = forms.UpdateAuthorForm(instance=author, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect("administration:author-update-delete", id=id)
-        return render(request, "administration/authors/update.html", {"form": form})
+        return render(request, "administration/authors/update.html", {"form": form, "author":author})
     form = forms.UpdateAuthorForm(instance=author)
     return render(request, "administration/authors/update.html", {"form": form, "author":author})
 
@@ -92,20 +100,24 @@ def articleListCreate(request):
             return redirect("administration:article-list-create")
         return render(request, "administration/articles/list.html", {"form": form})
     form = forms.ArticleForm()
-    articles = baseModels.article.objects.all()
+    articles = baseModels.Article.objects.all()
     return render(request, "administration/articles/list.html", {"form": form, "articles":articles})
 
 
 @authDecorators.login_required
-@http.require_http_methods(["GET", "POST"])
+@http.require_http_methods(["GET", "POST", "DELETE"])
 def articleUpdateDelete(request, id):
+    if request.method == "DELETE":
+        baseModels.Article.objects.get(id=id).delete()
+        return HttpResponse(f"Article {id} deleted")
+
     article = get_object_or_404(baseModels.Article, id=id)
     if request.POST:
         form = forms.ArticleForm(instance=article, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect("administration:article-update-delete", id=id)
-        return render(request, "administration/articles/update.html", {"form": form})
+        return render(request, "administration/articles/update.html", {"form": form, "article":article})
     form = forms.ArticleForm(instance=article)
     return render(request, "administration/articles/update.html", {"form": form, "article":article})
 
@@ -123,7 +135,10 @@ def projectCreate(request):
     if request.POST:
         form = forms.ProjectCreateForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            project = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    activityModels.ProjectImage.objects.create(image=img, project=project)
             return redirect("administration:project-list")
         return render(request, "administration/projects/create.html", {"form": form})
     else:
@@ -132,15 +147,22 @@ def projectCreate(request):
 
 
 @authDecorators.login_required
-@http.require_http_methods(["GET", "POST"])
-def projectUpdate(request, id):
-    project = get_object_or_404(activityModels.Project, id=id)
+@http.require_http_methods(["GET", "POST", "DELETE"])
+def projectUpdateDelete(request, id):
+    if request.method == "DELETE":
+        activityModels.Project.objects.get(id=id).delete()
+        return HttpResponse(f"Project {id} deleted")
+
+    project = activityModels.Project.objects.prefetch_related('project_images').get(id=id)
     if request.POST:
         form = forms.ProjectUpdateForm(instance=project, data=request.POST, files=request.FILES)
         if form.is_valid():
-            form.save()
+            project = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    activityModels.ProjectImage.objects.create(image=img, project=project)
             return redirect("administration:project-update-delete", id=id)
-        return render(request, "administration/projects/update.html", {"form": form})
+        return render(request, "administration/projects/update.html", {"form": form, "project":project})
     form = forms.ProjectUpdateForm(instance=project)
     return render(request, "administration/projects/update.html", {"form": form, "project":project})
 
@@ -159,7 +181,10 @@ def visitCreate(request):
     if request.POST:
         form = forms.SiteVisitCreateForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            visit = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    activityModels.SiteVisitImage.objects.create(image=img, site_visit=visit)
             return redirect("administration:visit-list")
         return render(request, "administration/visits/create.html", {"form": form})
     else:
@@ -168,15 +193,22 @@ def visitCreate(request):
 
 
 @authDecorators.login_required
-@http.require_http_methods(["GET", "POST"])
-def visitUpdate(request, id):
-    visit = get_object_or_404(activityModels.SiteVisit, id=id)
+@http.require_http_methods(["GET", "POST", "DELETE"])
+def visitUpdateDelete(request, id):
+    if request.method == "DELETE":
+        activityModels.SiteVisit.objects.get(id=id).delete()
+        return HttpResponse(f"SiteVisit {id} deleted")
+
+    visit = activityModels.SiteVisit.objects.prefetch_related('site_visit_images').get(id=id)
     if request.POST:
         form = forms.SiteVisitUpdateForm(instance=visit, data=request.POST, files=request.FILES)
         if form.is_valid():
-            form.save()
+            visit = form.save()
+            if request.FILES['images']:
+                for img in request.FILES.getlist('images'):
+                    activityModels.SiteVisitImage.objects.create(image=img, site_visit=visit)
             return redirect("administration:visit-update-delete", id=id)
-        return render(request, "administration/visits/update.html", {"form": form})
+        return render(request, "administration/visits/update.html", {"form": form, "visit":visit})
     form = forms.SiteVisitUpdateForm(instance=visit)
     return render(request, "administration/visits/update.html", {"form": form, "visit":visit}) 
 

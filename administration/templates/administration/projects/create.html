@@ -21,13 +21,7 @@
                 for="{{ form.name.id_for_label }}"
                 >{{ form.name.label }}:</label
               >
-              <input
-                class="form__field"
-                type="text"
-                name="name"
-                value="{{ form.name.value }}"
-                placeholder="Your Name"
-              />
+              {{form.name}}
               {{ form.name.errors }}
             </div>
             <div class="col-12 bottom-20">
@@ -45,6 +39,14 @@
                 >{{ form.description.label }}:</label
               >
               {{form.description}} {{ form.description.errors }}
+            </div>
+            <div class="col-12 bottom-20">
+              <label
+                class="elements__subtitle fs-5"
+                for="{{ form.images.id_for_label }}"
+                >{{ form.images.label }}:</label
+              >
+              {{form.images}} {{ form.images.errors }}
             </div>
             <div class="col-12 bottom-20 text-center">
               <button class="form__submit" type="submit">Save</button>

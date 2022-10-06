@@ -1,5 +1,7 @@
 from django.db import models
-from ckeditor import fields as ckeditorFields
+from ckeditor_uploader import fields as ckeditorFields
+from django.dispatch import receiver
+from django.db.models import signals
 from core import helpers
 
 class Article(models.Model):
@@ -13,8 +15,13 @@ class Article(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    cover_image = models.ImageField(upload_to=helpers.uploadAuthorCoverImageLocation)
-    description = ckeditorFields.RichTextField(null=True, blank=True)
+    cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+
+@receiver(signals.post_delete, sender=Author)
+def postAuthorDelete(sender, instance, **kwargs):
+    instance.cover_image.delete(False)

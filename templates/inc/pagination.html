@@ -1,3 +1,4 @@
+{% if pagination.paginator.num_pages > 1  %}
 <ul class="pagination pagination--with-bg pagination--rounded">
   {% if pagination.has_previous %}
   <li class="pagination__item pagination__item--prev">
@@ -10,8 +11,8 @@
   </li>
   {% endif %} 
   
-  {% for num in pagination.paginator.num_pages %} 
-    {% if num==pagination.number %}
+  {% for num in pagination.paginator.page_range %} 
+    {% if num == pagination.number %}
     <li class="pagination__item pagination__item--active">
       <a href="?page={{ num }}"><span>{{num}}</span></a>
     </li>
@@ -31,3 +32,4 @@
   </li>
   {% endif %}
 </ul>
+{% endif %}

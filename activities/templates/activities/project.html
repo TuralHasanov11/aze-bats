@@ -1,0 +1,40 @@
+{% extends 'app.html' %}
+
+{% block content %}
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/event-details.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/event-details.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item"><span class="promo-primary__pre-title">Project</span>
+                        <h1 class="promo-primary__title"><span>{{project.name}}</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section event-details">
+    <div class="event-details__bg"><img src="{{project.cover_image.url}}" alt="img"/></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <div class="row bottom-50">
+                    <div class="col-12">
+                        <h6 class="event-details__title">{{project.name}}</h6>
+                    </div>
+                </div>
+                <div class="event-details__img">
+                    {% comment %} lightbox {% endcomment %}
+                </div>
+                <div>
+                    {{project.description|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -90,7 +90,7 @@
           </thead>
           <tbody>
             {% for article in articles %}
-            <tr>
+            <tr class="data-row">
               <td>{{article.id}}</td>
               <td>
                 <a href="{{article.url}}" target="_blank">{{article.name}}</a>
@@ -103,7 +103,8 @@
                   >Edit</a
                 >
                 <button
-                  class="btn btn-warning btn-delete"
+                  type="button"
+                  class="btn btn-danger btn-delete"
                   data-url="{% url 'administration:article-update-delete' id=article.id %}"
                   >Delete</button>
               </td>
@@ -119,22 +120,9 @@
 {% endblock content%}
 
 
-<script type="text/javascript">
-  document.querySelectorAll('.btn-delete').forEach(el => {
-    el.addEventListener("click", function(e){        
-      const formData = new FormData();
-      formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-      fetch(el.target.dataset.url, {
-        method: 'DELETE',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
-  })
+{% block scripts %}
+<script>
+  let csrftoken = '{{ csrf_token }}'
 </script>
+<script src="{% static 'js/delete-table-record.js' %}"></script>
+{% endblock scripts %}
