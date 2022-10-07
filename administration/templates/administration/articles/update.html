@@ -1,11 +1,12 @@
-{% extends 'app.html' %} {% load static %} {% block content %}
+{% extends 'app.html' %} {% load static %} {% load i18n %}
+{% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="row bottom-50">
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Edit - {{article.name}}</span>
+            <span>{% translate "Edit" %} - {{article.name}}</span>
           </h2>
         </div>
       </div>
@@ -24,9 +25,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="name"
+                name="{{ form.name.html_name }}"
                 value="{{ form.name.value }}"
-                placeholder="Your Name"
+                placeholder="{{form.name.placeholder}}"
               />
               {{ form.name.errors }}
             </div>
@@ -39,9 +40,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="url"
+                name="{{ form.url.html_name }}"
                 value="{{ form.url.value }}"
-                placeholder="Article link"
+                placeholder="{{form.url.placeholder}}"
               />
               {{ form.url.errors }}
             </div>
@@ -54,15 +55,15 @@
               <input
                 class="form__field"
                 type="text"
-                name="author"
+                name="{{ form.author.html_name }}"
                 value="{{ form.author.value }}"
-                placeholder="Author"
+                placeholder="{{form.author.placeholder}}"
               />
               {{ form.author.errors }}
             </div>
 
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}

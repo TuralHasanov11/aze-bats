@@ -1,4 +1,5 @@
-{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+{% extends 'app.html' %} {% load static %} {% load i18n %}
+{% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} {% block content %}
 <section class="section">
@@ -7,7 +8,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Add Article</span>
+            <span>{% translate "Add article" %}</span>
           </h2>
         </div>
       </div>
@@ -25,9 +26,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="name"
+                name="{{ form.name.html_name }}"
                 value="{{ form.name.value }}"
-                placeholder="Your Name"
+                placeholder="{{ form.name.placeholder }}"
               />
               {{ form.name.errors }}
             </div>
@@ -40,9 +41,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="url"
+                name="{{ form.url.html_name }}"
                 value="{{ form.url.value }}"
-                placeholder="Article link"
+                placeholder="{{ form.url.placeholder }}"
               />
               {{ form.url.errors }}
             </div>
@@ -55,15 +56,15 @@
               <input
                 class="form__field"
                 type="text"
-                name="author"
+                name="{{ form.author.html_name }}"
                 value="{{ form.author.value }}"
-                placeholder="Author"
+                placeholder="{{ form.author.placeholder }}"
               />
               {{ form.author.errors }}
             </div>
 
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}
@@ -74,7 +75,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-10">
-        <h4 class="elements__title">Articles</h4>
+        <h4 class="elements__title">{% translate "Articles" %}</h4>
       </div>
     </div>
     <div class="card card-body my-3">
@@ -83,9 +84,9 @@
           <thead class="table-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Author</th>
-              <th scope="col">Operations</th>
+              <th scope="col">{% translate "Name" %}</th>
+              <th scope="col">{% translate "Author" %}</th>
+              <th scope="col">{% translate "Operations" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -100,13 +101,13 @@
                 <a
                   class="btn btn-warning"
                   href="{% url 'administration:article-update-delete' id=article.id %}"
-                  >Edit</a
+                  >{% translate "Edit" %}</a
                 >
                 <button
                   type="button"
                   class="btn btn-danger btn-delete"
                   data-url="{% url 'administration:article-update-delete' id=article.id %}"
-                  >Delete</button>
+                  >{% translate "Delete" %}</button>
               </td>
             </tr>
             {% endfor %}

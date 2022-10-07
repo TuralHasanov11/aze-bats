@@ -1,5 +1,8 @@
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages%}
 
 <header class="header shop-header header-f3">
   <div class="header__lower">
@@ -8,21 +11,18 @@
         <div class="header__lower-inner">
           <ul class="lang-select">
             <li class="lang-select__item lang-select__item--active">
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages%}
-              <span>English</span>
+              <span>{{LANGUAGE_CODE|upper}}</span>
               <ul class="lang-select__sub-list">
                 {% for lang in languages %}
                 <li><a href="/{{lang.code}}">
-                  {{lang.name_local}}
+                  {{lang.code|upper}}
                 </a></li>
                 {% endfor %}
               </ul>
             </li>
           </ul>
           <div class="header__phones d-none d-xl-block">
-            Phone: <a href="tel:{{config_vars.phone}}">{{config_vars.phone}}</a>
+            {% translate "Phone" %}: <a href="tel:{{config_vars.phone}}">{{config_vars.phone}}</a>
           </div>
         </div>
         <div class="header__lower-inner d-none d-xl-block">
@@ -58,10 +58,26 @@
       </div>
       <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center">
         <ul class="main-menu">
+          <li class="main-menu__item"><a class="main-menu__link" href="{% url 'bats:index' %}"><span>{% translate "Bats" %}</span></a></li>
+          <li class="main-menu__item main-menu__item--has-child">
+            <a class="main-menu__link" href="javascript:void(0);"
+              ><span>{% translate "Activities" %}</span></a
+            >
+            <ul class="main-menu__sub-list sub-list--style-2">
+                <li>
+                  <a href="{% url 'activities:projects' %}"><span>{% translate "Projects" %}</span></a>
+                </li>
+                <li>
+                  <a href="{% url 'activities:visits' %}"><span>{% translate "Site Visits" %}</span></a>
+                </li>
+            </ul>
+          </li>
+          <li class="main-menu__item"><a class="main-menu__link" href="{% url 'base:articles' %}"><span>{% translate "Articles" %}</span></a></li>
+
           {% if user.is_authenticated %}
           <li class="main-menu__item main-menu__item--has-child">
             <a class="main-menu__link" href="javascript:void(0);"
-              ><span>Admin</span></a
+              ><span>{% translate "Admin" %}</span></a
             >
             <ul class="main-menu__sub-list sub-list--style-2">
                 {% for item in admin_nav %}
@@ -82,4 +98,3 @@
     </div>
   </div>
 </header>
-<!-- header end-->

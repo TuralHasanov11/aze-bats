@@ -1,11 +1,13 @@
-{% extends "app.html" %} {% block content %}
+{% extends "app.html" %} 
+{% load i18n %}
+{% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="row bottom-50">
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Add site visit</span>
+            <span>{% translate "Add site visit" %}</span>
           </h2>
         </div>
       </div>
@@ -24,9 +26,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="name"
+                name="{{ form.name.html_name }}"
                 value="{{ form.name.value }}"
-                placeholder="Your Name"
+                placeholder="{{form.name.placeholder}}"
               />
               {{ form.name.errors }}
             </div>
@@ -55,7 +57,7 @@
               {{form.results}} {{ form.results.errors }}
             </div>
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}

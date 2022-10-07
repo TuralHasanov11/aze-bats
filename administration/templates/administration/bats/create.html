@@ -1,11 +1,13 @@
-{% extends "app.html" %} {% block content %}
+{% extends "app.html" %}
+{% load i18n %}
+{% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="row bottom-50">
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Add species</span>
+            <span>{% translate "Add species" %}</span>
           </h2>
         </div>
       </div>
@@ -99,7 +101,7 @@
               {{form.threats}} {{ form.threats.errors }}
             </div>
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}

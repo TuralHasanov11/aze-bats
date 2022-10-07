@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <footer class="footer footer--front-3">
   <div class="container">
     <div class="row bottom-50">
@@ -11,11 +13,11 @@
         /></a>
         <div class="footer__details">
           <p>
-            <strong>Phone:</strong>
+            <strong>{% translate "Phone" %}:</strong>
             <a href="tel:{{config_vars.phone}}">{{config_vars.phone}}</a>
           </p>
           <p>
-            <strong>Email:</strong>
+            <strong>{% translate "Email" %}:</strong>
             <a href="mailto:{{config_vars.email}}">{{config_vars.email}}</a>
           </p>
         </div>
@@ -43,22 +45,22 @@
         </ul>
       </div>
       <div class="col-lg-5 d-none d-lg-block">
-        <h6 class="footer__title">Menu</h6>
+        <h6 class="footer__title">{% translate "Menu" %}</h6>
         <ul class="footer-menu footer-menu--style-2">
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="{% url 'base:index' %}">Home</a>
+            <a class="footer-menu__link" href="{% url 'base:index' %}">{% translate "Home" %}</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="{% url 'bats:index' %}">Bats</a>
+            <a class="footer-menu__link" href="{% url 'bats:index' %}">{% translate "Bats" %}</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="{% url 'activities:projects' %}">Projects</a>
+            <a class="footer-menu__link" href="{% url 'activities:projects' %}">{% translate "Projects" %}</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="{% url 'activities:visits' %}">Site Visits</a>
+            <a class="footer-menu__link" href="{% url 'activities:visits' %}">{% translate "Site Visits" %}</a>
           </li>
           <li class="footer-menu__item">
-            <a class="footer-menu__link" href="{% url 'base:articles' %}">Articles</a>
+            <a class="footer-menu__link" href="{% url 'base:articles' %}">{% translate "Articles" %}</a>
           </li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 {% extends 'app.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <section class="promo-primary">
@@ -10,8 +11,8 @@
         <div class="row">
             <div class="col-auto">
                 <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title">All Species</span>
-                        <h1 class="promo-primary__title"><span>Bats</span></h1>
+                    <div class="align-container__item"><span class="promo-primary__pre-title">{% translate "All Species" %}</span>
+                        <h1 class="promo-primary__title"><span>{% translate "Bats" %}</span></h1>
                     </div>
                 </div>
             </div>
@@ -23,7 +24,7 @@
         <div class="row bottom-50 align-items-end">
             <div class="col-12">
                 <ul class="filter-panel">
-                    <li class="filter-panel__item filter-panel__item--active" data-filter="*"><span>All</span></li>
+                    <li class="filter-panel__item filter-panel__item--active" data-filter="*"><span>{% translate "All" %}</span></li>
                     {% for gen in genus %}
                     <li class="filter-panel__item" data-filter=".category_{{gen.id}}"><span>{{gen.name}}</span></li>
                     {% endfor %}

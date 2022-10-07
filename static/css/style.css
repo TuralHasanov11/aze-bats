@@ -16,9 +16,11 @@
 
 .form__submit {
     border-color: var(--main-color) !important;
+    text-decoration: none !important;
+    color: black !important;
 }
 
 .form__submit:hover {
     background: var(--main-color);
-    color: white;
+    color: white !important;
 }

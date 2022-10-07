@@ -1,4 +1,5 @@
 {% extends 'app.html' %}
+{% load i18n %}
 
 {% block content %}
 <section class="promo-primary">
@@ -9,7 +10,7 @@
         <div class="row">
             <div class="col-auto">
                 <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title">Site Visit</span>
+                    <div class="align-container__item"><span class="promo-primary__pre-title">{% translate "Site Visit" %}</span>
                         <h1 class="promo-primary__title"><span>{{visit.name}}</span></h1>
                     </div>
                 </div>
@@ -34,6 +35,7 @@
                     {{visit.description|safe}}
                 </div>
                 <div>
+                    <h4 class="blog-post__title">{% translate "Results" %}</h4>
                     {{visit.results|safe}}
                 </div>
             </div>

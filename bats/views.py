@@ -8,5 +8,5 @@ def index(request):
 
 
 def detail(request, slug:str):
-    bat = models.Species.objects.select_related("genus").get(slug=slug)
+    bat = models.Species.objects.select_related("genus").prefetch_related('species_images').get(slug=slug)
     return render(request, "bats/detail.html", {"bat": bat})

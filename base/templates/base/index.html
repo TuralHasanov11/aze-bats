@@ -1,11 +1,14 @@
-{% extends 'app.html' %} {% block 'content' %}
-<!-- promo start-->
+{% extends 'app.html' %} 
+{% load i18n %}
+{% load static %}
+
+{% block content %}
 <section class="promo promo--front-3">
   <div class="promo-slider promo-slider--style-2">
     <div class="promo-slider__item promo-slider__item--style-2">
       <picture>
-        <source srcset="img/front_3-promo-1.jpg" media="(min-width: 992px)" />
-        <img class="img--bg" src="img/front_3-promo-1.jpg" alt="img" />
+        <source srcset="{% static 'img/front_3-promo-1.jpg' %}" media="(min-width: 992px)" />
+        <img class="img--bg" src="{% static 'img/front_3-promo-1.jpg' %}" alt="img" />
       </picture>
       <div class="container">
         <div class="row">
@@ -27,8 +30,8 @@
                 <div class="promo-slider__wrapper-3">
                   <a
                     class="button promo-slider__button button--primary button--green"
-                    href="#"
-                    >Discover</a
+                    href="{% url 'bats:index' %}"
+                    >{% translate "See bats" %}</a
                   >
                 </div>
               </div>
@@ -39,8 +42,8 @@
     </div>
     <div class="promo-slider__item promo-slider__item--style-2">
       <picture>
-        <source srcset="img/front_3-promo-2.jpg" media="(min-width: 992px)" />
-        <img class="img--bg" src="img/front_3-promo-2.jpg" alt="img" />
+        <source srcset="{% static 'img/front_3-promo-2.jpg' %}" media="(min-width: 992px)" />
+        <img class="img--bg" src="{% static 'img/front_3-promo-2.jpg' %}" alt="img" />
       </picture>
       <div class="container">
         <div class="row">
@@ -63,8 +66,8 @@
                 <div class="promo-slider__wrapper-3">
                   <a
                     class="button promo-slider__button button--primary button--green"
-                    href="#"
-                    >Discover</a
+                    href="{% url 'activities:projects' %}"
+                    >{% translate "Projects" %}</a
                   >
                 </div>
               </div>
@@ -75,14 +78,34 @@
     </div>
     <div class="promo-slider__item promo-slider__item--style-3">
       <picture>
-        <source srcset="img/front_3-promo-3.jpg" media="(min-width: 992px)" />
-        <img class="img--bg" src="img/front_3-promo-3.jpg" alt="img" />
+        <source srcset="{% static 'img/front_3-promo-3.jpg' %}" media="(min-width: 992px)" />
+        <img class="img--bg" src="{% static 'img/front_3-promo-3.jpg' %}" alt="img" />
       </picture>
       <div class="container">
         <div class="row">
           <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
             <div class="align-container">
-              <div class="align-container__item"></div>
+              <div class="align-container__item">
+                <div class="promo-slider__wrapper-1">
+                  <h2 class="promo-slider__title">
+                    <span>Fantastic</span><br /><span>Reptiles World</span>
+                  </h2>
+                </div>
+                <div class="promo-slider__wrapper-2">
+                  <p class="promo-slider__subtitle">
+                    Animals World accreditation standards. Members are proactive
+                    in both undertaking and applying animal welfare scientific
+                    research, contributing
+                  </p>
+                </div>
+                <div class="promo-slider__wrapper-3">
+                  <a
+                    class="button promo-slider__button button--primary button--green"
+                    href="{% url 'activities:visits' %}"
+                    >{% translate "See site visits" %}</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,16 +115,15 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <!-- promo pannel start-->
         <div class="promo-pannel">
           <a
             class="video-trigger"
             href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
             ><img
               class="img--bg"
-              src="img/video-block_3.jpg"
+              src="{% static 'img/video-block_3.jpg' %}"
               alt="image" /><span class="video-trigger__icon"
-              ><span>Live Cam</span
+              ><span>{% translate "Watch our work" %}</span
               ><i class="fa fa-play" aria-hidden="true"></i></span
           ></a>
           <div class="promo-pannel__details">
@@ -109,238 +131,139 @@
             <div class="promo-slider__count"></div>
           </div>
         </div>
-        <!-- promo pannel end-->
       </div>
     </div>
   </div>
 </section>
-<!-- promo end-->
-<!-- section start-->
+
 <section class="section about-terrarium">
   <img
     class="img--aside t50 l0 w-33"
-    src="img/about-terrarium_bg.png"
+    src="{% static 'img/about-terrarium_bg.png' %}"
     alt="img"
   />
   <div class="container">
     <div class="row">
       <div class="col-xl-8 offset-xl-4">
         <div class="heading heading--style-2 heading--green">
-          <span class="heading__pre-title">About terrarium</span>
           <h2 class="heading__title">
-            <span>Fantastic</span> <span>terrarium</span>
+            <span>{% translate "Statistics" %}</span>
           </h2>
         </div>
-        <p>
-          <strong
-            >Ghost pipefish yellow bass New Zealand sand diver eulachon brook
-            lamprey driftfish, Atlantic trout. Mudfish: blue eye, arrowtooth eel
-            french angelfish yellowfin pike unicorn fish.</strong
-          >
-        </p>
-        <p class="bottom-40">
-          Rudderfish long-finned pike--razorfish menhaden paradise fish,
-          barramundi oceanic flyingfish. Fangtooth yellowtail banded killifish
-          seamoth triplefin blenny desert pupfish
-        </p>
         <div class="row offset-30">
           <div class="col-sm-4">
             <div class="counter-item counter-item--front">
               <div class="counter-item__top">
-                <h6 class="counter-item__title">Poaching cases</h6>
+                <h6 class="counter-item__title">{% translate "Bats" %}</h6>
               </div>
               <div class="counter-item__lower">
-                <span class="js-counter color--green">850</span>
+                <span class="js-counter color--green">{{batCounts}}</span>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="counter-item counter-item--front">
               <div class="counter-item__top">
-                <h6 class="counter-item__title">Rescued animals</h6>
+                <h6 class="counter-item__title">{% translate "Projects" %}</h6>
               </div>
               <div class="counter-item__lower">
-                <span class="js-counter color--green">230</span>
+                <span class="js-counter color--green">{{projectCount}}</span>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="counter-item counter-item--front">
               <div class="counter-item__top">
-                <h6 class="counter-item__title">Volunteers</h6>
+                <h6 class="counter-item__title">{% translate "Site Visits" %}</h6>
               </div>
               <div class="counter-item__lower">
-                <span class="js-counter color--green">160.000</span>
+                <span class="js-counter color--green">{{visitCount}}</span>
               </div>
             </div>
           </div>
         </div>
-        <a class="button button--green top-40" href="#">More about</a>
       </div>
     </div>
   </div>
 </section>
-<!-- section end-->
-<!-- section start-->
-<section class="section no-padding-top no-padding-bottom">
+
+<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
   <div class="container">
-    <div class="row align-items-end bottom-50">
-      <div class="col-md-6">
+    <div class="row bottom-50 align-items-end">
+      <div class="col-lg-8">
         <div class="heading heading--style-2 heading--green">
-          <span class="heading__pre-title">Our reptiles</span>
-          <h2 class="heading__title no-margin-bottom">
-            <span>Reptiles</span><br />
-            <span>in our terrarium</span>
-          </h2>
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Recent Projects" %}</span></h2>
         </div>
       </div>
-      <div class="col-md-6 text-md-right">
-        <div class="fishes-slider__dots dots--style-2"></div>
+      <div class="col-lg-4">
+        <div class="destination-slider__dots dots--style-2 text-left text-lg-right"></div>
       </div>
     </div>
   </div>
-  <div class="slider-holder slider-holder--style-2">
+  <div class="slider-holder">
     <div class="slider-holder__wrapper">
-      <div class="fishes-slider">
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_1.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">01</span>
-              <h6 class="text-box__title">Lizards</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
+      <div class="destination-slider">
+        {% for project in projects %}
+        <div class="destination-slider__item">
+          <div class="destination-item destination-item--style-2"><img class="img--bg" src="{{project.cover_image.url}}" alt="img"/>
+            <div class="destination-item__details">
+              <h6 class="destination-item__title">{{project.name}}</h6>
+              <a class="destination-item__link" href="{% url 'activities:project' slug=project.slug %}">{% translate "More" %}</a>
             </div>
           </div>
         </div>
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_2.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">02</span>
-              <h6 class="text-box__title">Snakes</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_3.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">03</span>
-              <h6 class="text-box__title">Turtles</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_4.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">04</span>
-              <h6 class="text-box__title">Crocodiles</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_5.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">05</span>
-              <h6 class="text-box__title">Frogs</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="fishes-slider__item">
-          <div class="text-box">
-            <img class="img--bg" src="img/fishes_3.jpg" alt="img" />
-            <div class="text-box__details">
-              <span class="text-box__count">06</span>
-              <h6 class="text-box__title">Spiders</h6>
-              <div class="text-box__text">
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
-<!-- section end-->
-<!-- section start-->
+
 <section class="section text-section no-padding-bottom d-none d-lg-block">
   <div class="container">
     <div class="row">
       <div class="col-12 text-right">
-        <h1 class="text-section__title"><span>Best</span>Terrarium</h1>
+        <h1 class="text-section__title"><span>{% translate "Our country" %}</h1>
         <p class="text-section__text">in Whole Animals World</p>
       </div>
     </div>
   </div>
 </section>
-<!-- section end-->
-<!-- gallery start-->
+
 <section class="section gallery no-padding-bottom">
   <div class="container">
     <div class="row bottom-50 align-items-end">
       <div class="col-lg-6">
         <div class="heading heading--style-2 heading--green">
-          <span class="heading__pre-title">Our gallery</span>
           <h2 class="heading__title no-margin-bottom">
-            <span>Gallery</span><br />
-            <span>of our terrarium</span>
+            <span>{% translate "Some bats" %}</span><br />
           </h2>
         </div>
       </div>
       <div class="col-lg-6 text-right d-none d-lg-block">
-        <!-- filter panel start-->
         <ul class="filter-panel filter-panel--style-2 justify-content-end">
           <li
             class="filter-panel__item filter-panel__item--active"
             data-filter="*"
           >
-            <span>All</span>
-          </li>
-          <li class="filter-panel__item" data-filter=".category_2">
-            <span>Snake</span>
-          </li>
-          <li class="filter-panel__item" data-filter=".category_3">
-            <span>Lizard</span>
-          </li>
-          <li class="filter-panel__item" data-filter=".category_4">
-            <span>Turtle</span>
-          </li>
-          <li class="filter-panel__item" data-filter=".category_5">
-            <span>Chameleon</span>
+            <span>{% translate "Bats" %}</span>
           </li>
         </ul>
-        <!-- filter panel end-->
       </div>
     </div>
   </div>
   <div class="row no-gutters gallery-masonry">
+    {% for batContainer in batsFormatted %}
     <div
       class="category_2 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="img/gallery_18.jpg"
+        href="{{batContainer[0].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_18.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[0].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Mamals</span><span>Giraffes</span>
+          <span>{{batContainer[0].name}}</span>
         </div></a
       >
     </div>
@@ -349,11 +272,12 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-2"
-        href="img/gallery_19.jpg"
+        href="{{batContainer[1].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_19.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[1].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Mamals</span><span>Lions</span>
+          <span>{{batContainer[1].name}}</span>
         </div></a
       >
     </div>
@@ -362,11 +286,12 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-3"
-        href="img/gallery_20.jpg"
+        href="{{batContainer[2].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_20.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[2].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Birds</span><span>Parrots</span>
+          <span>{{batContainer[2].name}}</span>
         </div></a
       >
     </div>
@@ -375,11 +300,12 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="img/gallery_21.jpg"
+        href="{{batContainer[3].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_21.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[3].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Reptiles</span><span>Lizards</span>
+          <span>{{batContainer[3].name}}</span>
         </div></a
       >
     </div>
@@ -388,11 +314,12 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="img/gallery_22.jpg"
+        href="{{batContainer[4].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_22.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[4].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Fishes</span><span>Clown</span>
+          <span>{{batContainer[4].name}}</span>
         </div></a
       >
     </div>
@@ -401,11 +328,12 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="img/gallery_23.jpg"
+        href="{{batContainer[5].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_23.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[5].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Mamals</span><span>Monkeys</span>
+          <span>{{batContainer[5].name}}</span>
         </div></a
       >
     </div>
@@ -414,28 +342,25 @@
     >
       <a
         class="gallery-masonry__img gallery-masonry__item--height-4"
-        href="img/gallery_24.jpg"
+        href="{{batContainer[6].cover_image.url}}"
+        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
         data-fancybox="gallery"
-        ><img class="img--bg" src="img/gallery_24.jpg" alt="img" />
+        ><img class="img--bg" src="{{batContainer[6].cover_image.url}}" alt="img" />
         <div class="gallery-masonry__description">
-          <span>Mamals</span><span>Elephants</span>
+          <span>{{batContainer[6].name}}</span>
         </div></a
       >
     </div>
+    {% endfor %}
   </div>
 </section>
 
-<section
-  class="section donation donation--style-2 no-padding-bottom no-padding-top"
->
+<section class="section donation donation--style-2 no-padding-bottom no-padding-top">
   <div class="container bottom-50">
     <div class="row align-items-end">
       <div class="col-lg-8">
         <div class="heading heading--style-2 heading--green">
-          <span class="heading__pre-title">Donation</span>
-          <h2 class="heading__title no-margin-bottom">
-            <span>Help our</span> <span>reptiles</span>
-          </h2>
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Recent Site Visits" %}</span></h2>
         </div>
       </div>
       <div class="col-lg-4 text-lg-right">
@@ -446,114 +371,39 @@
   <div class="slider-holder bottom-50">
     <div class="slider-holder__wrapper">
       <div class="donation-slider">
+        {% for visit in visits %}
         <div class="donation-slider__item">
-          <div class="donate-box donate-box--green">
-            <img class="img--bg" src="img/donation_4.jpg" alt="img" />
+          <div class="donate-box donate-box--green"><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
             <div class="donate-box__inner">
               <div class="heading">
-                <span class="heading__pre-title">Donation</span>
-                <h2 class="heading__title no-margin-bottom">
-                  <span>Help us more</span> <br />
-                  <span>protect animals</span>
-                </h2>
+                <h2 class="heading__title no-margin-bottom"><span>{{visit.name}}</span></h2>
               </div>
-              <p>
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-                Rudderfish longfinned pikrazorfish menhaden
-              </p>
-              <a class="donate-box__link" href="#">Donate !</a>
+              <a class="donate-box__link" href="{% url 'activities:visit' slug=visit.slug %}">{% translate "More" %}</a>
             </div>
           </div>
         </div>
-        <div class="donation-slider__item">
-          <div class="donate-box donate-box--green">
-            <img class="img--bg" src="img/donation_5.jpg" alt="img" />
-            <div class="donate-box__inner">
-              <div class="heading">
-                <span class="heading__pre-title">Donation</span>
-                <h2 class="heading__title no-margin-bottom">
-                  <span>Help us more</span> <br />
-                  <span>protect animals</span>
-                </h2>
-              </div>
-              <p>
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-                Rudderfish longfinned pikrazorfish menhaden
-              </p>
-              <a class="donate-box__link" href="#">Donate !</a>
-            </div>
-          </div>
-        </div>
-        <div class="donation-slider__item">
-          <div class="donate-box donate-box--green">
-            <img class="img--bg" src="img/donation_6.jpg" alt="img" />
-            <div class="donate-box__inner">
-              <div class="heading">
-                <span class="heading__pre-title">Donation</span>
-                <h2 class="heading__title no-margin-bottom">
-                  <span>Help us more</span> <br />
-                  <span>protect animals</span>
-                </h2>
-              </div>
-              <p>
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-                Rudderfish longfinned pikrazorfish menhaden
-              </p>
-              <a class="donate-box__link" href="#">Donate !</a>
-            </div>
-          </div>
-        </div>
-        <div class="donation-slider__item">
-          <div class="donate-box donate-box--green">
-            <img class="img--bg" src="img/donation_4.jpg" alt="img" />
-            <div class="donate-box__inner">
-              <div class="heading">
-                <span class="heading__pre-title">Donation</span>
-                <h2 class="heading__title no-margin-bottom">
-                  <span>Help us more</span> <br />
-                  <span>protect animals</span>
-                </h2>
-              </div>
-              <p>
-                Fangtooth yellowtail banded killifish seamoth triplefin blenny
-                Rudderfish longfinned pikrazorfish menhaden
-              </p>
-              <a class="donate-box__link" href="#">Donate !</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-12">
-        <a class="button button--green" href="#">All donation</a>
+        {% endfor %}
+
       </div>
     </div>
   </div>
 </section>
-<!-- section end-->
-<!-- section start-->
+
 <section class="section testimonials testimonials--style-1 testimonials--green">
   <div class="container">
+    {% for author in authors %}
     <div class="row">
       <div class="col-lg-3 d-none d-lg-block">
         <div class="testimonials__img">
-          <img class="img--bg" src="img/man.jpg" alt="img" />
+          <img class="img--bg" src="{{author.cover_image.url}}" alt="img" />
         </div>
       </div>
       <div class="col-lg-9">
         <div class="row align-items-center">
           <div class="col-md-7">
             <div class="heading heading--primary">
-              <span class="heading__pre-title">Testimonials</span>
               <h2 class="heading__title">
-                <span
-                  >What People<br />
-                  Says</span
-                >
-                <span>About Us</span>
+                <span>{{author.name}}</span>
               </h2>
             </div>
           </div>
@@ -568,59 +418,7 @@
             <div class="testimonials-slider testimonials-slider--style-1">
               <div class="testimonials-slider__item">
                 <div class="testimonials-slider__text">
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                </div>
-                <div class="testimonials-slider__details">
-                  <span class="testimonials-slider__name">John Maclein</span>
-                </div>
-              </div>
-              <div class="testimonials-slider__item">
-                <div class="testimonials-slider__text">
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                </div>
-                <div class="testimonials-slider__details">
-                  <span class="testimonials-slider__name">John Maclein</span>
-                </div>
-              </div>
-              <div class="testimonials-slider__item">
-                <div class="testimonials-slider__text">
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                  <p>
-                    Rudderfish long-finned pikerazorfish menhaden paradise fish,
-                    barramundi oceanic flyingfish. Fangtooth yellowtail banded
-                    killifish seamoth triplefin blenny desert pupfish crocodile
-                    shark catfish cutlassfish broadband dogfish whalefish.
-                  </p>
-                </div>
-                <div class="testimonials-slider__details">
-                  <span class="testimonials-slider__name">John Maclein</span>
+                  {{auhor.description|safe}}
                 </div>
               </div>
             </div>
@@ -628,151 +426,8 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- section end-->
-<!-- section start-->
-<section class="section events-carousel no-padding-bottom">
-  <img class="events-carousel__bg" src="img/skin-bg.jpg" alt="bg" />
-  <div class="container">
-    <div class="row bottom-50 align-items-end">
-      <div class="col-lg-8">
-        <div class="heading heading--style-2 heading--green">
-          <span class="heading__pre-title">Events</span>
-          <h2 class="heading__title no-margin-bottom">
-            <span>What’s</span> <span>coming up?</span>
-          </h2>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div
-          class="destination-slider__dots dots--style-2 text-left text-lg-right"
-        ></div>
-      </div>
-    </div>
-  </div>
-  <div class="slider-holder">
-    <div class="slider-holder__wrapper">
-      <div class="destination-slider">
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_1.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>01</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">Bostwana</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_2.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>13</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">Kenya</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_3.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>13</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">South Africa</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_4.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>14</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">Uganda</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_5.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>15</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">Tanzania</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2">
-            <img class="img--bg" src="img/events-sl_1.jpg" alt="img" />
-            <div class="destination-item__count">
-              <span>01</span><span>nov</span>
-            </div>
-            <div class="destination-item__details">
-              <span class="destination-item__day">Tuesday</span>
-              <h6 class="destination-item__title">Bostwana</h6>
-              <a class="destination-item__link" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- section end-->
-<!-- section start-->
-<section class="section">
-  <div class="container">
-    <div class="row bottom-50">
-      <div class="col-12">
-        <div class="heading heading--primary heading--center">
-          <span class="heading__pre-title">Our partners</span>
-          <h2 class="heading__title no-margin-bottom">
-            <span>People Who</span> <span>Trust Us</span>
-          </h2>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="logos-slider">
-          <div class="logos-slider__item">
-            <img src="img/logo_1.png" alt="logo" />
-          </div>
-          <div class="logos-slider__item">
-            <img src="img/logo_2.png" alt="logo" />
-          </div>
-          <div class="logos-slider__item">
-            <img src="img/logo_3.png" alt="logo" />
-          </div>
-          <div class="logos-slider__item">
-            <img src="img/logo_4.png" alt="logo" />
-          </div>
-          <div class="logos-slider__item">
-            <img src="img/logo_5.png" alt="logo" />
-          </div>
-        </div>
-        <div class="logos-slider__dots dots--style-2"></div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </section>
 
-{% endblock 'content' %}
+{% endblock content %}

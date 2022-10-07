@@ -1,4 +1,5 @@
-{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+{% extends 'app.html' %} {% load static %} {% load i18n %}
+{% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} {% block content %}
 <section class="section">
@@ -7,7 +8,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Edit - {{author.name}}</span>
+            <span>{% translate "Edit" %} - {{author.name}}</span>
           </h2>
         </div>
       </div>
@@ -26,9 +27,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="name"
+                name="{{ form.name.html_name }}"
                 value="{{ form.name.value }}"
-                placeholder="Your Name"
+                placeholder="{{form.name.placeholder}}"
               />
               {{ form.name.errors }}
             </div>
@@ -55,7 +56,7 @@
             </div>
 
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}

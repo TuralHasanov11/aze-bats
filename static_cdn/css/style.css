@@ -1,7 +1,26 @@
-.btn-delete{
-    border-color:#fd4040;
+:root {
+    --main-color: #6E2A9C;
 }
 
-.btn-delete:hover{
-    background-color:#fd4040;
+.btn-delete {
+    border-color: #fd4040;
+}
+
+.btn-delete:hover {
+    background-color: #fd4040;
+}
+
+.img--bg {
+    object-fit: fill !important;
+}
+
+.form__submit {
+    border-color: var(--main-color) !important;
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.form__submit:hover {
+    background: var(--main-color);
+    color: white !important;
 }

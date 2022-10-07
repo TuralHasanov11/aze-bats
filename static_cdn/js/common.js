@@ -732,6 +732,8 @@
 				percentPosition: true,
 			})
 
+			console.log(masonryGallery)
+
 			const filter = $('.filter-panel__item')
 
 			filter.on('click', function () {

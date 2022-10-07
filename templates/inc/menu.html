@@ -1,16 +1,29 @@
-<!-- menu dropdown start-->
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages%}
+
 <div class="menu-dropdown menu-dropdown--front-3">
   <div class="menu-dropdown__inner" data-value="start">
     <div class="screen screen--start">
+      <div class="screen__item"><a class="screen__link" href="{% url 'bats:index' %}">{% translate "Bats" %}</a></div>
       <div class="screen__item screen--trigger item--active" data-category="admin">
-        <span>Admin</span
+        <span>{% translate "Admin" %}</span
+        ><span>
+          <svg class="icon">
+            <use xlink:href="#chevron"></use></svg
+        ></span>
+      </div>
+      <div class="screen__item"><a class="screen__link" href="{% url 'base:articles' %}">{% translate "Articles" %}</a></div>
+      <div class="screen__item screen--trigger item--active" data-category="activities">
+        <span>{% translate "Activities" %}</span
         ><span>
           <svg class="icon">
             <use xlink:href="#chevron"></use></svg
         ></span>
       </div>
       <div class="screen__item screen--trigger" data-category="language">
-        <span>Language</span
+        <span>{% translate "Language" %}</span
         ><span>
           <svg class="icon">
             <use xlink:href="#chevron"></use></svg
@@ -47,7 +60,7 @@
           <svg class="icon">
             <use xlink:href="#chevron-left"></use>
           </svg>
-          <span>Admin</span>
+          <span>{% translate "Admin" %}</span>
         </h6>
       </div>
       {% for item in admin_nav %}
@@ -57,6 +70,24 @@
       {% endfor %}
     </div>
   </div>
+  <div class="menu-dropdown__inner" data-value="activities">
+    <div class="screen screen--sub">
+      <div class="screen__heading">
+        <h6 class="screen__back">
+          <svg class="icon">
+            <use xlink:href="#chevron-left"></use>
+          </svg>
+          <span>{% translate "Activities" %}</span>
+        </h6>
+      </div>
+      <div class="screen__item">
+        <a class="screen__link" href="{% url 'activities:projects' %}">{% translate "Projects" %}</a>
+      </div>
+      <div class="screen__item">
+        <a class="screen__link" href="{% url 'activities:visits' %}">{% translate "Site Visits" %}</a>
+      </div>
+    </div>
+  </div>
   <div class="menu-dropdown__inner" data-value="language">
     <div class="screen screen--sub">
       <div class="screen__heading">
@@ -64,25 +95,14 @@
           <svg class="icon">
             <use xlink:href="#chevron-left"></use>
           </svg>
-          <span>Language</span>
+          <span>{% translate "Language" %}</span>
         </h6>
       </div>
+      {% for lang in languages %}
       <div class="screen__item">
-        <a class="screen__link" href="javascript:void(0);">English</a>
+        <a class="screen__link" href="/{{lang.code}}">{{lang.code|upper}}</a>
       </div>
-      <div class="screen__item">
-        <a class="screen__link" href="javascript:void(0);">French</a>
-      </div>
-      <div class="screen__item">
-        <a class="screen__link" href="javascript:void(0);">Spanish</a>
-      </div>
-      <div class="screen__item">
-        <a class="screen__link" href="javascript:void(0);">Deutsch</a>
-      </div>
-      <div class="screen__item">
-        <a class="screen__link" href="javascript:void(0);">Russian</a>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
-<!-- menu dropdown end-->

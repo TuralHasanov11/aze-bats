@@ -1,4 +1,6 @@
-{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+{% extends 'app.html' %} {% load static %} {% load i18n %}
+
+{% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} {% block content %}
 <section class="section">
@@ -7,7 +9,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>Add author</span>
+            <span>{% translate "Add researcher" %}</span>
           </h2>
         </div>
       </div>
@@ -26,9 +28,9 @@
               <input
                 class="form__field"
                 type="text"
-                name="name"
+                name="{{ form.name.html_name }}"
                 value="{{ form.name.value }}"
-                placeholder="Your Name"
+                placeholder="{{form.name.placeholder}}"
               />
               {{ form.name.errors }}
             </div>
@@ -50,7 +52,7 @@
             </div>
 
             <div class="col-12 bottom-20 text-center">
-              <button class="form__submit" type="submit">Save</button>
+              <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
           </div>
           {% csrf_token %}
@@ -61,7 +63,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-10">
-        <h4 class="elements__title">Authors</h4>
+        <h4 class="elements__title">{% translate "Researchers" %}</h4>
       </div>
     </div>
     <div class="card card-body my-3">
@@ -70,9 +72,9 @@
           <thead class="table-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Image</th>
-              <th scope="col">Operations</th>
+              <th scope="col">{% translate "Name" %}</th>
+              <th scope="col">{% translate "Image" %}</th>
+              <th scope="col">{% translate "Operations" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -91,13 +93,13 @@
                 <a
                   class="btn btn-warning"
                   href="{% url 'administration:author-update-delete' id=author.id %}"
-                  >Edit</a
+                  >{% translate "Edit" %}</a
                 >
                 <button
                   type="button"
                   class="btn btn-danger btn-delete"
                   data-url="{% url 'administration:author-update-delete' id=author.id %}"
-                  >Delete</button>
+                  >{% translate "Delete" %}</button>
               </td>
             </tr>
             {% endfor %}

@@ -1,5 +1,7 @@
 {% extends 'app.html' %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
 <section class="promo-primary">
     <picture>
@@ -10,7 +12,7 @@
             <div class="col-auto">
                 <div class="align-container">
                     <div class="align-container__item">
-                        <h1 class="promo-primary__title"><span>Projects</span></h1>
+                        <h1 class="promo-primary__title"><span>{% translate "Projects" %}</span></h1>
                     </div>
                 </div>
             </div>
