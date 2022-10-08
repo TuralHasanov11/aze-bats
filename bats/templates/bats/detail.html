@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-xl-8 offset-xl-2">
                 <div class="blog-post__top">
-                    {% comment %} Image lightbox {% endcomment %}
+                    {% include "inc/gallery.html" with items=bat.species_images.all %}
                 </div>
                 <h4 class="blog-post__title">{% translate "Description" %}</h4>
                 {{bat.description|safe}}

@@ -1,0 +1,25 @@
+{% load static %}
+<div class="lightbox-container">
+
+    {% for item in items %}
+    <div class="lightbox-slides">
+        <div class="lightbox-numbertext">{{ forloop.counter }} / {{ items|length }}</div>
+          <img src="{{item.image.url}}" style="width:100%">
+    </div>
+    {% endfor %}
+  
+    <a class="lightbox-prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="lightbox-next" onclick="plusSlides(1)">&#10095;</a>
+  
+    <div class="lightbox-row">
+      {% for item in items %}
+      <div class="lightbox-column">
+        <img class="lightbox-demo cursor" src="{{item.image.url}}" style="width:100%" onclick="currentSlide({{ forloop.counter }})">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% block scripts %}
+<script src="{% static 'js/lightbox.js' %}"></script>
+{% endblock scripts %}

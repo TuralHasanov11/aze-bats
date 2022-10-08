@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class Project(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
-    slug = models.SlugField(max_length=255, null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
     cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
     description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
 
@@ -22,7 +22,7 @@ class Project(models.Model):
 
 class SiteVisit(models.Model):
     name = models.CharField(max_length=199, null=False, blank=False)
-    slug = models.SlugField(max_length=255, null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
     cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
     description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
     results = ckeditorFields.RichTextUploadingField(null=True, blank=True)
@@ -54,6 +54,7 @@ class SiteVisitImage(models.Model):
 
     def __str__(self) -> str:
         return str(self.site_visit)
+
 
 
 @receiver(signals.post_delete, sender=Project)

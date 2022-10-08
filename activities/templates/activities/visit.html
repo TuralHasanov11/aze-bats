@@ -1,10 +1,10 @@
 {% extends 'app.html' %}
 {% load i18n %}
-
+{% load static %}
 {% block content %}
 <section class="promo-primary">
     <picture>
-        <source srcset="{% static 'img/event-details.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/event-details.jpg' %}" alt="img"/>
+        <source srcset="{{visit.cover_image.url}}" media="(min-width: 992px)"/><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
     </picture>
     <div class="container">
         <div class="row">
@@ -19,17 +19,11 @@
     </div>
 </section>
 <section class="section event-details">
-    <div class="event-details__bg"><img src="{{visit.cover_image.url}}" alt="img"/></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                <div class="row bottom-50">
-                    <div class="col-12">
-                        <h6 class="event-details__title">{{visit.name}}</h6>
-                    </div>
-                </div>
-                <div class="event-details__img">
-                    {% comment %} lightbox {% endcomment %}
+            <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-1 col-xl-8 offset-xl-2">
+                <div class="bottom-50">
+                    {% include "inc/gallery.html" with items=visit.site_visit_images.all %}
                 </div>
                 <div>
                     {{visit.description|safe}}

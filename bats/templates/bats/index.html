@@ -19,34 +19,35 @@
         </div>
     </div>
 </section>
-<section class="section gallery">
+
+<section class="section animals">
     <div class="container">
-        <div class="row bottom-50 align-items-end">
+        <div class="row align-items-center bottom-30">
             <div class="col-12">
-                <ul class="filter-panel">
-                    <li class="filter-panel__item filter-panel__item--active" data-filter="*"><span>{% translate "All" %}</span></li>
+                <ul class="filter-panel justify-content-start">
+                    <li class="filter-panel__item {% if not request.GET.genus %}filter-panel__item--active{% endif %}"><a href="{% url 'bats:index' %}"><span>{% translate "All" %}</span></a></li>
                     {% for gen in genus %}
-                    <li class="filter-panel__item" data-filter=".category_{{gen.id}}"><span>{{gen.name}}</span></li>
+                    <li class="filter-panel__item {% if request.GET.genus == gen.slug %}filter-panel__item--active{% endif %}"><a href="{% url 'bats:index' %}?genus={{gen.slug}}"><span>{{gen.name}}</span></a></li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="row gallery-masonry no-gutters">
-        {% for bat in bats %}
-        <div class="category_{{bat.genus.id}} col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
-            <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{bat.cover_image.url}}" data-fancybox="gallery">
-                <img class="img--bg" src="{{bat.cover_image.url}}" alt="img"/>
-                <div class="gallery-masonry__description"><span>{{bat.genus.name}}</span><span>{{bat.name}}</span></div>
-            </a>
+        <div class="row no-gutters left-3 right-3">
+            {% for bat in bats %}
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="animal-block"><img class="img--bg" src="{{bat.cover_image.url}}"/>
+                    <div class="animal-block__details">
+                        <h6 class="animal-block__title">{{bat.name}}</h6><a class="animal-block__link" href="{% url 'bats:detail' slug=bat.slug %}">{% translate "More" %}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-12 py-5">
+                {% include "inc/pagination.html" with pagination=bats %}
+            </div>
         </div>
-        {% endfor %}
-       
     </div>
-    {% comment %} <div class="container top-70">
-        <div class="row">
-            <div class="col-12 text-center"><a class="button button--primary" href="#">More Animals</a></div>
-        </div>
-    </div> {% endcomment %}
 </section>
+
 {% endblock content %}

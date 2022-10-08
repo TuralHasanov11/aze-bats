@@ -157,7 +157,7 @@
                 <h6 class="counter-item__title">{% translate "Bats" %}</h6>
               </div>
               <div class="counter-item__lower">
-                <span class="js-counter color--green">{{batCounts}}</span>
+                <span class="js-counter color--green">{{batCount}}</span>
               </div>
             </div>
           </div>
@@ -229,133 +229,23 @@
   </div>
 </section>
 
-<section class="section gallery no-padding-bottom">
+<section class="section animals">
   <div class="container">
-    <div class="row bottom-50 align-items-end">
-      <div class="col-lg-6">
-        <div class="heading heading--style-2 heading--green">
-          <h2 class="heading__title no-margin-bottom">
-            <span>{% translate "Some bats" %}</span><br />
-          </h2>
-        </div>
+      <div class="row no-gutters left-3 right-3">
+          {% for bat in bats %}
+          <div class="col-12 col-md-6 col-xl-4">
+              <div class="animal-block"><img class="img--bg" src="{{bat.cover_image.url}}"/>
+                  <div class="animal-block__details">
+                      <h6 class="animal-block__title">{{bat.name}}</h6><a class="animal-block__link" href="{% url 'bats:detail' slug=bat.slug %}">{% translate "More" %}</a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
       </div>
-      <div class="col-lg-6 text-right d-none d-lg-block">
-        <ul class="filter-panel filter-panel--style-2 justify-content-end">
-          <li
-            class="filter-panel__item filter-panel__item--active"
-            data-filter="*"
-          >
-            <span>{% translate "Bats" %}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row no-gutters gallery-masonry">
-    {% for batContainer in batsFormatted %}
-    <div
-      class="category_2 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="{{batContainer[0].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[0].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[0].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_2 col-sm-6 col-md-6 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-2"
-        href="{{batContainer[1].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[1].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[1].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_3 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-3"
-        href="{{batContainer[2].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[2].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[2].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_3 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="{{batContainer[3].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[3].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[3].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_4 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="{{batContainer[4].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[4].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[4].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_4 col-sm-6 col-md-3 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-1"
-        href="{{batContainer[5].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[5].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[5].name}}</span>
-        </div></a
-      >
-    </div>
-    <div
-      class="category_5 col-sm-6 col-md-6 gallery-masonry__item gallery-masonry__item--green"
-    >
-      <a
-        class="gallery-masonry__img gallery-masonry__item--height-4"
-        href="{{batContainer[6].cover_image.url}}"
-        data-url="{% url 'bats:detail' slug=batContainer[0].slug %}"
-        data-fancybox="gallery"
-        ><img class="img--bg" src="{{batContainer[6].cover_image.url}}" alt="img" />
-        <div class="gallery-masonry__description">
-          <span>{{batContainer[6].name}}</span>
-        </div></a
-      >
-    </div>
-    {% endfor %}
   </div>
 </section>
 
-<section class="section donation donation--style-2 no-padding-bottom no-padding-top">
+<section class="section donation donation--style-2 no-padding-bottom">
   <div class="container bottom-50">
     <div class="row align-items-end">
       <div class="col-lg-8">
@@ -418,7 +308,7 @@
             <div class="testimonials-slider testimonials-slider--style-1">
               <div class="testimonials-slider__item">
                 <div class="testimonials-slider__text">
-                  {{auhor.description|safe}}
+                  {{author.description|safe}}
                 </div>
               </div>
             </div>

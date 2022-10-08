@@ -1,8 +1,20 @@
 from django.shortcuts import render
 from bats import models
+from django.core import paginator
+
 
 def index(request):
-    bats = models.Species.objects.all()
+    genusSlug = request.GET.get("genus", None)
+
+    if genusSlug:
+        bats = models.Species.objects.filter(genus__slug=genusSlug)
+    else:
+        bats = models.Species.objects.all()
+    
+    pagination = paginator.Paginator(bats, 1)
+    pageNumber = request.GET.get('page')
+    bats = pagination.get_page(pageNumber)
+
     genus = models.Genus.objects.all()
     return render(request, "bats/index.html", {"bats": bats, "genus": genus})
 

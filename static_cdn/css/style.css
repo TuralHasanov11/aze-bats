@@ -24,3 +24,85 @@
     background: var(--main-color);
     color: white !important;
 }
+
+/* Lightbox */
+.lightbox-container {
+    position: relative;
+}
+
+.lightbox-slides {
+    display: none;
+}
+
+.lightbox-cursor {
+    cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white !important;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.lightbox-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.lightbox-caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.lightbox-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.lightbox-column {
+    float: left;
+    width: 16.66%;
+}
+
+.lightbox-demo {
+    opacity: 0.6;
+}
+
+.lightbox-active,
+.lightbox-demo:hover {
+    opacity: 1;
+}
+
+.filter-panel a {
+    color: #212529 !important;
+}
+
+.animal-block {
+    padding-top: 105% !important;
+}

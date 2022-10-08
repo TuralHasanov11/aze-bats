@@ -29,7 +29,7 @@
                         <div class="blog-item__date"><span>02</span><span>Nov</span></div>
                     </div>
                     <h4 class="blog-item__title"><a href="{% url 'activities:project' slug=project.slug %}">{{project.name}}</a></h4>
-                    <p>{{project.description|truncatechars:255}}</p>
+                    <p class="text-dark">{{project.description|truncatechars:255|safe}}</p>
                 </div>
             </div>
             {% endfor %}

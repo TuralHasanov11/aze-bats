@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-06 19:01+0400\n"
+"POT-Creation-Date: 2022-10-07 22:37+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,291 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\core\settings.py:108
-msgid "English"
+#: .\activities\templates\activities\project.html:13
+msgid "Project"
+msgstr ""
+
+#: .\activities\templates\activities\projects.html:15
+#: .\administration\context_processors.py:14
+#: .\base\templates\base\index.html:70 .\base\templates\base\index.html:167
+#: .\templates\inc\footer.html:57 .\templates\inc\header.html:68
+#: .\templates\inc\menu.html:84
+msgid "Projects"
+msgstr ""
+
+#: .\activities\templates\activities\visit.html:13
+msgid "Site Visit"
+msgstr ""
+
+#: .\activities\templates\activities\visit.html:39
+msgid "Results"
+msgstr ""
+
+#: .\activities\templates\activities\visits.html:14
+#: .\administration\templates\administration\visits\list.html:13
+#: .\base\templates\base\index.html:177 .\templates\inc\footer.html:60
+#: .\templates\inc\header.html:71 .\templates\inc\menu.html:87
+msgid "Site Visits"
+msgstr ""
+
+#: .\administration\context_processors.py:13
+#: .\base\templates\base\index.html:157 .\base\templates\base\index.html:248
+#: .\bats\templates\bats\index.html:15 .\templates\inc\footer.html:54
+#: .\templates\inc\header.html:61 .\templates\inc\menu.html:9
+msgid "Bats"
+msgstr ""
+
+#: .\administration\context_processors.py:15
+msgid "Site visits"
+msgstr ""
+
+#: .\administration\context_processors.py:16
+#: .\administration\templates\administration\articles\list.html:78
+#: .\base\templates\base\articles.html:14 .\templates\inc\footer.html:63
+#: .\templates\inc\header.html:75 .\templates\inc\menu.html:17
+msgid "Articles"
+msgstr ""
+
+#: .\administration\context_processors.py:17
+msgid "Our Researchers"
+msgstr ""
+
+#: .\administration\forms.py:9 .\administration\forms.py:26
+msgid "Is it a Red Book specie?"
+msgstr ""
+
+#: .\administration\forms.py:10 .\administration\forms.py:27
+#: .\administration\forms.py:90 .\administration\forms.py:101
+#: .\administration\forms.py:110
+#: .\administration\templates\administration\articles\list.html:87
+#: .\administration\templates\administration\authors\list.html:75
+#: .\administration\templates\administration\bats\list.html:23
+#: .\administration\templates\administration\visits\list.html:25
+msgid "Name"
+msgstr ""
+
+#: .\administration\forms.py:11 .\administration\forms.py:28
+#: .\administration\templates\administration\bats\list.html:24
+msgid "Genus"
+msgstr ""
+
+#: .\administration\forms.py:11 .\administration\forms.py:28
+msgid "Select Genus"
+msgstr ""
+
+#: .\administration\forms.py:18 .\administration\forms.py:35
+#: .\administration\forms.py:102 .\administration\forms.py:111
+#: .\administration\forms.py:133 .\administration\forms.py:143
+msgid "Additional images"
+msgstr ""
+
+#: .\administration\forms.py:91
+msgid "Link"
+msgstr ""
+
+#: .\administration\forms.py:92
+#: .\administration\templates\administration\articles\list.html:88
+msgid "Author"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:11
+msgid "Add article"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:67
+#: .\administration\templates\administration\articles\update.html:66
+#: .\administration\templates\administration\authors\list.html:55
+#: .\administration\templates\administration\authors\update.html:59
+#: .\administration\templates\administration\bats\create.html:104
+#: .\administration\templates\administration\bats\update.html:115
+#: .\administration\templates\administration\projects\create.html:54
+#: .\administration\templates\administration\projects\update.html:72
+#: .\administration\templates\administration\visits\create.html:60
+#: .\administration\templates\administration\visits\update.html:80
+msgid "Save"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:89
+#: .\administration\templates\administration\authors\list.html:77
+#: .\administration\templates\administration\bats\list.html:26
+#: .\administration\templates\administration\visits\list.html:26
+msgid "Operations"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:104
+#: .\administration\templates\administration\articles\update.html:9
+#: .\administration\templates\administration\authors\list.html:96
+#: .\administration\templates\administration\authors\update.html:11
+#: .\administration\templates\administration\bats\list.html:46
+#: .\administration\templates\administration\bats\update.html:10
+#: .\administration\templates\administration\projects\list.html:36
+#: .\administration\templates\administration\projects\update.html:10
+#: .\administration\templates\administration\visits\list.html:38
+#: .\administration\templates\administration\visits\update.html:10
+msgid "Edit"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:110
+#: .\administration\templates\administration\authors\list.html:102
+#: .\administration\templates\administration\bats\list.html:52
+#: .\administration\templates\administration\projects\list.html:42
+#: .\administration\templates\administration\visits\list.html:44
+#: .\venv\Lib\site-packages\django\forms\formsets.py:496
+msgid "Delete"
+msgstr ""
+
+#: .\administration\templates\administration\authors\list.html:12
+msgid "Add researcher"
+msgstr ""
+
+#: .\administration\templates\administration\authors\list.html:66
+msgid "Researchers"
+msgstr ""
+
+#: .\administration\templates\administration\authors\list.html:76
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
+msgid "Image"
+msgstr ""
+
+#: .\administration\templates\administration\bats\create.html:10
+#: .\administration\templates\administration\bats\list.html:13
+msgid "Add species"
+msgstr ""
+
+#: .\administration\templates\administration\bats\list.html:11
+msgid "Species"
+msgstr ""
+
+#: .\administration\templates\administration\bats\list.html:25
+msgid "Cover Image"
+msgstr ""
+
+#: .\administration\templates\administration\dashboard.html:14
+#: .\templates\inc\header.html:80 .\templates\inc\menu.html:11
+#: .\templates\inc\menu.html:63
+msgid "Admin"
+msgstr ""
+
+#: .\administration\templates\administration\dashboard.html:25
+msgid "Sections"
+msgstr ""
+
+#: .\administration\templates\administration\projects\create.html:10
+msgid "Add project"
+msgstr ""
+
+#: .\administration\templates\administration\visits\create.html:10
+#: .\administration\templates\administration\visits\list.html:15
+msgid "Add site visit"
+msgstr ""
+
+#: .\base\templates\base\articles.html:32
+msgid "Visit"
+msgstr ""
+
+#: .\base\templates\base\index.html:34
+msgid "See bats"
+msgstr ""
+
+#: .\base\templates\base\index.html:105
+msgid "See site visits"
+msgstr ""
+
+#: .\base\templates\base\index.html:126
+msgid "Watch our work"
+msgstr ""
+
+#: .\base\templates\base\index.html:150
+msgid "Statistics"
+msgstr ""
+
+#: .\base\templates\base\index.html:195
+msgid "Recent Projects"
+msgstr ""
+
+#: .\base\templates\base\index.html:211 .\base\templates\base\index.html:381
+msgid "More"
+msgstr ""
+
+#: .\base\templates\base\index.html:225
+msgid "Our country"
+msgstr ""
+
+#: .\base\templates\base\index.html:238
+msgid "Some bats"
+msgstr ""
+
+#: .\base\templates\base\index.html:363
+msgid "Recent Site Visits"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:29
+msgid "Description"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:31
+msgid "Distribution"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:33
+msgid "Biology"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:35
+msgid "Conservation"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:37
+msgid "Habitat"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:39
+msgid "Threats"
+msgstr ""
+
+#: .\bats\templates\bats\index.html:14
+msgid "All Species"
+msgstr ""
+
+#: .\bats\templates\bats\index.html:27
+msgid "All"
+msgstr ""
+
+#: .\core\context_processors.py:18
+msgid "bats"
 msgstr ""
 
 #: .\core\settings.py:109
+msgid "English"
+msgstr ""
+
+#: .\core\settings.py:110
 msgid "Azerbaijani"
+msgstr ""
+
+#: .\templates\inc\footer.html:16 .\templates\inc\header.html:25
+msgid "Phone"
+msgstr ""
+
+#: .\templates\inc\footer.html:20
+msgid "Email"
+msgstr ""
+
+#: .\templates\inc\footer.html:48
+msgid "Menu"
+msgstr ""
+
+#: .\templates\inc\footer.html:51
+msgid "Home"
+msgstr ""
+
+#: .\templates\inc\header.html:64 .\templates\inc\menu.html:19
+#: .\templates\inc\menu.html:80
+msgid "Activities"
+msgstr ""
+
+#: .\templates\inc\menu.html:26 .\templates\inc\menu.html:98
+msgid "Language"
 msgstr ""
 
 #: .\venv\Lib\site-packages\ckeditor_uploader\forms.py:6
@@ -480,10 +759,6 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
-msgid "Image"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
 msgid "A JSON object"
 msgstr ""
@@ -646,10 +921,6 @@ msgstr[1] ""
 #: .\venv\Lib\site-packages\django\forms\formsets.py:483
 #: .\venv\Lib\site-packages\django\forms\formsets.py:490
 msgid "Order"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:496
-msgid "Delete"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:892
