@@ -1,15 +1,15 @@
+from email.policy import default
 from django.db import models
 from ckeditor_uploader import fields as ckeditorFields
 from core import helpers
 from django.db.models import signals
 from django.dispatch import receiver
-
+from django.conf import settings
 
 class Project(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
     cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -24,8 +24,6 @@ class SiteVisit(models.Model):
     name = models.CharField(max_length=199, null=False, blank=False)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
     cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    results = ckeditorFields.RichTextUploadingField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Site Visit"
@@ -55,6 +53,24 @@ class SiteVisitImage(models.Model):
     def __str__(self) -> str:
         return str(self.site_visit)
 
+
+class ProjectAttributes(models.Model):
+    project = models.ForeignKey(Project, related_name="project_attributes", on_delete=models.CASCADE)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+
+    def __str__(self):
+        return str(self.project)
+
+
+class SiteVisitAttributes(models.Model):
+    site_visit = models.ForeignKey(SiteVisit, related_name="site_visit_attributes", on_delete=models.CASCADE)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    results = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+
+    def __str__(self):
+        return str(self.site_visit)
 
 
 @receiver(signals.post_delete, sender=Project)

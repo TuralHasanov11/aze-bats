@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load query_transform %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages%}
@@ -14,7 +15,7 @@
               <span>{{LANGUAGE_CODE|upper}}</span>
               <ul class="lang-select__sub-list">
                 {% for lang in languages %}
-                <li><a href="/{{lang.code}}">
+                <li><a href="/{{ lang.code }}{{ request.get_full_path|slice:'3:' }}">
                   {{lang.code|upper}}
                 </a></li>
                 {% endfor %}

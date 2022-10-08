@@ -26,11 +26,11 @@
                     {% include "inc/gallery.html" with items=visit.site_visit_images.all %}
                 </div>
                 <div>
-                    {{visit.description|safe}}
+                    {{visit.species_attributes_result.description|safe}}
                 </div>
                 <div>
                     <h4 class="blog-post__title">{% translate "Results" %}</h4>
-                    {{visit.results|safe}}
+                    {{visit.species_attributes_result.results|safe}}
                 </div>
             </div>
         </div>

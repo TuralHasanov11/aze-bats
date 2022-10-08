@@ -26,7 +26,7 @@
                     {% include "inc/gallery.html" with items=project.project_images.all %}
                 </div>
                 <div>
-                    {{project.description|safe}}
+                    {{project.project_attributes_result.description|safe}}
                 </div>
             </div>
         </div>

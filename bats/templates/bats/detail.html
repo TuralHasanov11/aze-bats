@@ -26,17 +26,17 @@
                     {% include "inc/gallery.html" with items=bat.species_images.all %}
                 </div>
                 <h4 class="blog-post__title">{% translate "Description" %}</h4>
-                {{bat.description|safe}}
+                {{bat.species_attributes_result.description|safe}}
                 <h4 class="blog-post__title">{% translate "Distribution" %}</h4>
-                {{bat.distribution|safe}}
+                {{bat.species_attributes_result.distribution|safe}}
                 <h4 class="blog-post__title">{% translate "Biology" %}</h4>
-                {{bat.biology|safe}}
+                {{bat.species_attributes_result.biology|safe}}
                 <h4 class="blog-post__title">{% translate "Conservation" %}</h4>
-                {{bat.conservation|safe}}
+                {{bat.species_attributes_result.conservation|safe}}
                 <h4 class="blog-post__title">{% translate "Habitat" %}</h4>
-                {{bat.habitat|safe}}
+                {{bat.species_attributes_result.habitat|safe}}
                 <h4 class="blog-post__title">{% translate "Threats" %}</h4>
-                {{bat.threats|safe}}
+                {{bat.species_attributes_result.threats|safe}}
             </div>
         </div>
     </div>

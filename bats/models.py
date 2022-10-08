@@ -4,7 +4,7 @@ from django import urls
 from core import helpers
 from django.db.models import signals
 from django.dispatch import receiver
-
+from django.conf import settings
 
 class Family(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False, unique=True)
@@ -39,12 +39,6 @@ class Species(models.Model):
     slug = models.SlugField(max_length = 200, blank=True, unique=True, null=True)
     cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
     genus = models.ForeignKey(Genus, related_name="genus", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    distribution = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    biology = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    conservation = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    habitat = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    threats = ckeditorFields.RichTextUploadingField(null=True, blank=True)
     is_red_book = models.BooleanField(default=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -63,6 +57,20 @@ class Species(models.Model):
         if not self.slug:
             self.slug = helpers.generateSlug(self.name)
         return super().save(*args, **kwargs)
+
+
+class SpeciesAttributes(models.Model):
+    species = models.ForeignKey(Species, related_name="species_attributes", on_delete=models.CASCADE)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    habitat = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    threats = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    distribution = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    conservation = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    biology = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+
+    def __str__(self):
+        return str(self.species)
 
 
 class SpeciesImage(models.Model):

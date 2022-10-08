@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from bats import models
 from django.core import paginator
-
+from django.db.models import Prefetch
+from django.utils import translation
 
 def index(request):
     genusSlug = request.GET.get("genus", None)
@@ -20,5 +21,8 @@ def index(request):
 
 
 def detail(request, slug:str):
-    bat = models.Species.objects.select_related("genus").prefetch_related('species_images').get(slug=slug)
+    bat_attributes = models.SpeciesAttributes.objects.filter(language=translation.get_language())
+    prefetch = Prefetch('species_attributes', queryset=bat_attributes)
+    bat = models.Species.objects.select_related("genus").prefetch_related('species_images', prefetch).get(slug=slug)
+    bat.species_attributes_result = bat.species_attributes.all().first()
     return render(request, "bats/detail.html", {"bat": bat})
