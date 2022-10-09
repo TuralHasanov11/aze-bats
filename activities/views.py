@@ -3,7 +3,9 @@ from activities import models
 from django.core import paginator
 from django.db.models import Prefetch
 from django.utils import translation
+from django.views.decorators import http
 
+@http.require_GET
 def projects(request):
     pagination = paginator.Paginator(models.Project.objects.all(), 10)
     pageNumber = request.GET.get('page')
@@ -11,7 +13,7 @@ def projects(request):
 
     return render(request, "activities/projects.html", {"projects": projects})
 
-
+@http.require_GET
 def project(request, slug):
     project_attributes = models.ProjectAttributes.objects.filter(language=translation.get_language())
     prefetch = Prefetch('project_attributes', queryset=project_attributes)
@@ -19,7 +21,7 @@ def project(request, slug):
     project.project_attributes_result = project.project_attributes.all().first()
     return render(request, "activities/project.html", {"project": project})
 
-
+@http.require_GET
 def visits(request):
     pagination = paginator.Paginator(models.SiteVisit.objects.all(), 10)
     pageNumber = request.GET.get('page')
@@ -27,7 +29,7 @@ def visits(request):
 
     return render(request, "activities/visits.html", {"visits": visits})
 
-
+@http.require_GET
 def visit(request, slug):
     visit_attributes = models.SiteVisitAttributes.objects.filter(language=translation.get_language())
     prefetch = Prefetch('site_visit_attributes', queryset=visit_attributes)

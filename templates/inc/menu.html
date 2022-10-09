@@ -30,6 +30,18 @@
             <use xlink:href="#chevron"></use></svg
         ></span>
       </div>
+
+      <div class="screen__item">
+        <form class="search-form" action="{% url 'base:search' %}">
+          <input class="search-form__input" type="search" name="search" placeholder="{% translate "Search" %}"/>
+          <button class="search-form__submit" type="submit">
+            <svg class="icon">
+              <use xlink:href="#search"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+      
       <ul class="screen__socials">
         <li>
           <a class="item--facebook" href="#"
@@ -52,6 +64,7 @@
           ></a>
         </li>
       </ul>
+      
     </div>
   </div>
   <div class="menu-dropdown__inner" data-value="admin">

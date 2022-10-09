@@ -3,7 +3,9 @@ from bats import models
 from django.core import paginator
 from django.db.models import Prefetch
 from django.utils import translation
+from django.views.decorators import http
 
+@http.require_GET
 def index(request):
     genusSlug = request.GET.get("genus", None)
 
@@ -20,6 +22,7 @@ def index(request):
     return render(request, "bats/index.html", {"bats": bats, "genus": genus})
 
 
+@http.require_GET
 def detail(request, slug:str):
     bat_attributes = models.SpeciesAttributes.objects.filter(language=translation.get_language())
     prefetch = Prefetch('species_attributes', queryset=bat_attributes)

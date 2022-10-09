@@ -89,7 +89,16 @@
             </ul>
           </li>
           {% endif %}
+          <form class="search-form" action="{% url 'base:search' %}">
+            <input class="search-form__input" type="search" name="search" placeholder="{% translate "Search" %}"/>
+            <button class="search-form__submit" type="submit">
+              <svg class="icon">
+                <use xlink:href="#search"></use>
+              </svg>
+            </button>
+          </form>
         </ul>
+          
         <div class="hamburger">
           <div class="hamburger-box">
             <div class="hamburger-inner"></div>

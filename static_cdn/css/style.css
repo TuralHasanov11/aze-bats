@@ -103,6 +103,35 @@
     color: #212529 !important;
 }
 
-.animal-block {
+.animal-block::before {
     padding-top: 105% !important;
+}
+
+.breadcrumbs {
+    font-size: 1.2em !important;
+}
+
+@media only screen and (min-width: 992px) {
+    .header-f3 .header__top {
+        padding: 5px 20px !important;
+    }
+}
+
+.search-form {
+    margin-left: 50px !important;
+    display: flex;
+    align-items: center;
+}
+
+.search-form__input {
+    padding: 11.3px 20px 11.3px 38.6px !important;
+    font-size: 12px !important;
+}
+
+.search-form__submit {
+    font-size: 13.3px !important;
+    height: 38.6px !important;
+    width: 38.6px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
 }

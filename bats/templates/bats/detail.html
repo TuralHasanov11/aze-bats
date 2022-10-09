@@ -18,12 +18,30 @@
         </div>
     </div>
 </section>
+
 <section class="section blog-post">
     <div class="container">
         <div class="row">
-            <div class="col-xl-8 offset-xl-2">
+            <div class="col-12 bottom-50">
+                <ul class="breadcrumbs breadcrumbs--with-dot">
+                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'base:index' %}">{% translate "Home" %}</a></li>
+                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'bats:index' %}?genus={{bat.genus.slug}}">{{bat.genus.name}}</a></li>
+                    <li class="breadcrumbs__item breadcrumbs__item--active">{{bat.name}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
                 <div class="blog-post__top">
-                    {% include "inc/gallery.html" with items=bat.species_images.all %}
+                    <section class="section gallery no-padding-top no-padding-bottom">
+                        <div class="row gallery-masonry no-gutters">
+                            {% for image in bat.species_images.all %}
+                            <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
+                                <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{image.image.url}}" data-fancybox="gallery">
+                                    <img class="img--bg" src="{{image.image.url}}" alt="img"/>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
                 </div>
                 <h4 class="blog-post__title">{% translate "Description" %}</h4>
                 {{bat.species_attributes_result.description|safe}}
@@ -37,6 +55,16 @@
                 {{bat.species_attributes_result.habitat|safe}}
                 <h4 class="blog-post__title">{% translate "Threats" %}</h4>
                 {{bat.species_attributes_result.threats|safe}}
+            </div>
+            <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">
+                <div class="blog__inner-block bottom-50">
+                    <h5 class="blog__title">{% translate "Scientific classification" %}</h5>
+                    <ul class="categories-list">
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Family" %}</span><div class="tags tags--style-2"><span class="tags__item">{{bat.genus.family.name}}</span></div></li>
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Genus" %}</span><div class="tags tags--style-2"><a class="tags__item" href="{% url 'bats:index' %}?genus={{bat.genus.slug}}">{{bat.genus.name}}</a></div></li>
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Specie" %}</span><div class="tags tags--style-2"><span class="tags__item" >{{bat.name}}</span></div></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

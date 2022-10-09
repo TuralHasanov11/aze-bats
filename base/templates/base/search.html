@@ -1,0 +1,107 @@
+{% extends 'app.html' %} 
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+    <div class="container">
+      <div class="row bottom-50 align-items-end">
+        <div class="col-lg-8">
+          <div class="heading heading--style-2 heading--green">
+            <h2 class="heading__title no-margin-bottom"><span>{% translate "Search results" %}</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+  
+{% if projects %}
+<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+    <div class="container">
+      <div class="row bottom-50 align-items-end">
+        <div class="col-lg-8">
+          <div class="heading heading--style-2 heading--green">
+            <h2 class="heading__title no-margin-bottom"><span>{% translate "Projects" %}</span></h2>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="destination-slider__dots dots--style-2 text-left text-lg-right"></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-holder">
+      <div class="slider-holder__wrapper">
+        <div class="destination-slider">
+          {% for project in projects %}
+          <div class="destination-slider__item">
+            <div class="destination-item destination-item--style-2"><img class="img--bg" src="{{project.cover_image.url}}" alt="img"/>
+              <div class="destination-item__details">
+                <h6 class="destination-item__title">{{project.name}}</h6>
+                <a class="destination-item__link" href="{% url 'activities:project' slug=project.slug %}">{% translate "More" %}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+
+{% if bats %}
+<section class="section animals">
+    <div class="container">
+        <div class="row no-gutters left-3 right-3">
+            {% for bat in bats %}
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="animal-block"><img class="img--bg" src="{{bat.cover_image.url}}"/>
+                    <div class="animal-block__details">
+                        <h6 class="animal-block__title">{{bat.name}}</h6><a class="animal-block__link" href="{% url 'bats:detail' slug=bat.slug %}">{% translate "More" %}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% if visits %}
+<section class="section donation donation--style-2 no-padding-bottom">
+    <div class="container bottom-50">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="heading heading--style-2 heading--green">
+            <h2 class="heading__title no-margin-bottom"><span>{% translate "Site Visits" %}</span></h2>
+          </div>
+        </div>
+        <div class="col-lg-4 text-lg-right">
+          <div class="donation-slider__dots dots--style-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-holder bottom-50">
+      <div class="slider-holder__wrapper">
+        <div class="donation-slider">
+          {% for visit in visits %}
+          <div class="donation-slider__item">
+            <div class="donate-box donate-box--green"><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
+              <div class="donate-box__inner">
+                <div class="heading">
+                  <h2 class="heading__title no-margin-bottom"><span>{{visit.name}}</span></h2>
+                </div>
+                <a class="donate-box__link" href="{% url 'activities:visit' slug=visit.slug %}">{% translate "More" %}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% endblock content %}
