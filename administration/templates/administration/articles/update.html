@@ -1,4 +1,7 @@
-{% extends 'app.html' %} {% load static %} {% load i18n %}
+{% extends 'app.html' %} 
+{% load static %} 
+{% load i18n %}
+{% block title %}{% translate "Admin" %} - {{article.name}}{% endblock title %}
 {% block content %}
 <section class="section">
   <div class="container py-5">

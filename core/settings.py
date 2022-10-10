@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from django.contrib import messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
+    'django_cleanup.apps.CleanupConfig',
     'activities',
     'bats',
     'base',
@@ -135,4 +137,10 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
-
+MESSAGE_TAGS = {
+    messages.constants.DEBUG: 'alert-secondary',
+    messages.constants.INFO: 'alert-info',
+    messages.constants.SUCCESS: 'alert-success',
+    messages.constants.WARNING: 'alert-warning',
+    messages.constants.ERROR: 'alert-danger',
+ }

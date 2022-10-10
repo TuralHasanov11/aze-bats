@@ -14,7 +14,7 @@ def index(request):
     else:
         bats = models.Species.objects.all()
     
-    pagination = paginator.Paginator(bats, 1)
+    pagination = paginator.Paginator(bats, 10)
     pageNumber = request.GET.get('page')
     bats = pagination.get_page(pageNumber)
 

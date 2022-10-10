@@ -1,4 +1,3 @@
-from email.policy import default
 from django.db import models
 from ckeditor_uploader import fields as ckeditorFields
 from core import helpers
@@ -72,12 +71,3 @@ class SiteVisitAttributes(models.Model):
     def __str__(self):
         return str(self.site_visit)
 
-
-@receiver(signals.post_delete, sender=Project)
-def postProjectDelete(sender, instance, **kwargs):
-    instance.cover_image.delete(False)
-
-
-@receiver(signals.post_delete, sender=SiteVisit)
-def postSiteVisitDelete(sender, instance, **kwargs):
-    instance.cover_image.delete(False)

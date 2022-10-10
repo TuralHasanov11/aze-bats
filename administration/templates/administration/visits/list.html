@@ -1,7 +1,7 @@
 {% extends 'app.html' %} 
 {% load static %} 
 {% load i18n %}
-
+{% block title %}{% translate "Admin" %} - {% translate "Site Visits" %}{% endblock title %}
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} 

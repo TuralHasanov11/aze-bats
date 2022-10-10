@@ -2,8 +2,6 @@ from django.db import models
 from ckeditor_uploader import fields as ckeditorFields
 from django import urls
 from core import helpers
-from django.db.models import signals
-from django.dispatch import receiver
 from django.conf import settings
 
 class Family(models.Model):
@@ -78,10 +76,5 @@ class SpeciesImage(models.Model):
     image = models.ImageField(upload_to=helpers.uploadImageLocation)
 
     def __str__(self):
-        return str(self.species)
+        return self.species
     
-
-
-@receiver(signals.post_delete, sender=Species)
-def postSpeciesDelete(sender, instance, **kwargs):
-    instance.cover_image.delete(False)

@@ -4,10 +4,16 @@ from base import models
 from bats import models as batModels
 from activities import models as activityModels
 from django.views.decorators import http
+from django.db.models import Prefetch
+from django.utils import translation
 
 @http.require_GET
 def index(request):
-    authors = models.Author.objects.all()
+    author_attributes = models.AuthorAttributes.objects.filter(language=translation.get_language())
+    prefetch = Prefetch('author_attributes', queryset=author_attributes)
+    authors = models.Author.objects.prefetch_related(prefetch).all()
+    for author in authors:
+        author.author_attributes_result = author.author_attributes.all().first()
     bats = batModels.Species.objects.all()[:12]
     batCount = batModels.Species.objects.count()
     projectCount = batModels.Species.objects.count()
@@ -36,7 +42,6 @@ def articles(request):
 @http.require_GET
 def search(request):
     query = request.GET.get('search', None)
-
     if query:
         projects = activityModels.Project.objects.filter(name__contains=query)
         visits = activityModels.SiteVisit.objects.filter(name__contains=query)

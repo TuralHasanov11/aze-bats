@@ -1,5 +1,6 @@
 {% extends "app.html" %}
 {% load i18n %}
+{% block title %}{% translate "Admin" %} - {% translate "Add Bat" %}{% endblock title %}
 {% block content %}
 <section class="section">
   <div class="container py-5">
@@ -52,58 +53,104 @@
               >
               {{form.genus}} {{ form.genus.errors }}
             </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.description.id_for_label }}"
-                >{{ form.description.label }}:</label
-              >
-              {{form.description}} {{ form.description.errors }}
-            </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.distribution.id_for_label }}"
-                >{{ form.distribution.label }}:</label
-              >
-              {{form.distribution}} {{ form.distribution.errors }}
-            </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.biology.id_for_label }}"
-                >{{ form.biology.label }}:</label
-              >
-              {{form.biology}} {{ form.biology.errors }}
-            </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.conservation.id_for_label }}"
-                >{{ form.conservation.label }}:</label
-              >
-              {{form.conservation}} {{ form.conservation.errors }}
-            </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.habitat.id_for_label }}"
-                >{{ form.habitat.label }}:</label
-              >
-              {{form.habitat}} {{ form.habitat.errors }}
-            </div>
-            <div class="col-12 bottom-20">
-              <label
-                class="elements__subtitle fs-5"
-                for="{{ form.threats.id_for_label }}"
-                >{{ form.threats.label }}:</label
-              >
-              {{form.threats}} {{ form.threats.errors }}
-            </div>
+          </div>
+          <hr/>
+            <h5>{% translate "Bat data for different languages" %}</h5>
+            {{ attributes_formset.management_form }}
+            {% for formset_item in attributes_formset %}
+              {% for hidden_field in formset_item.hidden_fields %}
+                {{hidden_field.errors}}
+                {{hidden_field}}
+              {% endfor %}
+              {{formset_item.non_form_errors}}
+              <div>
+                <h6>{% translate "Bat Data" %} {{forloop.counter}}</h6>
+                {{ formset_item.media }}
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.language.id_for_label }}"
+                    >{{ formset_item.language.label }}:</label
+                  >
+                  {{formset_item.language}} {{ formset_item.language.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.description.id_for_label }}"
+                    >{{ formset_item.description.label }}:</label
+                  >
+                  {{formset_item.description}} {{ formset_item.description.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.distribution.id_for_label }}"
+                    >{{ formset_item.distribution.label }}:</label
+                  >
+                  {{formset_item.distribution}} {{ formset_item.distribution.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.biology.id_for_label }}"
+                    >{{ formset_item.biology.label }}:</label
+                  >
+                  {{formset_item.biology}} {{ formset_item.biology.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.conservation.id_for_label }}"
+                    >{{ formset_item.conservation.label }}:</label
+                  >
+                  {{formset_item.conservation}} {{ formset_item.conservation.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.habitat.id_for_label }}"
+                    >{{ formset_item.habitat.label }}:</label
+                  >
+                  {{formset_item.habitat}} {{ formset_item.habitat.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.threats.id_for_label }}"
+                    >{{ formset_item.threats.label }}:</label
+                  >
+                  {{formset_item.threats}} {{ formset_item.threats.errors }}
+                </div>
+                <hr/>
+              </div>
+            {% endfor %}
+            <hr/>
+            <h5>{% translate "Additional images" %}</h5>
+            {{ images_formset.management_form }}
+            {% for formset_item in images_formset %}
+              {% for hidden_field in formset_item.hidden_fields %}
+                {{hidden_field.errors}}
+                {{hidden_field}}
+              {% endfor %}
+              {{formset_item.non_form_errors}}
+              <div>
+                <h6>{% translate "Image" %} {{forloop.counter}}</h6>
+                {{ formset_item.media }}
+                <div class="col-12 bottom-20">
+                  <label
+                    class="elements__subtitle fs-5"
+                    for="{{ formset_item.image.id_for_label }}"
+                    >{{ formset_item.image.label }}:</label
+                  >
+                  {{formset_item.image}} {{ formset_item.image.errors }}
+                </div>  
+                <hr/>
+              </div>
+            {% endfor %}
             <div class="col-12 bottom-20 text-center">
               <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
-          </div>
           {% csrf_token %}
         </form>
       </div>

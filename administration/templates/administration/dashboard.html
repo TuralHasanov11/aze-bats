@@ -1,7 +1,8 @@
 {% extends 'app.html' %} 
 {% load i18n %}
-
-{% block 'content' %} 
+{% load static %}
+{% block title %}{% translate "Admin" %} - {% translate "Dashboard" %}{% endblock title %}
+{% block content %} 
 <section class="promo-primary">
     <picture>
         <source srcset="{% static 'img/elements.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/elements.jpg' %}" alt="img"/>
@@ -43,4 +44,4 @@
         </div>
     </div>
 </section>
-{% endblock 'content' %}
+{% endblock content %}

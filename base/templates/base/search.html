@@ -1,7 +1,7 @@
 {% extends 'app.html' %} 
 {% load i18n %}
 {% load static %}
-
+{% block title %}{% translate "Search" %}{% endblock title %}
 {% block content %}
 <section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
     <div class="container">
