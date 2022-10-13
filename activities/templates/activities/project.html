@@ -24,7 +24,17 @@
         <div class="row ">
             <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-1 col-xl-8 offset-xl-2">
                 <div class="bottom-50">
-                    {% include "inc/gallery.html" with items=project.project_images.all %}
+                    <section class="section gallery no-padding-top no-padding-bottom">
+                        <div class="row gallery-masonry no-gutters">
+                            {% for image in project.project_images.all %}
+                            <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
+                                <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{image.image.url}}" data-fancybox="gallery">
+                                    <img class="img--bg" src="{{image.image.url}}" alt="img"/>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
                 </div>
                 <div>
                     {{project.project_attributes_result.description|safe}}

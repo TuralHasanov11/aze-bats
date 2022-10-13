@@ -2,6 +2,10 @@
     --main-color: #6E2A9C;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .btn-delete {
     border-color: #fd4040;
 }
@@ -134,4 +138,16 @@
     width: 38.6px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+}
+
+.header-f3 .header__socials a {
+    text-decoration: none !important;
+}
+
+.blog-item__img::before {
+    padding-top: 75%;
+}
+
+.button--main {
+    border: 2px solid var(--main-color) !important;
 }

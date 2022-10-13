@@ -29,7 +29,7 @@
                 </div>
                 <div class="promo-slider__wrapper-3">
                   <a
-                    class="button promo-slider__button button--primary button--green"
+                    class="button promo-slider__button button--primary button--main"
                     href="{% url 'bats:index' %}"
                     >{% translate "See bats" %}</a
                   >
@@ -65,7 +65,7 @@
                 </div>
                 <div class="promo-slider__wrapper-3">
                   <a
-                    class="button promo-slider__button button--primary button--green"
+                    class="button promo-slider__button button--primary button--main"
                     href="{% url 'activities:projects' %}"
                     >{% translate "Projects" %}</a
                   >
@@ -100,7 +100,7 @@
                 </div>
                 <div class="promo-slider__wrapper-3">
                   <a
-                    class="button promo-slider__button button--primary button--green"
+                    class="button promo-slider__button button--primary button--main"
                     href="{% url 'activities:visits' %}"
                     >{% translate "See site visits" %}</a
                   >
@@ -293,7 +293,7 @@
           <div class="col-md-7">
             <div class="heading heading--primary">
               <h2 class="heading__title">
-                <span>{{author.name}}</span>
+                <span>{{author.author_attributes_result.name}}</span>
               </h2>
             </div>
           </div>
@@ -308,7 +308,7 @@
             <div class="testimonials-slider testimonials-slider--style-1">
               <div class="testimonials-slider__item">
                 <div class="testimonials-slider__text">
-                  {{author.description|safe}}
+                  {{author.author_attributes_result.description|safe}}
                 </div>
               </div>
             </div>

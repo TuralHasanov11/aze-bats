@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-07 22:37+0400\n"
-"PO-Revision-Date: 2022-10-07 23:05+0400\n"
+"POT-Creation-Date: 2022-10-11 00:17+0400\n"
+"PO-Revision-Date: 2022-10-11 00:20+0400\n"
 "Last-Translator:   <hasanovtural11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,192 +19,402 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\activities\templates\activities\project.html:13
+#: .\activities\templates\activities\project.html:14
 msgid "Project"
 msgstr "Proyekt"
 
+#: .\activities\templates\activities\projects.html:4
 #: .\activities\templates\activities\projects.html:15
-#: .\administration\context_processors.py:14
+#: .\administration\context_processors.py:12
+#: .\administration\templates\administration\projects\list.html:4
 #: .\base\templates\base\index.html:70 .\base\templates\base\index.html:167
-#: .\templates\inc\footer.html:57 .\templates\inc\header.html:68
-#: .\templates\inc\menu.html:84
+#: .\base\templates\base\search.html:25 .\templates\inc\footer.html:57
+#: .\templates\inc\header.html:69 .\templates\inc\menu.html:98
 msgid "Projects"
 msgstr "Proyektlər"
 
-#: .\activities\templates\activities\visit.html:13
+#: .\activities\templates\activities\visit.html:14
 #, fuzzy
 msgid "Site Visit"
 msgstr "Ərazi Səfəri"
 
-#: .\activities\templates\activities\visit.html:39
+#: .\activities\templates\activities\visit.html:33
 msgid "Results"
 msgstr "Nəticələr"
 
-#: .\activities\templates\activities\visits.html:14
+#: .\activities\templates\activities\visits.html:4
+#, fuzzy
+#| msgid "Visit"
+msgid "Visits"
+msgstr "Daxil ol"
+
+#: .\activities\templates\activities\visits.html:15
+#: .\administration\templates\administration\visits\list.html:4
 #: .\administration\templates\administration\visits\list.html:13
-#: .\base\templates\base\index.html:177 .\templates\inc\footer.html:60
-#: .\templates\inc\header.html:71 .\templates\inc\menu.html:87
+#: .\base\templates\base\index.html:177 .\base\templates\base\search.html:77
+#: .\templates\inc\footer.html:60 .\templates\inc\header.html:72
+#: .\templates\inc\menu.html:101
 #, fuzzy
 msgid "Site Visits"
 msgstr "Ərazi Səfərləri"
 
-#: .\administration\context_processors.py:13
-#: .\base\templates\base\index.html:157 .\base\templates\base\index.html:248
+#: .\administration\context_processors.py:11
+#: .\administration\templates\administration\bats\list.html:4
+#: .\base\templates\base\index.html:157 .\bats\templates\bats\index.html:4
 #: .\bats\templates\bats\index.html:15 .\templates\inc\footer.html:54
-#: .\templates\inc\header.html:61 .\templates\inc\menu.html:9
+#: .\templates\inc\header.html:62 .\templates\inc\menu.html:10
 msgid "Bats"
 msgstr "Yarasalar"
 
-#: .\administration\context_processors.py:15
+#: .\administration\context_processors.py:13
 #, fuzzy
 msgid "Site visits"
 msgstr "Ərazi Səfərləri"
 
-#: .\administration\context_processors.py:16
-#: .\administration\templates\administration\articles\list.html:78
-#: .\base\templates\base\articles.html:14 .\templates\inc\footer.html:63
-#: .\templates\inc\header.html:75 .\templates\inc\menu.html:17
+#: .\administration\context_processors.py:14
+#: .\administration\templates\administration\articles\list.html:5
+#: .\administration\templates\administration\articles\list.html:60
+#: .\base\templates\base\articles.html:4
+#: .\base\templates\base\articles.html:15 .\templates\inc\footer.html:63
+#: .\templates\inc\header.html:76 .\templates\inc\menu.html:18
 msgid "Articles"
 msgstr "Məqalələr"
 
-#: .\administration\context_processors.py:17
+#: .\administration\context_processors.py:15
 #, fuzzy
 msgid "Our Researchers"
 msgstr "Tədqiqatçılar"
 
-#: .\administration\forms.py:9 .\administration\forms.py:26
+#: .\administration\forms.py:10 .\administration\forms.py:20
 msgid "Is it a Red Book specie?"
 msgstr "Qırmızı Kitabdadırmı ?"
 
-#: .\administration\forms.py:10 .\administration\forms.py:27
-#: .\administration\forms.py:90 .\administration\forms.py:101
-#: .\administration\forms.py:110
-#: .\administration\templates\administration\articles\list.html:87
-#: .\administration\templates\administration\authors\list.html:75
-#: .\administration\templates\administration\bats\list.html:23
+#: .\administration\forms.py:11 .\administration\forms.py:21
+#: .\administration\forms.py:71 .\administration\forms.py:81
+#: .\administration\forms.py:91 .\administration\forms.py:99
+#: .\administration\forms.py:136 .\administration\forms.py:144
+#: .\administration\templates\administration\articles\list.html:69
+#: .\administration\templates\administration\authors\list.html:94
+#: .\administration\templates\administration\bats\list.html:24
 #: .\administration\templates\administration\visits\list.html:25
 msgid "Name"
 msgstr "Ad"
 
-#: .\administration\forms.py:11 .\administration\forms.py:28
-#: .\administration\templates\administration\bats\list.html:24
+#: .\administration\forms.py:12 .\administration\forms.py:22
+#: .\administration\templates\administration\bats\list.html:25
+#: .\bats\templates\bats\detail.html:64
 msgid "Genus"
 msgstr "Cins"
 
-#: .\administration\forms.py:11 .\administration\forms.py:28
+#: .\administration\forms.py:12 .\administration\forms.py:22
 msgid "Select Genus"
 msgstr "Cinsi seçin"
 
-#: .\administration\forms.py:18 .\administration\forms.py:35
-#: .\administration\forms.py:102 .\administration\forms.py:111
-#: .\administration\forms.py:133 .\administration\forms.py:143
-msgid "Additional images"
-msgstr "Əlavə şəkillər"
+#: .\administration\forms.py:54 .\administration\forms.py:125
+#: .\administration\forms.py:171
+#: .\administration\templates\administration\authors\list.html:95
+#: .\administration\templates\administration\bats\create.html:138
+#: .\administration\templates\administration\bats\update.html:186
+#: .\administration\templates\administration\projects\create.html:87
+#: .\administration\templates\administration\projects\update.html:95
+#: .\administration\templates\administration\visits\create.html:88
+#: .\administration\templates\administration\visits\update.html:111
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
+msgid "Image"
+msgstr "Şəkil"
 
-#: .\administration\forms.py:91
+#: .\administration\forms.py:82
 msgid "Link"
 msgstr "Link"
 
-#: .\administration\forms.py:92
-#: .\administration\templates\administration\articles\list.html:88
+#: .\administration\forms.py:83
+#: .\administration\templates\administration\articles\list.html:70
 msgid "Author"
 msgstr "Müəllif"
+
+#: .\administration\templates\administration\articles\list.html:5
+#: .\administration\templates\administration\articles\update.html:4
+#: .\administration\templates\administration\authors\list.html:4
+#: .\administration\templates\administration\authors\update.html:5
+#: .\administration\templates\administration\bats\create.html:3
+#: .\administration\templates\administration\bats\list.html:4
+#: .\administration\templates\administration\bats\update.html:3
+#: .\administration\templates\administration\dashboard.html:4
+#: .\administration\templates\administration\dashboard.html:15
+#: .\administration\templates\administration\projects\create.html:3
+#: .\administration\templates\administration\projects\list.html:4
+#: .\administration\templates\administration\projects\update.html:3
+#: .\administration\templates\administration\visits\create.html:3
+#: .\administration\templates\administration\visits\list.html:4
+#: .\administration\templates\administration\visits\update.html:3
+#: .\templates\inc\header.html:81 .\templates\inc\menu.html:12
+#: .\templates\inc\menu.html:77
+msgid "Admin"
+msgstr "Admin"
 
 #: .\administration\templates\administration\articles\list.html:11
 msgid "Add article"
 msgstr "Məqalə əlavə et"
 
-#: .\administration\templates\administration\articles\list.html:67
-#: .\administration\templates\administration\articles\update.html:66
-#: .\administration\templates\administration\authors\list.html:55
-#: .\administration\templates\administration\authors\update.html:59
-#: .\administration\templates\administration\bats\create.html:104
-#: .\administration\templates\administration\bats\update.html:115
-#: .\administration\templates\administration\projects\create.html:54
-#: .\administration\templates\administration\projects\update.html:72
-#: .\administration\templates\administration\visits\create.html:60
-#: .\administration\templates\administration\visits\update.html:80
+#: .\administration\templates\administration\articles\list.html:47
+#: .\administration\templates\administration\articles\update.html:69
+#: .\administration\templates\administration\authors\list.html:72
+#: .\administration\templates\administration\authors\update.html:88
+#: .\administration\templates\administration\bats\create.html:152
+#: .\administration\templates\administration\bats\update.html:209
+#: .\administration\templates\administration\projects\create.html:101
+#: .\administration\templates\administration\projects\update.html:118
+#: .\administration\templates\administration\visits\create.html:102
+#: .\administration\templates\administration\visits\update.html:134
 msgid "Save"
 msgstr "Təsdiq et"
 
-#: .\administration\templates\administration\articles\list.html:89
-#: .\administration\templates\administration\authors\list.html:77
-#: .\administration\templates\administration\bats\list.html:26
+#: .\administration\templates\administration\articles\list.html:71
+#: .\administration\templates\administration\authors\list.html:96
+#: .\administration\templates\administration\bats\list.html:27
 #: .\administration\templates\administration\visits\list.html:26
 msgid "Operations"
 msgstr "Əməliyyatlar"
 
-#: .\administration\templates\administration\articles\list.html:104
-#: .\administration\templates\administration\articles\update.html:9
-#: .\administration\templates\administration\authors\list.html:96
-#: .\administration\templates\administration\authors\update.html:11
-#: .\administration\templates\administration\bats\list.html:46
-#: .\administration\templates\administration\bats\update.html:10
-#: .\administration\templates\administration\projects\list.html:36
-#: .\administration\templates\administration\projects\update.html:10
+#: .\administration\templates\administration\articles\list.html:86
+#: .\administration\templates\administration\articles\update.html:12
+#: .\administration\templates\administration\authors\list.html:119
+#: .\administration\templates\administration\authors\update.html:13
+#: .\administration\templates\administration\bats\list.html:47
+#: .\administration\templates\administration\bats\update.html:11
+#: .\administration\templates\administration\projects\list.html:37
+#: .\administration\templates\administration\projects\update.html:11
 #: .\administration\templates\administration\visits\list.html:38
-#: .\administration\templates\administration\visits\update.html:10
+#: .\administration\templates\administration\visits\update.html:11
 msgid "Edit"
 msgstr "Dəyişiklik et"
 
-#: .\administration\templates\administration\articles\list.html:110
-#: .\administration\templates\administration\authors\list.html:102
-#: .\administration\templates\administration\bats\list.html:52
-#: .\administration\templates\administration\projects\list.html:42
+#: .\administration\templates\administration\articles\list.html:92
+#: .\administration\templates\administration\authors\list.html:125
+#: .\administration\templates\administration\bats\list.html:53
+#: .\administration\templates\administration\projects\list.html:43
 #: .\administration\templates\administration\visits\list.html:44
 #: .\venv\Lib\site-packages\django\forms\formsets.py:496
 msgid "Delete"
 msgstr "Sil"
 
-#: .\administration\templates\administration\authors\list.html:12
+#: .\administration\templates\administration\authors\list.html:4
+#, fuzzy
+#| msgid "Author"
+msgid "Authors"
+msgstr "Müəllif"
+
+#: .\administration\templates\administration\authors\list.html:13
 msgid "Add researcher"
 msgstr "Tədqiqatçı əlavə et"
 
-#: .\administration\templates\administration\authors\list.html:66
+#: .\administration\templates\administration\authors\list.html:30
+#: .\administration\templates\administration\authors\update.html:37
+msgid "Researcher data for different languages"
+msgstr "Müxtəlif dillər üçün tədqiqatçı məlumatları"
+
+#: .\administration\templates\administration\authors\list.html:39
+#: .\administration\templates\administration\authors\update.html:46
+#, fuzzy
+#| msgid "Researchers"
+msgid "Researcher Data"
+msgstr "Tədqiqatçılar"
+
+#: .\administration\templates\administration\authors\list.html:85
 msgid "Researchers"
 msgstr "Tədqiqatçılar"
 
-#: .\administration\templates\administration\authors\list.html:76
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
-msgid "Image"
-msgstr "Şəkil"
+#: .\administration\templates\administration\bats\create.html:3
+#, fuzzy
+#| msgid "Add article"
+msgid "Add Bat"
+msgstr "Məqalə əlavə et"
 
-#: .\administration\templates\administration\bats\create.html:10
-#: .\administration\templates\administration\bats\list.html:13
+#: .\administration\templates\administration\bats\create.html:11
+#: .\administration\templates\administration\bats\list.html:14
 msgid "Add species"
 msgstr "Yarasa növü əlavə et"
 
-#: .\administration\templates\administration\bats\list.html:11
+#: .\administration\templates\administration\bats\create.html:58
+#: .\administration\templates\administration\bats\update.html:106
+msgid "Bat data for different languages"
+msgstr "Müxtəlif dillər üçün yarasa məlumatları"
+
+#: .\administration\templates\administration\bats\create.html:67
+#: .\administration\templates\administration\bats\update.html:115
+msgid "Bat Data"
+msgstr "Yarasa məlumatları"
+
+#: .\administration\templates\administration\bats\create.html:129
+#: .\administration\templates\administration\bats\update.html:177
+#: .\administration\templates\administration\projects\create.html:78
+#: .\administration\templates\administration\projects\update.html:86
+#: .\administration\templates\administration\visits\create.html:79
+#: .\administration\templates\administration\visits\update.html:102
+msgid "Additional images"
+msgstr "Əlavə şəkillər"
+
+#: .\administration\templates\administration\bats\list.html:12
 msgid "Species"
 msgstr "Yarasa növləri"
 
-#: .\administration\templates\administration\bats\list.html:25
+#: .\administration\templates\administration\bats\list.html:26
 msgid "Cover Image"
 msgstr "Əsas Şəkil"
 
-#: .\administration\templates\administration\dashboard.html:14
-#: .\templates\inc\header.html:80 .\templates\inc\menu.html:11
-#: .\templates\inc\menu.html:63
-msgid "Admin"
-msgstr "Admin"
+#: .\administration\templates\administration\dashboard.html:4
+msgid "Dashboard"
+msgstr "Panel"
 
-#: .\administration\templates\administration\dashboard.html:25
+#: .\administration\templates\administration\dashboard.html:26
 msgid "Sections"
 msgstr "Bölmələr"
 
-#: .\administration\templates\administration\projects\create.html:10
+#: .\administration\templates\administration\projects\create.html:3
+#, fuzzy
+#| msgid "Add project"
+msgid "Add Project"
+msgstr "Proyekt əlavə et"
+
+#: .\administration\templates\administration\projects\create.html:11
 msgid "Add project"
 msgstr "Proyekt əlavə et"
 
-#: .\administration\templates\administration\visits\create.html:10
+#: .\administration\templates\administration\projects\create.html:46
+#: .\administration\templates\administration\projects\update.html:45
+msgid "Project data for different languages"
+msgstr "Müxtəlif dillər üçün proyekt məlumatları"
+
+#: .\administration\templates\administration\projects\create.html:55
+#: .\administration\templates\administration\projects\update.html:54
+#, fuzzy
+#| msgid "Project"
+msgid "Project Data"
+msgstr "Proyekt"
+
+#: .\administration\templates\administration\visits\create.html:3
+#, fuzzy
+msgid "Add Site Visit"
+msgstr "Ərazi səyahəti əlavə et"
+
+#: .\administration\templates\administration\visits\create.html:11
 #: .\administration\templates\administration\visits\list.html:15
 #, fuzzy
 msgid "Add site visit"
 msgstr "Ərazi səyahəti əlavə et"
 
-#: .\base\templates\base\articles.html:32
+#: .\administration\templates\administration\visits\create.html:40
+#: .\administration\templates\administration\visits\update.html:45
+#, fuzzy
+msgid "Site Visit data for different languages"
+msgstr "Müxtəlif dillər üçün proyekt məlumatları"
+
+#: .\administration\templates\administration\visits\create.html:49
+#: .\administration\templates\administration\visits\update.html:54
+#, fuzzy
+msgid "Site Visit Data"
+msgstr "Ərazi Səfəri"
+
+#: .\administration\views.py:43
+msgid "Bat added!"
+msgstr "Yarasa əlavə olundu!"
+
+#: .\administration\views.py:45
+msgid "Bat cannot be added!"
+msgstr "Yarasa əlavə olunmadı!"
+
+#: .\administration\views.py:69
+msgid "Bat updated!"
+msgstr "Yarasa yeniləndi!"
+
+#: .\administration\views.py:71
+msgid "Bat cannot be updated!"
+msgstr "Yarasa yenilənmədi!"
+
+#: .\administration\views.py:91
+#, fuzzy
+#| msgid "Researchers"
+msgid "Researcher added!"
+msgstr "Tədqiqatçılar"
+
+#: .\administration\views.py:93
+msgid "Researcher cannot be added!"
+msgstr ""
+
+#: .\administration\views.py:115
+#, fuzzy
+#| msgid "Researchers"
+msgid "Researcher updated!"
+msgstr "Tədqiqatçılar"
+
+#: .\administration\views.py:117
+msgid "Researcher cannot be updated!"
+msgstr ""
+
+#: .\administration\views.py:131
+#, fuzzy
+#| msgid "Articles"
+msgid "Article added!"
+msgstr "Məqalələr"
+
+#: .\administration\views.py:133
+msgid "Article cannot be added!"
+msgstr ""
+
+#: .\administration\views.py:152
+msgid "Article updated!"
+msgstr ""
+
+#: .\administration\views.py:154
+msgid "Article cannot be updated!"
+msgstr ""
+
+#: .\administration\views.py:184
+#, fuzzy
+#| msgid "Project"
+msgid "Project added!"
+msgstr "Proyekt"
+
+#: .\administration\views.py:186
+msgid "Project cannot be added!"
+msgstr ""
+
+#: .\administration\views.py:210
+#, fuzzy
+#| msgid "Project"
+msgid "Project updated!"
+msgstr "Proyekt"
+
+#: .\administration\views.py:212
+msgid "Project cannot be updated!"
+msgstr ""
+
+#: .\administration\views.py:244
+#, fuzzy
+msgid "Site Visit added!"
+msgstr "Ərazi Səfəri"
+
+#: .\administration\views.py:246
+msgid "Site Visit cannot be added!"
+msgstr ""
+
+#: .\administration\views.py:270
+#, fuzzy
+msgid "Site Visit updated!"
+msgstr "Ərazi Səfəri"
+
+#: .\administration\views.py:272
+msgid "Site Visit cannot be updated!"
+msgstr ""
+
+#: .\base\templates\base\articles.html:33
 msgid "Visit"
 msgstr "Daxil ol"
+
+#: .\base\templates\base\index.html:4 .\bats\templates\bats\detail.html:27
+#: .\templates\inc\footer.html:51
+msgid "Home"
+msgstr "Ana Səhifə"
 
 #: .\base\templates\base\index.html:34
 msgid "See bats"
@@ -227,7 +437,10 @@ msgstr "Statistika"
 msgid "Recent Projects"
 msgstr "Yeni Proyektlər"
 
-#: .\base\templates\base\index.html:211 .\base\templates\base\index.html:381
+#: .\base\templates\base\index.html:211 .\base\templates\base\index.html:239
+#: .\base\templates\base\index.html:271 .\base\templates\base\search.html:41
+#: .\base\templates\base\search.html:61 .\base\templates\base\search.html:95
+#: .\bats\templates\bats\index.html:40
 msgid "More"
 msgstr "Ətraflı"
 
@@ -235,61 +448,80 @@ msgstr "Ətraflı"
 msgid "Our country"
 msgstr "Ölkəmiz"
 
-#: .\base\templates\base\index.html:238
-msgid "Some bats"
-msgstr "Önə çıxan yarasalar"
-
-#: .\base\templates\base\index.html:363
+#: .\base\templates\base\index.html:253
 #, fuzzy
 msgid "Recent Site Visits"
 msgstr "Yeni ərazi ziyarətləri"
 
-#: .\bats\templates\bats\detail.html:29
+#: .\base\templates\base\search.html:4 .\templates\inc\header.html:93
+#: .\templates\inc\menu.html:36
+#, fuzzy
+#| msgid "Search files"
+msgid "Search"
+msgstr "Faylları axtar"
+
+#: .\base\templates\base\search.html:11
+#, fuzzy
+#| msgid "Search files"
+msgid "Search results"
+msgstr "Faylları axtar"
+
+#: .\bats\templates\bats\detail.html:46
 #, fuzzy
 msgid "Description"
 msgstr "Təsviri"
 
-#: .\bats\templates\bats\detail.html:31
+#: .\bats\templates\bats\detail.html:48
 msgid "Distribution"
 msgstr "Yayılma"
 
-#: .\bats\templates\bats\detail.html:33
+#: .\bats\templates\bats\detail.html:50
 msgid "Biology"
 msgstr "Bioloji"
 
-#: .\bats\templates\bats\detail.html:35
+#: .\bats\templates\bats\detail.html:52
 msgid "Conservation"
 msgstr "Qoruma"
 
-#: .\bats\templates\bats\detail.html:37
+#: .\bats\templates\bats\detail.html:54
 msgid "Habitat"
 msgstr "Yaşayış"
 
-#: .\bats\templates\bats\detail.html:39
+#: .\bats\templates\bats\detail.html:56
 msgid "Threats"
 msgstr "Təhdidlər"
+
+#: .\bats\templates\bats\detail.html:61
+msgid "Scientific classification"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:63
+msgid "Family"
+msgstr "Ailə"
+
+#: .\bats\templates\bats\detail.html:65
+#, fuzzy
+#| msgid "Species"
+msgid "Specie"
+msgstr "Yarasa növləri"
 
 #: .\bats\templates\bats\index.html:14
 msgid "All Species"
 msgstr "Bütün növlər"
 
-#: .\bats\templates\bats\index.html:27
+#: .\bats\templates\bats\index.html:28
 msgid "All"
 msgstr "Bütün"
 
-#: .\core\context_processors.py:18
-msgid "bats"
-msgstr ""
-
-#: .\core\settings.py:109
+#: .\core\settings.py:111
 msgid "English"
 msgstr "İngiliscə"
 
-#: .\core\settings.py:110
+#: .\core\settings.py:112
 msgid "Azerbaijani"
 msgstr "Azərbaycanca"
 
-#: .\templates\inc\footer.html:16 .\templates\inc\header.html:25
+#: .\templates\inc\footer.html:16 .\templates\inc\header.html:26
 msgid "Phone"
 msgstr "Telefon"
 
@@ -301,16 +533,12 @@ msgstr "Email"
 msgid "Menu"
 msgstr "Menyu"
 
-#: .\templates\inc\footer.html:51
-msgid "Home"
-msgstr "Ana Səhifə"
-
-#: .\templates\inc\header.html:64 .\templates\inc\menu.html:19
-#: .\templates\inc\menu.html:80
+#: .\templates\inc\header.html:65 .\templates\inc\menu.html:20
+#: .\templates\inc\menu.html:94
 msgid "Activities"
 msgstr "Fəaliyyətlər"
 
-#: .\templates\inc\menu.html:26 .\templates\inc\menu.html:98
+#: .\templates\inc\menu.html:27 .\templates\inc\menu.html:112
 msgid "Language"
 msgstr "Dil"
 
@@ -1562,3 +1790,6 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Some bats"
+#~ msgstr "Önə çıxan yarasalar"
