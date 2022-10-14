@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core import paginator
-from base import models
+from base import models, data
 from bats import models as batModels
 from activities import models as activityModels
 from django.views.decorators import http
@@ -28,7 +28,9 @@ def index(request):
         "projectCount":projectCount, 
         "visitCount":visitCount,
         "projects":projects,
-        "visits":visits
+        "visits":visits,
+        "banner": data.banner,
+        "country_statistics": data.country_statistics,
     })
 
 @http.require_GET

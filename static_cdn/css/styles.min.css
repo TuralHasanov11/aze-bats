@@ -11889,11 +11889,11 @@ img {
     background: #fff
 }
 
-.button--main {
+.button--green {
     border: 2px solid #2eb872
 }
 
-.button--main:hover {
+.button--green:hover {
     color: #fff;
     background: #2eb872
 }
@@ -19780,7 +19780,7 @@ a:hover {
 .promo--front-2 .video-trigger i {
     margin: 0 0 10px 0;
     border: 2px solid #222b2a;
-    background: #222b2a
+    background: #222b2a;
 }
 
 .promo--front-2 .video-trigger__icon {

@@ -5,7 +5,7 @@
 {% block content %}
 <section class="promo-primary">
     <picture>
-        <source srcset="{% static 'img/blog.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/blog.jpg' %}" alt="img"/>
+        <source srcset="{% static 'img/projects.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/projects.jpg' %}" alt="img"/>
     </picture>
     <div class="container">
         <div class="row">
@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             {% for project in projects %}
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 col-xl-4">
                 <div class="blog-item">
                     <div class="blog-item__img"><img class="img--bg" src="{{project.cover_image.url}}" alt="blog"/>
                         <div class="blog-item__date"><span>02</span><span>Nov</span></div>

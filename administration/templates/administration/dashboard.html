@@ -5,7 +5,7 @@
 {% block content %} 
 <section class="promo-primary">
     <picture>
-        <source srcset="{% static 'img/elements.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/elements.jpg' %}" alt="img"/>
+        <source srcset="{% static 'img/dashboard.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/dashboard.jpg' %}" alt="img"/>
     </picture>
     <div class="container">
         <div class="row">
@@ -19,6 +19,7 @@
         </div>
     </div>
 </section>
+
 <section class="section elements">
     <div class="container">
         <div class="row">
@@ -27,17 +28,10 @@
             </div>
         </div>
         <div class="row offset-margin">
-            {% for item in admin_nav %}
+            {% for item in menu.admin %}
             <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="pricing-item pricing-item--style-1 text-center">
-                    <div class="pricing-item__top">
-                        <div class="pricing-item__icon">
-                            <svg class="icon">
-                                <use xlink:href="#adult"></use>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="pricing-item__lower"><a class="pricing-item__button button button--primary" href="{% url item.route %}">{{item.text}}</a></div>
+                    <div class="pricing-item__lower"><a class="pricing-item__button button button--rounded button--main" href="{% url item.route %}">{{item.text}}</a></div>
                 </div>
             </div>
             {% endfor %}

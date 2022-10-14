@@ -53,36 +53,35 @@
         <a class="logo" href="{% url 'base:index' %}"
           ><img
             class="logo__img"
-            src="{% static 'img/logo_terrarium.png' %}"
+            src="{% static 'img/logo.png' %}"
             alt="logo"
         /></a>
       </div>
       <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center">
         <ul class="main-menu">
-          <li class="main-menu__item"><a class="main-menu__link" href="{% url 'bats:index' %}"><span>{% translate "Bats" %}</span></a></li>
-          <li class="main-menu__item main-menu__item--has-child">
+          <li class="main-menu__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.bats.route %}main-menu__item--active{% endif %}"><a class="main-menu__link" href="{% url menu.bats.route %}"><span>{{menu.bats.text}}</span></a></li>
+          <li class="main-menu__item main-menu__item--has-child {% if 'activities' in request.resolver_match.namespaces %}main-menu__item--active{% endif %}">
             <a class="main-menu__link" href="javascript:void(0);"
               ><span>{% translate "Activities" %}</span></a
             >
             <ul class="main-menu__sub-list sub-list--style-2">
-                <li>
-                  <a href="{% url 'activities:projects' %}"><span>{% translate "Projects" %}</span></a>
+                {% for item in menu.activities %}
+                <li class="{% if 'activities' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
+                  <a href="{% url item.route %}"><span>{{item.text}}</span></a>
                 </li>
-                <li>
-                  <a href="{% url 'activities:visits' %}"><span>{% translate "Site Visits" %}</span></a>
-                </li>
+                {% endfor %}
             </ul>
           </li>
-          <li class="main-menu__item"><a class="main-menu__link" href="{% url 'base:articles' %}"><span>{% translate "Articles" %}</span></a></li>
+          <li class="main-menu__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.articles.route %}main-menu__item--active{% endif %}"><a class="main-menu__link" href="{% url menu.articles.route %}"><span>{{menu.articles.text}}</span></a></li>
 
           {% if user.is_authenticated %}
-          <li class="main-menu__item main-menu__item--has-child">
+          <li class="main-menu__item main-menu__item--has-child {% if 'administration' in request.resolver_match.namespaces %}main-menu__item--active{% endif %}">
             <a class="main-menu__link" href="javascript:void(0);"
               ><span>{% translate "Admin" %}</span></a
             >
             <ul class="main-menu__sub-list sub-list--style-2">
-                {% for item in admin_nav %}
-                <li>
+                {% for item in menu.admin %}
+                <li class="{% if 'administration' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
                   <a href="{% url item.route %}"><span>{{item.text}}</span></a>
                 </li>
                 {% endfor %}

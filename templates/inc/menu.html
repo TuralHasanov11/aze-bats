@@ -7,16 +7,18 @@
 <div class="menu-dropdown menu-dropdown--front-3">
   <div class="menu-dropdown__inner" data-value="start">
     <div class="screen screen--start">
-      <div class="screen__item"><a class="screen__link" href="{% url 'bats:index' %}">{% translate "Bats" %}</a></div>
-      <div class="screen__item screen--trigger item--active" data-category="admin">
+      <div class="screen__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.bats.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.bats.route %}">{{menu.bats.text}}</a></div>
+      {% if user.is_authenticated %}
+      <div class="screen__item screen--trigger {% if 'administration' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="admin">
         <span>{% translate "Admin" %}</span
         ><span>
           <svg class="icon">
             <use xlink:href="#chevron"></use></svg
         ></span>
       </div>
-      <div class="screen__item"><a class="screen__link" href="{% url 'base:articles' %}">{% translate "Articles" %}</a></div>
-      <div class="screen__item screen--trigger item--active" data-category="activities">
+      {% endif %}
+      <div class="screen__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.articles.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.articles.route %}">{{menu.articles.text}}</a></div>
+      <div class="screen__item screen--trigger {% if 'activities' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="activities">
         <span>{% translate "Activities" %}</span
         ><span>
           <svg class="icon">
@@ -67,6 +69,7 @@
       
     </div>
   </div>
+  {% if user.is_authenticated %}
   <div class="menu-dropdown__inner" data-value="admin">
     <div class="screen screen--sub">
       <div class="screen__heading">
@@ -77,13 +80,14 @@
           <span>{% translate "Admin" %}</span>
         </h6>
       </div>
-      {% for item in admin_nav %}
-      <div class="screen__item">
+      {% for item in menu.admin %}
+      <div class="screen__item {% if 'administration' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
         <a class="screen__link" href="{% url item.route %}">{{item.text}}</a>
       </div>
       {% endfor %}
     </div>
   </div>
+  {% endif %}
   <div class="menu-dropdown__inner" data-value="activities">
     <div class="screen screen--sub">
       <div class="screen__heading">
@@ -94,12 +98,11 @@
           <span>{% translate "Activities" %}</span>
         </h6>
       </div>
-      <div class="screen__item">
-        <a class="screen__link" href="{% url 'activities:projects' %}">{% translate "Projects" %}</a>
+      {% for item in menu.activities %}
+      <div class="screen__item {% if 'activities' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url item.route %}">{{item.text}}</a>
       </div>
-      <div class="screen__item">
-        <a class="screen__link" href="{% url 'activities:visits' %}">{% translate "Site Visits" %}</a>
-      </div>
+      {% endfor %}
     </div>
   </div>
   <div class="menu-dropdown__inner" data-value="language">

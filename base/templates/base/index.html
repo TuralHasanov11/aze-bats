@@ -1,14 +1,15 @@
 {% extends 'app.html' %} 
 {% load i18n %}
 {% load static %}
-{% block title %}{% translate "Home" %}{% endblock title %}
+{% block title %}
+{% translate "Home" %}{% endblock title %}
 {% block content %}
 <section class="promo promo--front-3">
   <div class="promo-slider promo-slider--style-2">
     <div class="promo-slider__item promo-slider__item--style-2">
       <picture>
-        <source srcset="{% static 'img/front_3-promo-1.jpg' %}" media="(min-width: 992px)" />
-        <img class="img--bg" src="{% static 'img/front_3-promo-1.jpg' %}" alt="img" />
+        <source srcset="{% static 'img/banner.jpg' %}" media="(min-width: 992px)" />
+        <img class="img--bg" src="{% static 'img/banner.jpg' %}" alt="img" />
       </picture>
       <div class="container">
         <div class="row">
@@ -17,92 +18,19 @@
               <div class="align-container__item">
                 <div class="promo-slider__wrapper-1">
                   <h2 class="promo-slider__title">
-                    <span>Fantastic</span><br /><span>Reptiles World</span>
+                    <span>{{banner.title}}</span>
                   </h2>
                 </div>
                 <div class="promo-slider__wrapper-2">
                   <p class="promo-slider__subtitle">
-                    Animals World accreditation standards. Members are proactive
-                    in both undertaking and applying animal welfare scientific
-                    research, contributing
+                    {{banner.text}}
                   </p>
                 </div>
                 <div class="promo-slider__wrapper-3">
                   <a
-                    class="button promo-slider__button button--primary button--main"
+                    class="button button--rounded promo-slider__button button--main"
                     href="{% url 'bats:index' %}"
                     >{% translate "See bats" %}</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="promo-slider__item promo-slider__item--style-2">
-      <picture>
-        <source srcset="{% static 'img/front_3-promo-2.jpg' %}" media="(min-width: 992px)" />
-        <img class="img--bg" src="{% static 'img/front_3-promo-2.jpg' %}" alt="img" />
-      </picture>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-6">
-            <div class="align-container">
-              <div class="align-container__item">
-                <div class="promo-slider__wrapper-1">
-                  <h2 class="promo-slider__title">
-                    <span>Fantastic</span><br />
-                    <span>Iguanas</span>
-                  </h2>
-                </div>
-                <div class="promo-slider__wrapper-2">
-                  <p class="promo-slider__subtitle">
-                    Animals World accreditation standards. Members are proactive
-                    in both undertaking and applying animal welfare scientific
-                    research, contributing
-                  </p>
-                </div>
-                <div class="promo-slider__wrapper-3">
-                  <a
-                    class="button promo-slider__button button--primary button--main"
-                    href="{% url 'activities:projects' %}"
-                    >{% translate "Projects" %}</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="promo-slider__item promo-slider__item--style-3">
-      <picture>
-        <source srcset="{% static 'img/front_3-promo-3.jpg' %}" media="(min-width: 992px)" />
-        <img class="img--bg" src="{% static 'img/front_3-promo-3.jpg' %}" alt="img" />
-      </picture>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-            <div class="align-container">
-              <div class="align-container__item">
-                <div class="promo-slider__wrapper-1">
-                  <h2 class="promo-slider__title">
-                    <span>Fantastic</span><br /><span>Reptiles World</span>
-                  </h2>
-                </div>
-                <div class="promo-slider__wrapper-2">
-                  <p class="promo-slider__subtitle">
-                    Animals World accreditation standards. Members are proactive
-                    in both undertaking and applying animal welfare scientific
-                    research, contributing
-                  </p>
-                </div>
-                <div class="promo-slider__wrapper-3">
-                  <a
-                    class="button promo-slider__button button--primary button--main"
-                    href="{% url 'activities:visits' %}"
-                    >{% translate "See site visits" %}</a
                   >
                 </div>
               </div>
@@ -118,38 +46,30 @@
         <div class="promo-pannel">
           <a
             class="video-trigger"
-            href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
+            href="https://www.youtube.com/watch?v=j_SjhcdF_J4"
             ><img
               class="img--bg"
-              src="{% static 'img/video-block_3.jpg' %}"
+              src="{% static 'img/video-block.jpg' %}"
               alt="image" /><span class="video-trigger__icon"
               ><span>{% translate "Watch our work" %}</span
               ><i class="fa fa-play" aria-hidden="true"></i></span
           ></a>
-          <div class="promo-pannel__details">
-            <div class="promo-slider__nav dots--style-2"></div>
-            <div class="promo-slider__count"></div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section about-terrarium">
-  <img
-    class="img--aside t50 l0 w-33"
-    src="{% static 'img/about-terrarium_bg.png' %}"
-    alt="img"
-  />
+<section class="section about-terrarium no-padding-bottom">
   <div class="container">
     <div class="row">
-      <div class="col-xl-8 offset-xl-4">
+      <div class="col-12 col-md-6 col-xl-8 px-5 py-2">
         <div class="heading heading--style-2 heading--green">
           <h2 class="heading__title">
-            <span>{% translate "Statistics" %}</span>
+            <span>{% translate "Our country" %}</span>
           </h2>
         </div>
+        <p class="bottom-40"><strong>{{country_statistics}}</strong></p>
         <div class="row offset-30">
           <div class="col-sm-4">
             <div class="counter-item counter-item--front">
@@ -183,10 +103,18 @@
           </div>
         </div>
       </div>
+      <div class="col-12 col-md-6 col-xl-4">
+        <img
+          class="w-100"
+          src="{% static 'img/map.jpg' %}"
+          alt="img"
+        />
+      </div>
     </div>
   </div>
 </section>
 
+{% if projects %}
 <section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
   <div class="container">
     <div class="row bottom-50 align-items-end">
@@ -217,18 +145,9 @@
     </div>
   </div>
 </section>
+{% endif %}
 
-<section class="section text-section no-padding-bottom d-none d-lg-block">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-right">
-        <h1 class="text-section__title"><span>{% translate "Our country" %}</h1>
-        <p class="text-section__text">in Whole Animals World</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+{% if bats %}
 <section class="section animals">
   <div class="container">
       <div class="row no-gutters left-3 right-3">
@@ -244,7 +163,9 @@
       </div>
   </div>
 </section>
+{% endif %}
 
+{% if visits %}
 <section class="section donation donation--style-2 no-padding-bottom">
   <div class="container bottom-50">
     <div class="row align-items-end">
@@ -278,17 +199,19 @@
     </div>
   </div>
 </section>
+{% endif %}
 
+{% if authors %}
 <section class="section testimonials testimonials--style-1 testimonials--green">
   <div class="container">
     {% for author in authors %}
     <div class="row">
-      <div class="col-lg-3 d-none d-lg-block">
+      <div class="col-lg-4 col-md-6 col-12 d-lg-block">
         <div class="testimonials__img">
           <img class="img--bg" src="{{author.cover_image.url}}" alt="img" />
         </div>
       </div>
-      <div class="col-lg-9">
+      <div class="col-lg-8 col-md-6 col-12">
         <div class="row align-items-center">
           <div class="col-md-7">
             <div class="heading heading--primary">
@@ -319,5 +242,6 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
 {% endblock content %}

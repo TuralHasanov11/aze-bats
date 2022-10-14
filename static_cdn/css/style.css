@@ -1,5 +1,60 @@
 :root {
     --main-color: #6E2A9C;
+    --secondary-color: #2eb872;
+    --main-color-transparent:rgb(110, 42, 156, 0.5); 
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.button:hover {
+    color: whitesmoke;
+    background-color: var(--main-color);
+}
+
+.button--main {
+    border: 2px solid var(--main-color);
+}
+
+.promo-primary__title::before {
+    background-color: var(--secondary-color) !important;
+}
+
+.promo--front-3 .video-trigger i {
+    background: var(--main-color);
+}
+
+.testimonials--style-1 .testimonials__img {
+    max-width: 90%;
+    max-height: 25em;
+}
+
+.events-item__date {
+    background: var(--secondary-color);
+    color: whitesmoke;
+}
+
+.promo--front-3 .video-trigger:hover i {
+    background: var(--main-color);
+}
+
+.destination-item--style-2::before {
+    background: rgba(46,184,114,.1);
+}
+
+.logo.logo--footer .logo__img {
+    min-width: 15em;
+    height: 7.5em;
+}
+
+.filter-panel__item::after {
+    background: var(--secondary-color);
+}
+
+.blog-item__date {
+    background: var(--secondary-color);
+    color: whitesmoke;
 }
 
 .btn-delete {
@@ -134,4 +189,16 @@
     width: 38.6px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+}
+
+.header-f3 .header__socials a {
+    text-decoration: none !important;
+}
+
+.blog-item__img::before {
+    padding-top: 75%;
+}
+
+.button--main {
+    border: 2px solid var(--main-color) !important;
 }
