@@ -76,5 +76,13 @@ class SpeciesImage(models.Model):
     image = models.ImageField(upload_to=helpers.uploadImageLocation)
 
     def __str__(self):
-        return self.species
+        return str(self.species)
     
+
+class SpeciesRedBook(models.Model):
+    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    species = models.ForeignKey(Species, related_name="species_red_book", on_delete=models.CASCADE)
+    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.species)    

@@ -1,10 +1,20 @@
 {% extends 'app.html' %} 
 {% load static %} 
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+{% endblock stylesheet %} 
 {% load i18n %}
 {% block title %}{% translate "Admin" %} - {{article.name}}{% endblock title %}
 {% block content %}
 <section class="section">
   <div class="container py-5">
+    <div class="bottom-40">
+      <ul class="breadcrumbs breadcrumbs--with-dot">
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:dashboard' %}">{% translate "Dashboard" %}</a></li>
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:article-list-create' %}">{% translate "Articles" %}</a></li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">{{article.name}}</li>
+      </ul>
+    </div>
     <div class="row bottom-50">
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
@@ -15,53 +25,35 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+      <div class="col-12">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
           <div class="row">
-            <div class="col-12 bottom-20">
+            <div class="col-12 col-md-6 col-xl-4 bottom-20">
               <label
                 class="elements__subtitle fs-5"
                 for="{{ form.name.id_for_label }}"
-                >{{ form.name.label }}:</label
+                >{{ form.name.label }}</label
               >
-              <input
-                class="form__field"
-                type="text"
-                name="{{ form.name.html_name }}"
-                value="{{ form.name.value }}"
-                placeholder="{{form.name.placeholder}}"
-              />
+              {{form.name}}
               {{ form.name.errors }}
             </div>
-            <div class="col-12 bottom-20">
+            <div class="col-12 col-md-6 col-xl-4 bottom-20">
               <label
                 class="elements__subtitle fs-5"
                 for="{{ form.url.id_for_label }}"
-                >{{ form.url.label }}:</label
+                >{{ form.url.label }}</label
               >
-              <input
-                class="form__field"
-                type="text"
-                name="{{ form.url.html_name }}"
-                value="{{ form.url.value }}"
-                placeholder="{{form.url.placeholder}}"
-              />
+              {{form.url}}
               {{ form.url.errors }}
             </div>
-            <div class="col-12 bottom-20">
+            <div class="col-12 col-md-6 col-xl-4 bottom-20">
               <label
                 class="elements__subtitle fs-5"
                 for="{{ form.author.id_for_label }}"
-                >{{ form.author.label }}:</label
+                >{{ form.author.label }}</label
               >
-              <input
-                class="form__field"
-                type="text"
-                name="{{ form.author.html_name }}"
-                value="{{ form.author.value }}"
-                placeholder="{{form.author.placeholder}}"
-              />
+              {{form.author}}
               {{ form.author.errors }}
             </div>
 

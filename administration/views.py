@@ -4,10 +4,38 @@ from bats import models as batModels
 from activities import models as activityModels
 from base import models as baseModels
 from django.views.decorators import http
-from django.contrib.auth import decorators as authDecorators
+from django.contrib.auth import decorators as authDecorators, logout, authenticate, login
 from administration import forms
+from django.db.models import Prefetch
 from django.contrib import messages
+from django.utils import translation
 from django.utils.translation import gettext as _
+
+@http.require_http_methods(["GET", "POST"])
+def loginView(request):
+    if request.POST:
+        form = forms.LoginForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data['password']
+            try:
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    return redirect(request.GET.get('next'))
+                raise Exception("Username or password is incorrect!")
+            except Exception as err:
+                return render(request, "administration/auth/login.html", {"form": form, "login_err":str(err)})
+        return render(request, "administration/auth/login.html", {"form": form})
+    else:
+        form = forms.LoginForm()
+        return render(request, "administration/auth/login.html", {"form": form})
+
+@authDecorators.login_required
+@http.require_POST
+def logoutView(request):
+    logout(request)
+    return redirect("base:index")
 
 
 @authDecorators.login_required
@@ -105,7 +133,10 @@ def authorUpdateDelete(request, id):
         baseModels.Author.objects.get(id=id).delete()
         return HttpResponse(f"Author {id} deleted")
 
-    author = get_object_or_404(baseModels.Author, id=id)
+    author_attributes = baseModels.AuthorAttributes.objects.filter(language=translation.get_language())
+    prefetch = Prefetch('author_attributes', queryset=author_attributes)
+    author = baseModels.Author.objects.prefetch_related(prefetch).get(id=id)
+    author.author_attributes_result = author.author_attributes.all().first()
     if request.POST:
         form = forms.AuthorForm(instance=author, data=request.POST, files=request.FILES)
         attributes_formset = forms.AuthorAttributesFormset(data=request.POST, files=request.FILES)

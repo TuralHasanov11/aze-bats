@@ -1,14 +1,20 @@
 from django import forms
+from django.forms import Select
 from bats import models as batModels
 from base import models as baseModels
 from activities import models as activityModels
-from ckeditor import widgets as ckeditorWidgets
 from django.utils.translation import gettext as _
 from django.conf import settings
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label=_("Username"), max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Username')}))
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':_('Password')}))
+
+
 class BatSpeciesCreateForm(forms.ModelForm):
-    is_red_book = forms.ChoiceField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
 
     class Meta:
@@ -17,8 +23,8 @@ class BatSpeciesCreateForm(forms.ModelForm):
 
 
 class BatSpeciesUpdateForm(forms.ModelForm):
-    is_red_book = forms.ChoiceField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
 
     class Meta:
@@ -39,13 +45,8 @@ class BatSpeciesUpdateForm(forms.ModelForm):
         return post
 
 class SpeciesAttributesForm(forms.ModelForm):
-    description = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    distribution = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    biology = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    conservation = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    habitat = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    threats = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    
+    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+
     class Meta:
         model = batModels.SpeciesAttributes
         fields = ("description", "language", "distribution", "biology", "conservation", "habitat", "threats")
@@ -67,8 +68,8 @@ class AuthorForm(forms.ModelForm):
         fields = '__all__'
 
 class AuthorAttributesForm(forms.ModelForm):
-    description = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
 
     class Meta:
         model = baseModels.AuthorAttributes
@@ -78,9 +79,9 @@ AuthorAttributesFormset = forms.inlineformset_factory(baseModels.Author, baseMod
 
 
 class ArticleForm(forms.ModelForm):
-    name = forms.CharField(label=_("Name"), widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
-    url = forms.URLField(label=_("Link"), widget=forms.URLInput(attrs={'class':'form__field', 'placeholder':_('Link')}))
-    author = forms.CharField(label=_("Author"), widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Author')}))
+    name = forms.CharField(label=_("Name"), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    url = forms.URLField(label=_("Link"), widget=forms.URLInput(attrs={'class':'form-control', 'placeholder':_('Link')}))
+    author = forms.CharField(label=_("Author"), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Author')}))
 
     class Meta:
         model = baseModels.Author
@@ -88,7 +89,7 @@ class ArticleForm(forms.ModelForm):
 
 
 class ProjectCreateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     
     class Meta:
         model = activityModels.Project
@@ -96,7 +97,7 @@ class ProjectCreateForm(forms.ModelForm):
 
 
 class ProjectUpdateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
 
     class Meta:
         model = activityModels.Project
@@ -115,7 +116,7 @@ class ProjectUpdateForm(forms.ModelForm):
 
 
 class ProjectAttributesForm(forms.ModelForm):
-    description = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
+    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
 
     class Meta:
         model = activityModels.ProjectAttributes
@@ -133,7 +134,7 @@ ProjectImageFormset = forms.inlineformset_factory(activityModels.Project, activi
 
 
 class SiteVisitCreateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
 
     class Meta:
         model = activityModels.SiteVisit
@@ -141,7 +142,7 @@ class SiteVisitCreateForm(forms.ModelForm):
 
 
 class SiteVisitUpdateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form__field', 'placeholder':_('Name')}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
 
     class Meta:
         model = activityModels.SiteVisit
@@ -160,9 +161,8 @@ class SiteVisitUpdateForm(forms.ModelForm):
 
 
 class SiteVisitAttributesForm(forms.ModelForm):
-    description = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-    results = forms.CharField(widget=ckeditorWidgets.CKEditorWidget())
-
+    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    
     class Meta:
         model = activityModels.SiteVisitAttributes
         fields = ("description", "language", "results")

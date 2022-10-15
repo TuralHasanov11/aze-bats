@@ -11,7 +11,8 @@
         <div class="row">
             <div class="col-auto">
                 <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title">{% translate "Project" %}</span>
+                    <div class="align-container__item">
+                        <span class="promo-primary__pre-title"><a href="{% url 'activities:projects' %}">{% translate "Project" %}</a></span>
                         <h1 class="promo-primary__title"><span>{{project.name}}</span></h1>
                     </div>
                 </div>

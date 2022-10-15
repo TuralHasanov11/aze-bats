@@ -8,11 +8,17 @@
 {% block content %}
 <section class="section elements">
   <div class="container py-5">
+    <div class="bottom-40">
+      <ul class="breadcrumbs breadcrumbs--with-dot">
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:dashboard' %}">{% translate "Dashboard" %}</a></li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">{% translate "Site Visits" %}</li>
+      </ul>
+    </div>
     <div class="row">
       <div class="col-xl-10">
         <h4 class="elements__title">{% translate "Site Visits" %}</h4>
-        <a class="form__submit text_decoration-none" href="{% url 'administration:visit-create'%}"
-          >{% translate "Add site visit" %}</a
+        <a class="button button--main button--rounded" href="{% url 'administration:visit-create'%}"
+          >{% translate "Site Visits" %}</a
         >
       </div>
     </div>

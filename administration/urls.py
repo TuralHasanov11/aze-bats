@@ -5,6 +5,8 @@ app_name='administration'
 
 urlpatterns = [
     path('', views.dashboard, name="dashboard"),
+    path('login', views.loginView, name="login"),
+    path('logout', views.logoutView, name="logout"),
     path('bats', views.batList, name="bat-list"),
     path('bats/create', views.batCreate, name="bat-create"),
     path('bats/<int:id>', views.batUpdateDelete, name="bat-update-delete"),

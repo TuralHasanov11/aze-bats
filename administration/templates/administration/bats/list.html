@@ -7,11 +7,17 @@
 {% endblock stylesheet %} {% block content %}
 <section class="section elements">
   <div class="container py-5">
+    <div class="bottom-40">
+      <ul class="breadcrumbs breadcrumbs--with-dot">
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:dashboard' %}">{% translate "Dashboard" %}</a></li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">{% translate "Species" %}</li>
+      </ul>
+    </div>
     <div class="row">
       <div class="col-xl-10">
         <h4 class="elements__title">{% translate "Species" %}</h4>
-        <a class="form__submit text-decoration-none" href="{% url 'administration:bat-create'%}"
-          >{% translate "Add species" %}</a
+        <a class="button button--main button--rounded" href="{% url 'administration:bat-create'%}"
+          >{% translate "Species" %}</a
         >
       </div>
     </div>

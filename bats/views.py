@@ -25,7 +25,10 @@ def index(request):
 @http.require_GET
 def detail(request, slug:str):
     bat_attributes = models.SpeciesAttributes.objects.filter(language=translation.get_language())
-    prefetch = Prefetch('species_attributes', queryset=bat_attributes)
-    bat = models.Species.objects.select_related("genus").prefetch_related('species_images', prefetch).get(slug=slug)
+    bat_red_book = models.SpeciesRedBook.objects.filter(language=translation.get_language())
+    prefetch_species_attributes = Prefetch('species_attributes', queryset=bat_attributes)
+    prefetch_bat_red_book = Prefetch('species_red_book', queryset=bat_red_book)
+    bat = models.Species.objects.select_related("genus").prefetch_related('species_images', prefetch_species_attributes, prefetch_bat_red_book).get(slug=slug)
     bat.species_attributes_result = bat.species_attributes.all().first()
+    bat.species_red_book_result = bat.species_red_book.all().first()
     return render(request, "bats/detail.html", {"bat": bat})

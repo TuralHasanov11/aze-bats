@@ -93,6 +93,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = "administration:login"
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Baku'

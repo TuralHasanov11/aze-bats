@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-auto">
                 <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title">{{bat.genus.name}}</span>
+                    <div class="align-container__item"><span class="promo-primary__pre-title"><a href="{% url 'bats:index' %}">{{bat.genus.name}}</a></span>
                         <h1 class="promo-primary__title"><span>{{bat.name}}</span></h1>
                     </div>
                 </div>
@@ -55,6 +55,10 @@
                 {{bat.species_attributes_result.habitat|safe}}
                 <h4 class="blog-post__title">{% translate "Threats" %}</h4>
                 {{bat.species_attributes_result.threats|safe}}
+                {% if bat.is_red_book %}
+                <h4 class="blog-post__title">{% translate "Red Book details" %}</h4>
+                {{bat.species_red_book_result.description|safe}}
+                {% endif %}
             </div>
             <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">
                 <div class="blog__inner-block bottom-50">

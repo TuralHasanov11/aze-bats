@@ -87,6 +87,19 @@
                 {% endfor %}
             </ul>
           </li>
+          <li class="main-menu__item main-menu__item--has-child">
+            <a class="main-menu__link" href="javascript:void(0);"
+              ><span>{{user.username}}</span></a
+            >
+            <ul class="main-menu__sub-list sub-list--style-2">
+              <li>
+                <form action="{% url 'administration:logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="button btn-danger">{% translate "Logout" %}</button>
+                </form>
+              </li>
+            </ul>
+          </li>
           {% endif %}
           <form class="search-form" action="{% url 'base:search' %}">
             <input class="search-form__input" type="search" name="search" placeholder="{% translate "Search" %}"/>

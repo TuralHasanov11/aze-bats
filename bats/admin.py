@@ -11,11 +11,14 @@ class SpeciesAttributesInlineAdmin(admin.StackedInline):
 class SpeciesImageInlineAdmin(admin.StackedInline):
     model= models.SpeciesImage
 
+class SpeciesRedBookInlineAdmin(admin.StackedInline):
+    model= models.SpeciesRedBook
+
 @admin.register(models.Species)
 class SpeciesAdmin(admin.ModelAdmin):
     list_display = ("name", "is_red_book", 'genus', 'created_at')
     prepopulated_fields = {"slug": ("name",)}  
-    inlines= [SpeciesImageInlineAdmin, SpeciesAttributesInlineAdmin]
+    inlines= [SpeciesImageInlineAdmin, SpeciesAttributesInlineAdmin, SpeciesRedBookInlineAdmin]
 
 @admin.register(models.Genus)
 class GenusModel(admin.ModelAdmin):
