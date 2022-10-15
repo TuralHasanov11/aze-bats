@@ -64,14 +64,16 @@
               {{ formset_item.media }}
               <h4>{% translate "Site Visit Data" %} {{forloop.counter}}</h4>
               <div class="row">
-                <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.DELETE.id_for_label }}"
-                    >{{ formset_item.DELETE.label }}:</label
-                  >
-                  {{ formset_item.DELETE }}
-                  {{ formset_item.DELETE.errors }}
+                <div class="col-12 button-20">
+                  <div class="form-check">
+                    <label
+                      class="form-check-label text-danger"
+                      for="{{ formset_item.DELETE.id_for_label }}"
+                      >{{ formset_item.DELETE.label }} </label
+                    >
+                    <input class="form-check-input" type="checkbox" name="{{ formset_item.DELETE.html_name }}" id="{{ formset_item.DELETE.id_for_label }}">
+                    {{ formset_item.DELETE.errors }}
+                  </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label

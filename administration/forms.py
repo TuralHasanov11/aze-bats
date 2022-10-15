@@ -1,10 +1,10 @@
 from django import forms
-from django.forms import Select
 from bats import models as batModels
 from base import models as baseModels
 from activities import models as activityModels
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from ckeditor_uploader import widgets as ckeditor_widgets
 
 
 class LoginForm(forms.Form):
@@ -16,6 +16,7 @@ class BatSpeciesCreateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = batModels.Species
@@ -26,6 +27,7 @@ class BatSpeciesUpdateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = batModels.Species
@@ -44,22 +46,30 @@ class BatSpeciesUpdateForm(forms.ModelForm):
             post.save()
         return post
 
+
 class SpeciesAttributesForm(forms.ModelForm):
-    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    distribution = forms.CharField(label=_("Distribution"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    biology = forms.CharField(label=_("Biology"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    conservation = forms.CharField(label=_("Conservation"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    habitat = forms.CharField(label=_("Habitat"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    threats = forms.CharField(label=_("Threats"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+
 
     class Meta:
         model = batModels.SpeciesAttributes
         fields = ("description", "language", "distribution", "biology", "conservation", "habitat", "threats")
 
 class SpeciesImageForm(forms.ModelForm):
-    image = forms.FileField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = activityModels.ProjectImage
         fields = ("image",)
 
 SpeciesAttributesFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesAttributes, form=SpeciesAttributesForm, max_num=len(settings.LANGUAGES), can_delete=True)
-SpeciesImageFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesImage, form=SpeciesImageForm, max_num=10, can_delete=True)
+SpeciesImageFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesImage, form=SpeciesImageForm, extra=5, max_num=10, can_delete=True)
 
 
 class AuthorForm(forms.ModelForm):
@@ -69,7 +79,8 @@ class AuthorForm(forms.ModelForm):
 
 class AuthorAttributesForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget())
 
     class Meta:
         model = baseModels.AuthorAttributes
@@ -90,7 +101,8 @@ class ArticleForm(forms.ModelForm):
 
 class ProjectCreateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+
     class Meta:
         model = activityModels.Project
         fields = ['name', 'cover_image']
@@ -98,6 +110,7 @@ class ProjectCreateForm(forms.ModelForm):
 
 class ProjectUpdateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = activityModels.Project
@@ -116,26 +129,28 @@ class ProjectUpdateForm(forms.ModelForm):
 
 
 class ProjectAttributesForm(forms.ModelForm):
-    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget())
 
     class Meta:
         model = activityModels.ProjectAttributes
         fields = ("description", "language")
 
 class ProjectImageForm(forms.ModelForm):
-    image = forms.FileField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = activityModels.ProjectImage
         fields = ("image",)
 
 ProjectAttributesFormset = forms.inlineformset_factory(activityModels.Project, activityModels.ProjectAttributes, form=ProjectAttributesForm, max_num=len(settings.LANGUAGES), can_delete=True)
-ProjectImageFormset = forms.inlineformset_factory(activityModels.Project, activityModels.ProjectImage, form=ProjectImageForm, max_num=10, can_delete=True)
+ProjectImageFormset = forms.inlineformset_factory(activityModels.Project, activityModels.ProjectImage, form=ProjectImageForm, extra=5, max_num=10, can_delete=True)
 
 
 class SiteVisitCreateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    
     class Meta:
         model = activityModels.SiteVisit
         fields = ['name', 'cover_image']
@@ -143,6 +158,7 @@ class SiteVisitCreateForm(forms.ModelForm):
 
 class SiteVisitUpdateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = activityModels.SiteVisit
@@ -161,18 +177,20 @@ class SiteVisitUpdateForm(forms.ModelForm):
 
 
 class SiteVisitAttributesForm(forms.ModelForm):
-    language =forms.ChoiceField(widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
-    
+    language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+    results = forms.CharField(label=_("Results"), widget=ckeditor_widgets.CKEditorUploadingWidget())
+
     class Meta:
         model = activityModels.SiteVisitAttributes
         fields = ("description", "language", "results")
 
 class SiteVisitImageForm(forms.ModelForm):
-    image = forms.FileField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
 
     class Meta:
         model = activityModels.SiteVisitImage
         fields = ("image",)
 
 SiteVisitAttributesFormset = forms.inlineformset_factory(activityModels.SiteVisit, activityModels.SiteVisitAttributes, form=SiteVisitAttributesForm, max_num=len(settings.LANGUAGES), can_delete=True)
-SiteVisitImageFormset = forms.inlineformset_factory(activityModels.SiteVisit, activityModels.SiteVisitImage, form=SiteVisitImageForm, max_num=10, can_delete=True)
+SiteVisitImageFormset = forms.inlineformset_factory(activityModels.SiteVisit, activityModels.SiteVisitImage, form=SiteVisitImageForm, extra=5, max_num=10, can_delete=True)

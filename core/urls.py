@@ -18,7 +18,7 @@ urlpatterns += i18n_patterns(
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
-        re_path(r'^rosetta/', include('rosetta.urls'))
+        re_path(r'^languages/', include('rosetta.urls'))
     ]
 
 if settings.DEBUG:
