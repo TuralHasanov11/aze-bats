@@ -70,7 +70,10 @@ a {
 }
 
 .img--bg {
-    object-fit: fill !important;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top center;
+    object-position: top center;
 }
 
 .form__submit {
@@ -109,6 +112,7 @@ a {
 .categories-list__name {
     width: calc(100% - 10em);
 }
+
 
 .errorlist li {
     color: #fd4040 !important;

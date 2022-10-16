@@ -20,37 +20,44 @@
         <div class="row">
           <div class="col-12">
             <form class="form" method="post">
-              <div class="row">
-                <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ form.name.id_for_label }}"
-                    >{{ form.name.label }}</label
-                  >
-                  {{form.name}}
-                  {{ form.name.errors }}
-                </div>
-                <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ form.url.id_for_label }}"
-                    >{{ form.url.label }}</label
-                  >
-                  {{form.url}}
-                  {{ form.url.errors }}
-                </div>
-                <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ form.author.id_for_label }}"
-                    >{{ form.author.label }}</label
-                  >
-                  {{form.author}}
-                  {{ form.author.errors }}
-                </div>
-    
-                <div class="col-12 bottom-20 text-center">
-                  <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
+              <div class="card card-body">
+                {% for hidden_field in form.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                {% endfor %}
+                {{form.non_form_errors}}
+                <div class="row">
+                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ form.name.id_for_label }}"
+                      >{{ form.name.label }}</label
+                    >
+                    {{form.name}}
+                    {{ form.name.errors }}
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ form.url.id_for_label }}"
+                      >{{ form.url.label }}</label
+                    >
+                    {{form.url}}
+                    {{ form.url.errors }}
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ form.author.id_for_label }}"
+                      >{{ form.author.label }}</label
+                    >
+                    {{form.author}}
+                    {{ form.author.errors }}
+                  </div>
+      
+                  <div class="col-12 bottom-20 text-center">
+                    <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
+                  </div>
                 </div>
               </div>
               {% csrf_token %}

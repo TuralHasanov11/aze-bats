@@ -29,45 +29,56 @@
       <div class="col-12">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
-          <div class="row">
-            <div class="col-12 col-md-6 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.name.id_for_label }}"
-                >{{ form.name.label }}</label
-              >
-              {{form.name}} {{ form.name.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.genus.id_for_label }}"
-                >{{ form.genus.label }}</label
-              >
-              {{form.genus}} {{ form.genus.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <label class="form-label" for="{{ form.cover_image.id_for_label }}">{{ form.cover_image.label }}</label>
-              {{form.cover_image}}
-              <img
-                src="{{form.cover_image.value.url}}"
-                style="width: 60px; height: 60px"
-              />
-              {{ form.cover_image.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <div class="form-check">
+          <div class="card card-body bottom-40">
+            {% for hidden_field in form.hidden_fields %}
+              {{hidden_field.errors}}
+              {{hidden_field}}
+            {% endfor %}
+            {{form.non_form_errors}}
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
                 <label
-                  class="form-label fs-5"
-                  for="{{ form.is_red_book.id_for_label }}"
-                  >{{ form.is_red_book.label }}</label
+                  class="form-label"
+                  for="{{ form.name.id_for_label }}"
+                  >{{ form.name.label }}</label
                 >
-                {{form.is_red_book}} {{ form.is_red_book.errors }}
+                {{form.name}}
+                {{ form.name.errors }}
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                <label
+                  class="form-label"
+                  for="{{ form.genus.id_for_label }}"
+                  >{{ form.genus.label }}</label
+                >
+                {{form.genus}} {{ form.genus.errors }}
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                <label
+                  class="form-label"
+                  for="{{ form.cover_image.id_for_label }}"
+                  >{{ form.cover_image.label }}</label
+                >
+                {{form.cover_image}} {{ form.cover_image.errors }}
+              </div>
+              <div class="col-12 bottom-20">
+                <div class="form-check">
+                  <label
+                    class="form-label fs-5"
+                    for="{{ form.is_red_book.id_for_label }}"
+                    >{{ form.is_red_book.label }}</label
+                  >
+                  {{form.is_red_book}} {{ form.is_red_book.errors }}
+                </div>
               </div>
             </div>
           </div>
-          <hr/>
-            <h4 class="elements__title">{% translate "Bat data for different languages" %}</h4>
+
+          <div class="card bottom-40">
+            <div class="card-header">
+              <h4>{% translate "Bat data for different languages" %}</h4>
+            </div>
+            <div class="card-body">
             {{ attributes_formset.management_form }}
             {% for formset_item in attributes_formset %}
               {% for hidden_field in formset_item.hidden_fields %}
@@ -145,11 +156,17 @@
                   >
                   {{formset_item.threats}} {{ formset_item.threats.errors }}
                 </div>
-                <hr/>
               </div>
+              <hr/>
             {% endfor %}
-            <hr/>
-            <h5>{% translate "Additional images" %}</h5>
+            </div>
+          </div>
+            
+          <div class="card bottom-40">
+            <div class="card-header">
+              <h5>{% translate "Additional images" %}</h5>
+            </div>
+            <div class="card-body">
             {{ images_formset.management_form }}
             {% for formset_item in images_formset %}
               {% for hidden_field in formset_item.hidden_fields %}
@@ -177,9 +194,11 @@
                   >
                   {{formset_item.image}} {{ formset_item.image.errors }}
                 </div>  
-                <hr/>
               </div>
+              <hr/>
             {% endfor %}
+            </div>
+          </div>
             <div class="col-12 bottom-20 text-center">
               <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>

@@ -20,62 +20,73 @@
       </div>
       <div class="accordion__text-block">
         <form class="form" method="post" enctype="multipart/form-data">
-          {{ form.media }}
-          <div class="row">
-            <div class="col-12 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.cover_image.id_for_label }}"
-                >{{ form.cover_image.label }}</label
-              >
-              {{form.cover_image}} {{ form.cover_image.errors }}
-            </div>
-            <hr/>
-            <h4 class="elements__title">{% translate "Researcher data for different languages" %}</h4>
-            {{ attributes_formset.management_form }}
-            {% for formset_item in attributes_formset %}
-              {% for hidden_field in formset_item.hidden_fields %}
-                {{hidden_field.errors}}
-                {{hidden_field}}
-              {% endfor %}
-              {{formset_item.non_form_errors}}
-              <h4>{% translate "Researcher Data" %} {{forloop.counter}}</h4>  
+            {{ form.media }}
+            {% for hidden_field in form.hidden_fields %}
+              {{hidden_field.errors}}
+              {{hidden_field}}
+            {% endfor %}
+            {{form.non_form_errors}}
+            <div class="card bottom-40 card-body">
               <div class="row">
-                {{ formset_item.media }}
-                <div class="col-12 col-md-4 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.language.id_for_label }}"
-                    >{{ formset_item.language.label }}</label
-                  >
-                  {{formset_item.language}} {{ formset_item.language.errors }}
-                </div>
-                <div class="col-12 col-md-8 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.name.id_for_label }}"
-                    >{{ formset_item.name.label }}</label
-                  >
-                  {{formset_item.name}}
-                  {{ formset_item.name.errors }}
-                </div>
                 <div class="col-12 bottom-20">
                   <label
                     class="form-label"
-                    for="{{ formset_item.description.id_for_label }}"
-                    >{{ formset_item.description.label }}</label
+                    for="{{ form.cover_image.id_for_label }}"
+                    >{{ form.cover_image.label }}</label
                   >
-                  {{formset_item.description}} 
-                  {{ formset_item.description.errors }}
+                  {{form.cover_image}} {{ form.cover_image.errors }}
                 </div>
-                
-                <hr/>
               </div>
-            {% endfor %}
+            </div>
+            <div class="card bottom-40">
+              <div class="card-header">
+                <h4>{% translate "Researcher data for different languages" %}</h4>
+              </div>
+              <div class="card-body">
+                {{ attributes_formset.management_form }}
+                {% for formset_item in attributes_formset %}
+                  {% for hidden_field in formset_item.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                  {% endfor %}
+                  {{formset_item.non_form_errors}}
+                  <h4>{% translate "Researcher Data" %} {{forloop.counter}}</h4>  
+                  <div class="row">
+                    {{ formset_item.media }}
+                    <div class="col-12 col-md-4 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.language.id_for_label }}"
+                        >{{ formset_item.language.label }}</label
+                      >
+                      {{formset_item.language}} {{ formset_item.language.errors }}
+                    </div>
+                    <div class="col-12 col-md-8 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.name.id_for_label }}"
+                        >{{ formset_item.name.label }}</label
+                      >
+                      {{formset_item.name}}
+                      {{ formset_item.name.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.description.id_for_label }}"
+                        >{{ formset_item.description.label }}</label
+                      >
+                      {{formset_item.description}} 
+                      {{ formset_item.description.errors }}
+                    </div>                    
+                  </div>
+                  <hr/>
+                {% endfor %}
+              </div>
+            </div>
             <div class="col-12 bottom-20 text-center">
               <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
-          </div>
           {% csrf_token %}
         </form>
       </div>

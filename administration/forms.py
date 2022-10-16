@@ -16,7 +16,7 @@ class BatSpeciesCreateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = batModels.Species
@@ -27,7 +27,7 @@ class BatSpeciesUpdateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = batModels.Species
@@ -62,7 +62,7 @@ class SpeciesAttributesForm(forms.ModelForm):
         fields = ("description", "language", "distribution", "biology", "conservation", "habitat", "threats")
 
 class SpeciesImageForm(forms.ModelForm):
-    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.ProjectImage
@@ -73,6 +73,8 @@ SpeciesImageFormset = forms.inlineformset_factory(batModels.Species, batModels.S
 
 
 class AuthorForm(forms.ModelForm):
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
+
     class Meta:
         model = baseModels.Author
         fields = '__all__'
@@ -101,7 +103,7 @@ class ArticleForm(forms.ModelForm):
 
 class ProjectCreateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.Project
@@ -110,7 +112,7 @@ class ProjectCreateForm(forms.ModelForm):
 
 class ProjectUpdateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.Project
@@ -137,7 +139,7 @@ class ProjectAttributesForm(forms.ModelForm):
         fields = ("description", "language")
 
 class ProjectImageForm(forms.ModelForm):
-    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.ProjectImage
@@ -149,7 +151,7 @@ ProjectImageFormset = forms.inlineformset_factory(activityModels.Project, activi
 
 class SiteVisitCreateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
     
     class Meta:
         model = activityModels.SiteVisit
@@ -158,7 +160,7 @@ class SiteVisitCreateForm(forms.ModelForm):
 
 class SiteVisitUpdateForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
-    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.SiteVisit
@@ -186,7 +188,7 @@ class SiteVisitAttributesForm(forms.ModelForm):
         fields = ("description", "language", "results")
 
 class SiteVisitImageForm(forms.ModelForm):
-    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False}), required=False)
+    image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
         model = activityModels.SiteVisitImage

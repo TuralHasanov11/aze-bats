@@ -26,27 +26,34 @@
         </div>
         {% endif %}
         <form class="form" method="post">
-            <div class="row">
-                <div class="col-12 col-md-6 bottom-20">
-                    <label
-                        class="form-label"
-                        for="{{ form.username.id_for_label }}"
-                        >{{ form.username.label }}</label
-                    >
-                    {{form.username}}
-                    {{ form.username.errors }}
+            <div class="card card-body">
+                {% for hidden_field in form.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                {% endfor %}
+                {{form.non_form_errors}}
+                <div class="row">
+                    <div class="col-12 col-md-6 bottom-20">
+                        <label
+                            class="form-label"
+                            for="{{ form.username.id_for_label }}"
+                            >{{ form.username.label }}</label
+                        >
+                        {{form.username}}
+                        {{ form.username.errors }}
+                    </div>
+                    <div class="col-12 col-md-6 bottom-20">
+                        <label
+                            class="form-label"
+                            for="{{ form.password.id_for_label }}"
+                            >{{ form.password.label }}</label
+                        >
+                        {{form.password}} {{ form.password.errors }}
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 bottom-20">
-                    <label
-                        class="form-label"
-                        for="{{ form.password.id_for_label }}"
-                        >{{ form.password.label }}</label
-                    >
-                    {{form.password}} {{ form.password.errors }}
+                <div class="col-12 bottom-20 text-center">
+                <button class="form__submit text_decoration-none" type="submit">{% translate "Login" %}</button>
                 </div>
-            </div>
-            <div class="col-12 bottom-20 text-center">
-            <button class="form__submit text_decoration-none" type="submit">{% translate "Login" %}</button>
             </div>
             {% csrf_token %}
         </form>

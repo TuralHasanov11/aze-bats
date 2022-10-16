@@ -29,139 +29,157 @@
       <div class="col-12">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
-          <div class="row">
-            <div class="col-12 col-md-6 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.name.id_for_label }}"
-                >{{ form.name.label }}</label
-              >
-              {{form.name}}
-              {{ form.name.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.genus.id_for_label }}"
-                >{{ form.genus.label }}</label
-              >
-              {{form.genus}} {{ form.genus.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <label
-                class="form-label"
-                for="{{ form.cover_image.id_for_label }}"
-                >{{ form.cover_image.label }}</label
-              >
-              {{form.cover_image}} {{ form.cover_image.errors }}
-            </div>
-            <div class="col-12 col-md-6 bottom-20">
-              <div class="form-check">
-                <label
-                  class="form-label fs-5"
-                  for="{{ form.is_red_book.id_for_label }}"
-                  >{{ form.is_red_book.label }}</label
-                >
-                {{form.is_red_book}} {{ form.is_red_book.errors }}
-              </div>
-            </div>
-          </div>
-          <hr/>
-            <h4 class="elements__title">{% translate "Bat data for different languages" %}</h4>
-            {{ attributes_formset.management_form }}
-            {% for formset_item in attributes_formset %}
-              {% for hidden_field in formset_item.hidden_fields %}
+            <div class="card card-body bottom-40">
+              {% for hidden_field in form.hidden_fields %}
                 {{hidden_field.errors}}
                 {{hidden_field}}
               {% endfor %}
-              {% if formset_item.non_form_errors %}
-              {{formset_item.non_form_errors}}
-              {% endif %}
+              {{form.non_form_errors}}
+
               <div class="row">
-                <h4>{% translate "Bat Data" %} {{forloop.counter}}</h4>
-                {{ formset_item.media }}
                 <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label
                     class="form-label"
-                    for="{{ formset_item.language.id_for_label }}"
-                    >{{ formset_item.language.label }}</label
+                    for="{{ form.name.id_for_label }}"
+                    >{{ form.name.label }}</label
                   >
-                  {{formset_item.language}} {{ formset_item.language.errors }}
+                  {{form.name}}
+                  {{ form.name.errors }}
                 </div>
-                <div class="col-12 bottom-20">
+                <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label
                     class="form-label"
-                    for="{{ formset_item.description.id_for_label }}"
-                    >{{ formset_item.description.label }}</label
+                    for="{{ form.genus.id_for_label }}"
+                    >{{ form.genus.label }}</label
                   >
-                  {{formset_item.description}} {{ formset_item.description.errors }}
+                  {{form.genus}} {{ form.genus.errors }}
                 </div>
-                <div class="col-12 bottom-20">
+                <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label
                     class="form-label"
-                    for="{{ formset_item.distribution.id_for_label }}"
-                    >{{ formset_item.distribution.label }}</label
+                    for="{{ form.cover_image.id_for_label }}"
+                    >{{ form.cover_image.label }}</label
                   >
-                  {{formset_item.distribution}} {{ formset_item.distribution.errors }}
+                  {{form.cover_image}} {{ form.cover_image.errors }}
                 </div>
                 <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.biology.id_for_label }}"
-                    >{{ formset_item.biology.label }}</label
-                  >
-                  {{formset_item.biology}} {{ formset_item.biology.errors }}
+                  <div class="form-check">
+                    <label
+                      class="form-label fs-5"
+                      for="{{ form.is_red_book.id_for_label }}"
+                      >{{ form.is_red_book.label }}</label
+                    >
+                    {{form.is_red_book}} {{ form.is_red_book.errors }}
+                  </div>
                 </div>
-                <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.conservation.id_for_label }}"
-                    >{{ formset_item.conservation.label }}</label
-                  >
-                  {{formset_item.conservation}} {{ formset_item.conservation.errors }}
-                </div>
-                <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.habitat.id_for_label }}"
-                    >{{ formset_item.habitat.label }}</label
-                  >
-                  {{formset_item.habitat}} {{ formset_item.habitat.errors }}
-                </div>
-                <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.threats.id_for_label }}"
-                    >{{ formset_item.threats.label }}</label
-                  >
-                  {{formset_item.threats}} {{ formset_item.threats.errors }}
-                </div>
-                <hr/>
               </div>
-            {% endfor %}
-            <hr/>
-            <h5>{% translate "Additional images" %}</h5>
-            {{ images_formset.management_form }}
-            {% for formset_item in images_formset %}
-              {% for hidden_field in formset_item.hidden_fields %}
-                {{hidden_field.errors}}
-                {{hidden_field}}
-              {% endfor %}
-              {{formset_item.non_form_errors}}
-              <div class="row">
-                <h6>{% translate "Image" %} {{forloop.counter}}</h6>
-                {{ formset_item.media }}
-                <div class="col-12 bottom-20">
-                  <label
-                    class="form-label"
-                    for="{{ formset_item.image.id_for_label }}"
-                    >{{ formset_item.image.label }}</label
-                  >
-                  {{formset_item.image}} {{ formset_item.image.errors }}
-                </div>  
-                <hr/>
+            </div>
+            <div class="card bottom-40">
+              <div class="card-header">
+                <h4>{% translate "Bat data for different languages" %}</h4>
               </div>
-            {% endfor %}
+              <div class="card-body">
+                {{ attributes_formset.management_form }}
+                {% for formset_item in attributes_formset %}
+                  {% for hidden_field in formset_item.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                  {% endfor %}
+                  {% if formset_item.non_form_errors %}
+                  {{formset_item.non_form_errors}}
+                  {% endif %}
+                  <div class="row">
+                    <h4>{% translate "Bat Data" %} {{forloop.counter}}</h4>
+                    {{ formset_item.media }}
+                    <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.language.id_for_label }}"
+                        >{{ formset_item.language.label }}</label
+                      >
+                      {{formset_item.language}} {{ formset_item.language.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.description.id_for_label }}"
+                        >{{ formset_item.description.label }}</label
+                      >
+                      {{formset_item.description}} {{ formset_item.description.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.distribution.id_for_label }}"
+                        >{{ formset_item.distribution.label }}</label
+                      >
+                      {{formset_item.distribution}} {{ formset_item.distribution.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.biology.id_for_label }}"
+                        >{{ formset_item.biology.label }}</label
+                      >
+                      {{formset_item.biology}} {{ formset_item.biology.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.conservation.id_for_label }}"
+                        >{{ formset_item.conservation.label }}</label
+                      >
+                      {{formset_item.conservation}} {{ formset_item.conservation.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.habitat.id_for_label }}"
+                        >{{ formset_item.habitat.label }}</label
+                      >
+                      {{formset_item.habitat}} {{ formset_item.habitat.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.threats.id_for_label }}"
+                        >{{ formset_item.threats.label }}</label
+                      >
+                      {{formset_item.threats}} {{ formset_item.threats.errors }}
+                    </div>
+                  </div>
+                  <hr/>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h5>{% translate "Additional images" %}</h5>
+              </div>
+              <div class="card-body">
+                {{ images_formset.management_form }}
+                {% for formset_item in images_formset %}
+                  {% for hidden_field in formset_item.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                  {% endfor %}
+                  {{formset_item.non_form_errors}}
+                  <div class="row">
+                    <h6>{% translate "Image" %} {{forloop.counter}}</h6>
+                    {{ formset_item.media }}
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.image.id_for_label }}"
+                        >{{ formset_item.image.label }}</label
+                      >
+                      {{formset_item.image}} {{ formset_item.image.errors }}
+                    </div>  
+                  </div>
+                  <hr/>
+                {% endfor %}
+              </div>
+            </div>
             <div class="col-12 bottom-20 text-center">
               <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
             </div>
