@@ -10,6 +10,9 @@ class Article(models.Model):
     url = models.URLField(blank=True, null=True)
     author = models.CharField(null=False, blank=False, max_length=50)
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
