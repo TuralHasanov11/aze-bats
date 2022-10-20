@@ -25,6 +25,11 @@
         </div>
       </div>
     </div>
+    
+    <div class="container my-3">
+      {% include 'inc/messages.html' with messages=messages %}
+    </div>
+
     <div class="row">
       <div class="col-12">
         <form class="form" method="post" enctype="multipart/form-data">
@@ -175,6 +180,44 @@
                       >
                       {{formset_item.image}} {{ formset_item.image.errors }}
                     </div>  
+                  </div>
+                  <hr/>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="card bottom-40">
+              <div class="card-header">
+                <h4>{% translate "Red Book Information" %}</h4>
+              </div>
+              <div class="card-body">
+                {{ red_book_formset.management_form }}
+                {% for formset_item in red_book_formset %}
+                  {% for hidden_field in formset_item.hidden_fields %}
+                    {{hidden_field.errors}}
+                    {{hidden_field}}
+                  {% endfor %}
+                  {% if formset_item.non_form_errors %}
+                  {{formset_item.non_form_errors}}
+                  {% endif %}
+                  <div class="row">
+                    <h4>{% translate "Red Book Information" %} {{forloop.counter}}</h4>
+                    {{ formset_item.media }}
+                    <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.language.id_for_label }}"
+                        >{{ formset_item.language.label }}</label
+                      >
+                      {{formset_item.language}} {{ formset_item.language.errors }}
+                    </div>
+                    <div class="col-12 bottom-20">
+                      <label
+                        class="form-label"
+                        for="{{ formset_item.description.id_for_label }}"
+                        >{{ formset_item.description.label }}</label
+                      >
+                      {{formset_item.description}} {{ formset_item.description.errors }}
+                    </div>
                   </div>
                   <hr/>
                 {% endfor %}

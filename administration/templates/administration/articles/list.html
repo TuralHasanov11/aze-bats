@@ -12,61 +12,63 @@
         <li class="breadcrumbs__item breadcrumbs__item--active">{% translate "Articles" %}</li>
       </ul>
     </div>
-    <div class="accordion accordion--primary">
-      <div class="accordion__title-block">
-        <h5 class="accordion__title">{% translate "Add article" %}</h5><span class="accordion__close"></span>
-      </div>
-      <div class="accordion__text-block">
-        <div class="row">
-          <div class="col-12">
-            <form class="form" method="post">
-              <div class="card card-body">
-                {% for hidden_field in form.hidden_fields %}
-                    {{hidden_field.errors}}
-                    {{hidden_field}}
-                {% endfor %}
-                {{form.non_form_errors}}
-                <div class="row">
-                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                    <label
-                      class="form-label"
-                      for="{{ form.name.id_for_label }}"
-                      >{{ form.name.label }}</label
-                    >
-                    {{form.name}}
-                    {{ form.name.errors }}
-                  </div>
-                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                    <label
-                      class="form-label"
-                      for="{{ form.url.id_for_label }}"
-                      >{{ form.url.label }}</label
-                    >
-                    {{form.url}}
-                    {{ form.url.errors }}
-                  </div>
-                  <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                    <label
-                      class="form-label"
-                      for="{{ form.author.id_for_label }}"
-                      >{{ form.author.label }}</label
-                    >
-                    {{form.author}}
-                    {{ form.author.errors }}
-                  </div>
-      
-                  <div class="col-12 bottom-20 text-center">
-                    <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
-                  </div>
-                </div>
-              </div>
-              {% csrf_token %}
-            </form>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="heading heading--primary heading--center">
+          <h2 class="heading__title no-margin-bottom">
+            <span>{% translate "Add article" %}</span>
+          </h2>
         </div>
+        <div class="container my-3">
+          {% include 'inc/messages.html' with messages=messages %}
+        </div>
+        <form class="form" method="post">
+          <div class="card card-body">
+            {% for hidden_field in form.hidden_fields %}
+                {{hidden_field.errors}}
+                {{hidden_field}}
+            {% endfor %}
+            {{form.non_form_errors}}
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                <label
+                  class="form-label"
+                  for="{{ form.name.id_for_label }}"
+                  >{{ form.name.label }}</label
+                >
+                {{form.name}}
+                {{ form.name.errors }}
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                <label
+                  class="form-label"
+                  for="{{ form.url.id_for_label }}"
+                  >{{ form.url.label }}</label
+                >
+                {{form.url}}
+                {{ form.url.errors }}
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+                <label
+                  class="form-label"
+                  for="{{ form.author.id_for_label }}"
+                  >{{ form.author.label }}</label
+                >
+                {{form.author}}
+                {{ form.author.errors }}
+              </div>
+  
+              <div class="col-12 bottom-20 text-center">
+                <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+        </form>
       </div>
     </div>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col-xl-10">

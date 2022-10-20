@@ -24,13 +24,7 @@
         <div class="row">
             {% for project in projects %}
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="blog-item">
-                    <div class="blog-item__img"><img class="img--bg" src="{{project.cover_image.url}}" alt="blog"/>
-                        <div class="blog-item__date"><span>02</span><span>Nov</span></div>
-                    </div>
-                    <h4 class="blog-item__title"><a href="{% url 'activities:project' slug=project.slug %}">{{project.name}}</a></h4>
-                    <p class="text-dark">{{project.description|truncatechars:255|safe}}</p>
-                </div>
+                {% include "activities/project_component.html" with project=project %}
             </div>
             {% endfor %}
 

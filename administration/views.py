@@ -57,25 +57,31 @@ def batCreate(request):
     if request.POST:
         form = forms.BatSpeciesCreateForm(request.POST, request.FILES)
         attributes_formset = forms.SpeciesAttributesFormset(data=request.POST, files=request.FILES)
+        red_book_formset = forms.SpeciesRedBookFormset(data=request.POST, files=request.FILES)
         images_formset = forms.SpeciesImageFormset(data=request.POST, files=request.FILES)
-        if form.is_valid() and attributes_formset.is_valid() and images_formset.is_valid():
+        if form.is_valid() and attributes_formset.is_valid() and images_formset.is_valid() and red_book_formset.is_valid():
             bat = form.save()
             attributes = attributes_formset.save(commit=False)
             images = images_formset.save(commit=False)
+            red_book = red_book_formset.save(commit=False)
             for attr in attributes:
                 attr.species = bat
                 attr.save()
             for img in images:
                 img.species = bat
                 img.save()
+            for item in red_book:
+                item.species = bat
+                item.save()
             messages.success(request, _("Bat added!"))
             return redirect("administration:bat-list")
         messages.error(request, _("Bat cannot be added!"))
-        return render(request, "administration/bats/create.html", {"form": form, "attributes_formset":attributes_formset, "images_formset":images_formset})
+        return render(request, "administration/bats/create.html", {"form": form, "attributes_formset":attributes_formset, "images_formset":images_formset, "red_book_formset":red_book_formset})
     form = forms.BatSpeciesCreateForm()
     attributes_formset = forms.SpeciesAttributesFormset()
     images_formset = forms.SpeciesImageFormset()
-    return render(request, "administration/bats/create.html", {"form": form, "attributes_formset":attributes_formset, "images_formset":images_formset})
+    red_book_formset = forms.SpeciesRedBookFormset()
+    return render(request, "administration/bats/create.html", {"form": form, "attributes_formset":attributes_formset, "images_formset":images_formset, "red_book_formset":red_book_formset})
 
 
 @authDecorators.login_required
@@ -90,18 +96,21 @@ def batUpdateDelete(request, id):
         form = forms.BatSpeciesUpdateForm(instance=bat, data=request.POST, files=request.FILES)
         attributes_formset = forms.SpeciesAttributesFormset(instance=bat, data=request.POST, files=request.FILES)
         images_formset = forms.SpeciesImageFormset(instance=bat, data=request.POST, files=request.FILES)
-        if form.is_valid() and attributes_formset.is_valid() and images_formset.is_valid():
+        red_book_formset = forms.SpeciesRedBookFormset(data=request.POST, files=request.FILES)
+        if form.is_valid() and attributes_formset.is_valid() and images_formset.is_valid() and red_book_formset.is_valid():
             bat = form.save()
             attributes_formset.save()
             images_formset.save()
+            red_book_formset.save()
             messages.success(request, _("Bat updated!"))
             return redirect("administration:bat-update-delete", id=id)
         messages.error(request, _("Bat cannot be updated!"))
-        return render(request, "administration/bats/update.html", {"form": form, "bat":bat, "attributes_formset":attributes_formset, "images_formset":images_formset})
+        return render(request, "administration/bats/update.html", {"form": form, "bat":bat, "attributes_formset":attributes_formset, "images_formset":images_formset, "red_book_formset":red_book_formset})
     form = forms.BatSpeciesUpdateForm(instance=bat)
     attributes_formset = forms.SpeciesAttributesFormset(instance=bat)
     images_formset = forms.SpeciesImageFormset(instance=bat)
-    return render(request, "administration/bats/update.html", {"form": form, "bat":bat, "attributes_formset":attributes_formset, "images_formset":images_formset})
+    red_book_formset = forms.SpeciesRedBookFormset(instance=bat)
+    return render(request, "administration/bats/update.html", {"form": form, "bat":bat, "attributes_formset":attributes_formset, "images_formset":images_formset, "red_book_formset":red_book_formset})
 
 
 @authDecorators.login_required

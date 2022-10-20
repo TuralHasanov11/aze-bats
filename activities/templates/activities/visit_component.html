@@ -1,0 +1,7 @@
+<div class="events-item">
+    <div class="events-item__img">
+        <div class="events-item__date"><span>11</span><span>Nov</span></div><img class="img--bg" src="{{visit.cover_image.url}}"/>
+    </div>
+    <h6 class="events-item__title"><a class="events-item__link" href="{% url 'activities:visit' slug=visit.slug %}">{{visit.name}}</a></h6>
+    <p class="text-dark">{{visit.description|truncatechars:255|safe}}</p>
+</div>

@@ -14,7 +14,7 @@ class LoginForm(forms.Form):
 
 class BatSpeciesCreateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
@@ -25,7 +25,7 @@ class BatSpeciesCreateForm(forms.ModelForm):
 
 class BatSpeciesUpdateForm(forms.ModelForm):
     is_red_book = forms.BooleanField(label=_('Is it a Red Book specie?'), widget=forms.CheckboxInput(attrs={'class':'form-check-input'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     genus = forms.ModelChoiceField(label=_('Genus'), initial=_('Select Genus'), widget=forms.Select(attrs={'class':'form-select'}), queryset=batModels.Genus.objects.all())
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
@@ -61,6 +61,15 @@ class SpeciesAttributesForm(forms.ModelForm):
         model = batModels.SpeciesAttributes
         fields = ("description", "language", "distribution", "biology", "conservation", "habitat", "threats")
 
+
+class SpeciesRedBookForm(forms.ModelForm):
+    language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
+    description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget(), required=False)
+
+    class Meta:
+        model = batModels.SpeciesRedBook
+        fields = ("description", "language")
+
 class SpeciesImageForm(forms.ModelForm):
     image = forms.ImageField(label=_("Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
@@ -70,6 +79,7 @@ class SpeciesImageForm(forms.ModelForm):
 
 SpeciesAttributesFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesAttributes, form=SpeciesAttributesForm, max_num=len(settings.LANGUAGES), can_delete=True)
 SpeciesImageFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesImage, form=SpeciesImageForm, extra=5, max_num=10, can_delete=True)
+SpeciesRedBookFormset = forms.inlineformset_factory(batModels.Species, batModels.SpeciesRedBook, form=SpeciesRedBookForm, max_num=len(settings.LANGUAGES), can_delete=True)
 
 
 class AuthorForm(forms.ModelForm):
@@ -80,7 +90,7 @@ class AuthorForm(forms.ModelForm):
         fields = '__all__'
 
 class AuthorAttributesForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     language =forms.ChoiceField(label=_("Language"), widget=forms.Select(attrs={"class": "form-select"}), choices=settings.LANGUAGES)
     description = forms.CharField(label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget())
 
@@ -102,7 +112,7 @@ class ArticleForm(forms.ModelForm):
 
 
 class ProjectCreateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
@@ -111,7 +121,7 @@ class ProjectCreateForm(forms.ModelForm):
 
 
 class ProjectUpdateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:
@@ -150,7 +160,7 @@ ProjectImageFormset = forms.inlineformset_factory(activityModels.Project, activi
 
 
 class SiteVisitCreateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
     
     class Meta:
@@ -159,7 +169,7 @@ class SiteVisitCreateForm(forms.ModelForm):
 
 
 class SiteVisitUpdateForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
+    name = forms.CharField(label=_('Name'), widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':_('Name')}))
     cover_image = forms.ImageField(label=_("Cover Image"), widget=forms.ClearableFileInput(attrs={'multiple': False, 'class':'form-control'}), required=False)
 
     class Meta:

@@ -35,11 +35,7 @@
         <div class="row no-gutters left-3 right-3">
             {% for bat in bats %}
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="animal-block"><img class="img--bg" src="{{bat.cover_image.url}}"/>
-                    <div class="animal-block__details">
-                        <h6 class="animal-block__title">{{bat.name}}</h6><a class="animal-block__link" href="{% url 'bats:detail' slug=bat.slug %}">{% translate "More" %}</a>
-                    </div>
-                </div>
+                {% include "bats/bat.html" with bat=bat %}
             </div>
             {% endfor %}
 
