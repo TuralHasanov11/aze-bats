@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 def config_vars(request):
     return {
         "config_vars":{
-            "phone": os.environ.get("PHONE", None),
-            "email": os.environ.get("EMAIL", None),
+            "phone": os.environ.get("OWNER_PHONE", None),
+            "email": os.environ.get("OWNER_EMAIL", None),
         }
     }
 

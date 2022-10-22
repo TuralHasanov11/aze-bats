@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 import os
 from pathlib import Path
 from django.contrib import messages
@@ -23,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'django_cleanup.apps.CleanupConfig',
     'activities',
     'bats',
@@ -31,7 +32,8 @@ INSTALLED_APPS = [
     'administration',
     'ckeditor',
     'ckeditor_uploader',
-    'rosetta'
+    'rosetta',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,18 @@ DATABASES = {
     }
 }
 
+if str(os.environ.get("POSTGRES_READY")) == "1":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get("POSTGRES_DB"),
+            'USER': os.environ.get("POSTGRES_USER"),
+            'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+            'HOST': os.environ.get("POSTGRES_HOST"),
+            'PORT': os.environ.get("POSTGRES_PORT"),
+        }
+    }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,7 +119,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-from django.utils.translation import gettext_lazy as _
 
 LANGUAGE_CODE = 'en'
 
@@ -145,4 +158,15 @@ MESSAGE_TAGS = {
     messages.constants.SUCCESS: 'alert-success',
     messages.constants.WARNING: 'alert-warning',
     messages.constants.ERROR: 'alert-danger',
- }
+}
+
+
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', None)
+# AWS_S3_SIGNATURE_VERSION = os.environ.get('AWS_S3_SIGNATURE_VERSION', None)
+# AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', None)
+# AWS_S3_FILE_OVERWRITE = str(os.environ.get("DEBUG")) == "1"
+# AWS_DEFAULT_ACL = os.environ.get("DEBUG",  None)
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
