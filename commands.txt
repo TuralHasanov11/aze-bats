@@ -1,0 +1,20 @@
+Part#1
+docker build --tag aze-bats .
+docker run --publish 8000:8000 aze-bats
+
+Part#2
+docker-compose build
+docker-compose run --rm app django-admin startproject core.
+docker-compose up
+
+Part#3
+docker-compose build
+docker-compose run --rm app django-admin startproject core .
+docker-compose up
+docker exec -it aze-bats /bin/bash
+
+Part#4
+docker-compose run django_docker_container sh -c "django-admin startapp newapp ."
+docker exec -it django_docker_container sh
+
+
