@@ -1,4 +1,3 @@
-from enum import Enum
 from django.template.defaultfilters import slugify
 import uuid
 

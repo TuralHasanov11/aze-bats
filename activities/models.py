@@ -1,14 +1,12 @@
 from django.db import models
-from ckeditor_uploader import fields as ckeditorFields
+from administration import models as administration_models
 from core import helpers
-from django.db.models import signals
-from django.dispatch import receiver
-from django.conf import settings
+
 
 class Project(models.Model):
-    name = models.CharField(max_length=200, null=False, blank=False)
-    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
-    cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    name = administration_models.NameField()
+    slug = administration_models.SlugField()
+    cover_image = administration_models.ImageField()
 
     def __str__(self):
         return self.name
@@ -20,9 +18,9 @@ class Project(models.Model):
 
 
 class SiteVisit(models.Model):
-    name = models.CharField(max_length=199, null=False, blank=False)
-    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
-    cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    name = administration_models.NameField()
+    slug = administration_models.SlugField()
+    cover_image = administration_models.ImageField()
 
     class Meta:
         verbose_name = "Site Visit"
@@ -39,7 +37,7 @@ class SiteVisit(models.Model):
 
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="project_images")
-    image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    image = administration_models.ImageField()
 
     def __str__(self) -> str:
         return str(self.project)
@@ -47,7 +45,7 @@ class ProjectImage(models.Model):
 
 class SiteVisitImage(models.Model):
     site_visit = models.ForeignKey(SiteVisit, on_delete=models.CASCADE, related_name="site_visit_images")
-    image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    image = administration_models.ImageField()
 
     def __str__(self) -> str:
         return str(self.site_visit)
@@ -55,8 +53,8 @@ class SiteVisitImage(models.Model):
 
 class ProjectAttributes(models.Model):
     project = models.ForeignKey(Project, related_name="project_attributes", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    description = administration_models.RichTextEditorField()
+    language = administration_models.LanguageField()
 
     def __str__(self):
         return str(self.project)
@@ -64,9 +62,9 @@ class ProjectAttributes(models.Model):
 
 class SiteVisitAttributes(models.Model):
     site_visit = models.ForeignKey(SiteVisit, related_name="site_visit_attributes", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    results = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    description = administration_models.RichTextEditorField()
+    results = administration_models.RichTextEditorField()
+    language = administration_models.LanguageField()
 
     def __str__(self):
         return str(self.site_visit)

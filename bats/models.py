@@ -1,12 +1,11 @@
 from django.db import models
-from ckeditor_uploader import fields as ckeditorFields
+from administration import models as administration_models
 from django import urls
 from core import helpers
-from django.conf import settings
 
 class Family(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    slug = models.SlugField(max_length=255, null=True, blank=True)
+    name = administration_models.NameField(unique=True)
+    slug = administration_models.SlugField()
 
     class Meta:
         verbose_name_plural = "Families"
@@ -16,8 +15,8 @@ class Family(models.Model):
 
 
 class Genus(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    slug = models.SlugField(max_length=255, null=True, blank=True)
+    name = administration_models.NameField(unique=True)
+    slug = administration_models.SlugField()
     family = models.ForeignKey(Family, related_name="family", on_delete=models.CASCADE)
 
     class Meta:
@@ -33,9 +32,9 @@ class Genus(models.Model):
 
 
 class Species(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False, unique=True)
-    slug = models.SlugField(max_length = 200, blank=True, unique=True, null=True)
-    cover_image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    name = administration_models.NameField(unique=True)
+    slug = administration_models.SlugField()
+    cover_image = administration_models.ImageField()
     genus = models.ForeignKey(Genus, related_name="genus", on_delete=models.CASCADE)
     is_red_book = models.BooleanField(default=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -59,13 +58,13 @@ class Species(models.Model):
 
 class SpeciesAttributes(models.Model):
     species = models.ForeignKey(Species, related_name="species_attributes", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    habitat = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    threats = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    distribution = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    conservation = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    biology = ckeditorFields.RichTextUploadingField(null=True, blank=True)
-    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    description = administration_models.RichTextEditorField()
+    habitat = administration_models.RichTextEditorField()
+    threats = administration_models.RichTextEditorField()
+    distribution = administration_models.RichTextEditorField()
+    conservation = administration_models.RichTextEditorField()
+    biology = administration_models.RichTextEditorField()
+    language = administration_models.LanguageField()
 
     def __str__(self):
         return str(self.species)
@@ -73,16 +72,16 @@ class SpeciesAttributes(models.Model):
 
 class SpeciesImage(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="species_images")
-    image = models.ImageField(upload_to=helpers.uploadImageLocation)
+    image = administration_models.ImageField()
 
     def __str__(self):
         return str(self.species)
     
 
 class SpeciesRedBook(models.Model):
-    language = models.CharField(max_length=2, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    language = administration_models.LanguageField()
     species = models.ForeignKey(Species, related_name="species_red_book", on_delete=models.CASCADE)
-    description = ckeditorFields.RichTextUploadingField(null=True, blank=True)
+    description = administration_models.RichTextEditorField()
 
     def __str__(self):
         return str(self.species)    
