@@ -50,14 +50,14 @@
           </div>
           <div class="card bottom-40">
             <div class="card-header">
-              <h4>{% translate "Researcher data for different languages" %}</h4>
+              <h4>{% translate "Author" %} {% translate "data for different languages" %}</h4>
             </div>
             <div class="card-body">
               {{ attributes_formset.management_form }} 
               {% for formset_item in attributes_formset %} 
               {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %}
               {{formset_item.non_form_errors}}
-              <h4>{% translate "Researcher Data" %} {{forloop.counter}}</h4>
+              <h4>{% translate "Data" %} {{forloop.counter}}</h4>
               <div class="row">
                 {{ formset_item.media }}
                 <div class="col-12 col-md-4 bottom-20">
@@ -102,7 +102,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-10">
-        <h4 class="elements__title">{% translate "Researchers" %}</h4>
+        <h4 class="elements__title">{% translate "Authors" %}</h4>
       </div>
     </div>
     <div class="card card-body my-3">

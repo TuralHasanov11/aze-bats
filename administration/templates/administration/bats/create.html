@@ -22,11 +22,11 @@
           <a
             class="breadcrumbs__link"
             href="{% url 'administration:bat-list' %}"
-            >{% translate "Species" %}</a
+            >{% translate "Bats" %}</a
           >
         </li>
         <li class="breadcrumbs__item breadcrumbs__item--active">
-          {% translate "Add species" %}
+          {% translate "Add Bat" %}
         </li>
       </ul>
     </div>
@@ -34,7 +34,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>{% translate "Add species" %}</span>
+            <span>{% translate "Add Bat" %}</span>
           </h2>
         </div>
       </div>
@@ -87,7 +87,7 @@
           </div>
           <div class="card bottom-40">
             <div class="card-header">
-              <h4>{% translate "Bat data for different languages" %}</h4>
+              <h4>{% translate "Bat" %} {% translate "data for different languages" %}</h4>
             </div>
             <div class="card-body">
               {{ attributes_formset.management_form }} 
@@ -95,7 +95,7 @@
               {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %}
               {{formset_item.non_form_errors}}
               <div class="row">
-                <h4>{% translate "Bat Data" %} {{forloop.counter}}</h4>
+                <h4>{% translate "Data" %} {{forloop.counter}}</h4>
                 {{ formset_item.media }}
                 <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label
@@ -185,7 +185,7 @@
           </div>
           <div class="card bottom-40">
             <div class="card-header">
-              <h4>{% translate "Red Book Information" %}</h4>
+              <h4>{% translate "Red Book information" %}</h4>
             </div>
             <div class="card-body">
               {{ red_book_formset.management_form }} 
@@ -194,7 +194,7 @@
               {{formset_item.non_form_errors}} 
               <div class="row">
                 <h4>
-                  {% translate "Red Book Information" %} {{forloop.counter}}
+                  {% translate "Red Book information" %} {{forloop.counter}}
                 </h4>
                 {{ formset_item.media }}
                 <div class="col-12 col-md-6 col-xl-4 bottom-20">

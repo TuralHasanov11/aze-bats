@@ -23,7 +23,7 @@
           >
         </li>
         <li class="breadcrumbs__item breadcrumbs__item--active">
-          {% translate "Add project" %}
+          {% translate "Add Project" %}
         </li>
       </ul>
     </div>
@@ -31,7 +31,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
-            <span>{% translate "Add project" %}</span>
+            <span>{% translate "Add Project" %}</span>
           </h2>
         </div>
       </div>
@@ -66,7 +66,7 @@
 
           <div class="card bottom-40">
             <div class="card-header">
-              <h4>{% translate "Project data for different languages" %}</h4>
+              <h4>{% translate "Project" %} {% translate "data for different languages" %}</h4>
             </div>
             <div class="card-body">
               {{ attributes_formset.management_form }} 
@@ -74,7 +74,7 @@
               {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %}
               {{formset_item.non_form_errors}}
               <div class="row">
-                <h4>{% translate "Project Data" %} {{forloop.counter}}</h4>
+                <h4>{% translate "Data" %} {{forloop.counter}}</h4>
                 {{ formset_item.media }}
                 <div class="col-12 col-md-6 col-xl-4 bottom-20">
                   <label

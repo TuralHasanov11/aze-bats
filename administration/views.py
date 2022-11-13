@@ -25,7 +25,8 @@ def loginView(request):
                 if user is not None:
                     login(request, user)
                     return redirect(request.GET.get('next'))
-                raise Exception("Username or password is incorrect!")
+                raise Exception(
+                    f'{_("Username")} {_("or")} {_("Password!")} {_("is incorrect!")}')
             except Exception as err:
                 return render(request, "administration/auth/login.html", {"form": form, "login_err": str(err)})
         return render(request, "administration/auth/login.html", {"form": form})
@@ -79,9 +80,9 @@ def batCreate(request):
             for item in red_book:
                 item.species = bat
                 item.save()
-            messages.success(request, _("Bat added!"))
+            messages.success(request, f'{_("Bat")}  {_("added!")}')
             return redirect("administration:bat-list")
-        messages.error(request, _("Bat cannot be added!"))
+        messages.error(request, f'{_("Bat")}  {_("cannot be added!")}')
         return render(request, "administration/bats/create.html", {"form": form, "attributes_formset": attributes_formset, "images_formset": images_formset, "red_book_formset": red_book_formset})
     form = forms.BatSpeciesCreateForm()
     attributes_formset = forms.SpeciesAttributesFormset()
@@ -95,7 +96,7 @@ def batCreate(request):
 def batUpdateDelete(request, id):
     if request.method == "DELETE":
         batModels.Species.objects.get(id=id).delete()
-        return HttpResponse(f"Species {id} deleted")
+        return HttpResponse(f'{_("Bat")}  {_("deleted!")}')
 
     bat = batModels.Species.objects.prefetch_related(
         'species_images').get(id=id)
@@ -113,9 +114,9 @@ def batUpdateDelete(request, id):
             attributes_formset.save()
             images_formset.save()
             red_book_formset.save()
-            messages.success(request, _("Bat updated!"))
+            messages.success(request, f'{_("Bat")}  {_("updated!")}')
             return redirect("administration:bat-update-delete", id=id)
-        messages.error(request, _("Bat cannot be updated!"))
+        messages.error(request, f'{_("Bat")}  {_("cannot be added!")}')
         return render(request, "administration/bats/update.html", {"form": form, "bat": bat, "attributes_formset": attributes_formset, "images_formset": images_formset, "red_book_formset": red_book_formset})
     form = forms.BatSpeciesUpdateForm(instance=bat)
     attributes_formset = forms.SpeciesAttributesFormset(instance=bat)
@@ -137,9 +138,9 @@ def authorListCreate(request):
             for attr in attributes:
                 attr.author = author
                 attr.save()
-            messages.success(request, _("Researcher added!"))
+            messages.success(request, f'{_("Author")}  {_("added!")}')
             return redirect("administration:author-list-create")
-        messages.error(request, _("Researcher cannot be added!"))
+        messages.error(request, f"{_('Author')} {_('cannot be added!')}")
         return render(request, "administration/authors/list.html", {"form": form, "attributes_formset": attributes_formset})
     form = forms.AuthorForm()
     attributes_formset = forms.AuthorAttributesFormset()
@@ -153,7 +154,7 @@ def authorListCreate(request):
 def authorUpdateDelete(request, id):
     if request.method == "DELETE":
         baseModels.Author.objects.get(id=id).delete()
-        return HttpResponse(f"Author {id} deleted")
+        return HttpResponse(f'{_("Author")}  {_("deleted!")}')
 
     author_attributes = baseModels.AuthorAttributes.objects.filter(
         language=translation.get_language())
@@ -168,9 +169,9 @@ def authorUpdateDelete(request, id):
         if form.is_valid() and attributes_formset.is_valid():
             author = form.save()
             attributes_formset.save()
-            messages.success(request, _("Researcher updated!"))
+            messages.success(request, f'{_("Author")}  {_("updated!")}')
             return redirect("administration:author-update-delete", id=id)
-        messages.error(request, _("Researcher cannot be updated!"))
+        messages.error(request, f"{_('Author')} {_('cannot be updated!')}")
         return render(request, "administration/authors/update.html", {"form": form, "author": author, "attributes_formset": attributes_formset})
     form = forms.AuthorForm(instance=author)
     attributes_formset = forms.AuthorAttributesFormset(instance=author)
@@ -184,9 +185,9 @@ def articleListCreate(request):
         form = forms.ArticleForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, _("Article added!"))
+            messages.success(request, f'{_("Article")}  {_("added!")}')
             return redirect("administration:article-list-create")
-        messages.error(request, _("Article cannot be added!"))
+        messages.error(request, f"{_('Article')} {_('cannot be added!')}")
         return render(request, "administration/articles/list.html", {"form": form})
     form = forms.ArticleForm()
     articles = baseModels.Article.objects.all()
@@ -198,7 +199,7 @@ def articleListCreate(request):
 def articleUpdateDelete(request, id):
     if request.method == "DELETE":
         baseModels.Article.objects.get(id=id).delete()
-        return HttpResponse(f"Article {id} deleted")
+        return HttpResponse(f'{_("Article")}  {_("deleted!")}')
 
     article = get_object_or_404(baseModels.Article, id=id)
     if request.POST:
@@ -206,9 +207,9 @@ def articleUpdateDelete(request, id):
             instance=article, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, _("Article updated!"))
+            messages.success(request, f'{_("Article")}  {_("updated!")}')
             return redirect("administration:article-update-delete", id=id)
-        messages.error(request, _("Article cannot be updated!"))
+        messages.error(request, f'{_("Article")}  {_("cannot be added!")}')
         return render(request, "administration/articles/update.html", {"form": form, "article": article})
     form = forms.ArticleForm(instance=article)
     return render(request, "administration/articles/update.html", {"form": form, "article": article})
@@ -240,9 +241,9 @@ def projectCreate(request):
             for img in images:
                 img.project = project
                 img.save()
-            messages.success(request, _("Project added!"))
+            messages.success(request, f'{_("Project")}  {_("added!")}')
             return redirect("administration:project-list")
-        messages.error(request, _("Project cannot be added!"))
+        messages.error(request, f'{_("Project")}  {_("cannot be added!")}')
         return render(request, "administration/projects/create.html", {"form": form, "attributes_formset": attributes_formset, "images_formset": images_formset})
     form = forms.ProjectCreateForm()
     attributes_formset = forms.ProjectAttributesFormset()
@@ -255,7 +256,7 @@ def projectCreate(request):
 def projectUpdateDelete(request, id):
     if request.method == "DELETE":
         activityModels.Project.objects.get(id=id).delete()
-        return HttpResponse(f"Project {id} deleted")
+        return HttpResponse(f'{_("Project")}  {_("deleted!")}')
 
     project = activityModels.Project.objects.prefetch_related(
         'project_images').get(id=id)
@@ -270,9 +271,9 @@ def projectUpdateDelete(request, id):
             project = form.save()
             attributes_formset.save()
             images_formset.save()
-            messages.success(request, _("Project updated!"))
+            messages.success(request, f'{_("Project")}  {_("updated!")}')
             return redirect("administration:project-update-delete", id=id)
-        messages.success(request, _("Project cannot be updated!"))
+        messages.success(request, f'{_("Project")}  {_("cannot be updated!")}')
         return render(request, "administration/projects/update.html", {"form": form, "attributes_formset": attributes_formset, "images_formset": images_formset})
     form = forms.ProjectUpdateForm(instance=project)
     attributes_formset = forms.ProjectAttributesFormset(instance=project)
@@ -307,9 +308,10 @@ def visitCreate(request):
             for img in images:
                 img.site_visit = visit
                 img.save()
-            messages.success(request, _("Site Visit added!"))
+            messages.success(request, f'{_("Site Visit")}  {_("added!")}')
             return redirect("administration:visit-list")
-        messages.success(request, _("Site Visit cannot be added!"))
+        messages.success(
+            request, f'{_("Site Visit")}  {_("cannot be added!")}')
         return render(request, "administration/visits/create.html", {"form": form, "attributes_formset": attributes_formset, "images_formset": images_formset})
     form = forms.SiteVisitCreateForm()
     attributes_formset = forms.SiteVisitAttributesFormset()
@@ -322,7 +324,7 @@ def visitCreate(request):
 def visitUpdateDelete(request, id):
     if request.method == "DELETE":
         activityModels.SiteVisit.objects.get(id=id).delete()
-        return HttpResponse(f"SiteVisit {id} deleted")
+        return HttpResponse(f'{_("Site Visit")}  {_("deleted!")}')
 
     visit = activityModels.SiteVisit.objects.prefetch_related(
         'site_visit_images').get(id=id)
@@ -337,9 +339,10 @@ def visitUpdateDelete(request, id):
             visit = form.save()
             attributes_formset.save()
             images_formset.save()
-            messages.success(request, _("Site Visit updated!"))
+            messages.success(request, f'{_("Site Visit")}  {_("updated!")}')
             return redirect("administration:visit-update-delete", id=id)
-        messages.success(request, _("Site Visit cannot be updated!"))
+        messages.success(
+            request, f'{_("Site Visit")}  {_("cannot be updated!")}')
         return render(request, "administration/visits/update.html", {"form": form, "visit": visit, "attributes_formset": attributes_formset, "images_formset": images_formset})
 
     form = forms.SiteVisitUpdateForm(instance=visit)
