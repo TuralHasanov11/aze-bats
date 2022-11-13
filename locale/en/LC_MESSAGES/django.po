@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 12:16+0400\n"
+"POT-Creation-Date: 2022-11-12 20:19+0100\n"
 "PO-Revision-Date: 2022-10-15 18:48+0400\n"
 "Last-Translator:   <hasanovtural11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,15 +24,15 @@ msgid "Project"
 msgstr ""
 
 #: .\activities\templates\activities\projects.html:4
-#: .\activities\templates\activities\projects.html:15
-#: .\administration\templates\administration\projects\create.html:15
-#: .\administration\templates\administration\projects\list.html:4
-#: .\administration\templates\administration\projects\list.html:13
+#: .\activities\templates\activities\projects.html:20
+#: .\administration\templates\administration\projects\create.html:22
+#: .\administration\templates\administration\projects\list.html:2
 #: .\administration\templates\administration\projects\list.html:18
-#: .\administration\templates\administration\projects\update.html:15
+#: .\administration\templates\administration\projects\list.html:24
+#: .\administration\templates\administration\projects\update.html:22
 #: .\base\templates\base\index.html:87 .\base\templates\base\search.html:24
-#: .\core\context_processors.py:19 .\core\context_processors.py:25
-#: .\templates\inc\footer.html:57
+#: .\core\context_processors.py:20 .\core\context_processors.py:26
+#: .\templates\components\footer.html:52
 msgid "Projects"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgid "Site Visit"
 msgstr ""
 
 #: .\activities\templates\activities\visit.html:43
-#: .\administration\forms.py:184
+#: .\administration\forms.py:194
 msgid "Results"
 msgstr ""
 
@@ -50,14 +50,14 @@ msgid "Visits"
 msgstr ""
 
 #: .\activities\templates\activities\visits.html:15
-#: .\administration\templates\administration\visits\create.html:15
-#: .\administration\templates\administration\visits\list.html:4
-#: .\administration\templates\administration\visits\list.html:14
+#: .\administration\templates\administration\visits\create.html:21
+#: .\administration\templates\administration\visits\list.html:2
 #: .\administration\templates\administration\visits\list.html:19
-#: .\administration\templates\administration\visits\list.html:21
-#: .\administration\templates\administration\visits\update.html:14
+#: .\administration\templates\administration\visits\list.html:25
+#: .\administration\templates\administration\visits\list.html:29
+#: .\administration\templates\administration\visits\update.html:21
 #: .\base\templates\base\index.html:97 .\base\templates\base\search.html:76
-#: .\core\context_processors.py:26 .\templates\inc\footer.html:60
+#: .\core\context_processors.py:27 .\templates\components\footer.html:55
 msgid "Site Visits"
 msgstr ""
 
@@ -74,18 +74,18 @@ msgid "Is it a Red Book specie?"
 msgstr ""
 
 #: .\administration\forms.py:17 .\administration\forms.py:28
-#: .\administration\forms.py:83 .\administration\forms.py:95
-#: .\administration\forms.py:105 .\administration\forms.py:114
-#: .\administration\forms.py:153 .\administration\forms.py:162
-#: .\administration\templates\administration\articles\list.html:82
-#: .\administration\templates\administration\authors\list.html:107
-#: .\administration\templates\administration\bats\list.html:30
-#: .\administration\templates\administration\visits\list.html:31
+#: .\administration\forms.py:93 .\administration\forms.py:105
+#: .\administration\forms.py:115 .\administration\forms.py:124
+#: .\administration\forms.py:163 .\administration\forms.py:172
+#: .\administration\templates\administration\articles\list.html:84
+#: .\administration\templates\administration\authors\list.html:115
+#: .\administration\templates\administration\bats\list.html:44
+#: .\administration\templates\administration\visits\list.html:42
 msgid "Name"
 msgstr ""
 
 #: .\administration\forms.py:18 .\administration\forms.py:29
-#: .\administration\templates\administration\bats\list.html:31
+#: .\administration\templates\administration\bats\list.html:45
 #: .\bats\templates\bats\detail.html:68
 msgid "Genus"
 msgstr ""
@@ -95,22 +95,23 @@ msgid "Select Genus"
 msgstr ""
 
 #: .\administration\forms.py:19 .\administration\forms.py:30
-#: .\administration\forms.py:76 .\administration\forms.py:106
-#: .\administration\forms.py:115 .\administration\forms.py:154
-#: .\administration\forms.py:163
-#: .\administration\templates\administration\bats\list.html:32
+#: .\administration\forms.py:86 .\administration\forms.py:116
+#: .\administration\forms.py:125 .\administration\forms.py:164
+#: .\administration\forms.py:173
+#: .\administration\templates\administration\bats\list.html:46
 msgid "Cover Image"
 msgstr ""
 
-#: .\administration\forms.py:51 .\administration\forms.py:84
-#: .\administration\forms.py:134 .\administration\forms.py:182
-#: .\templates\inc\menu.html:29 .\templates\inc\menu.html:115
+#: .\administration\forms.py:51 .\administration\forms.py:66
+#: .\administration\forms.py:94 .\administration\forms.py:144
+#: .\administration\forms.py:192 .\templates\components\menu.html:35
+#: .\templates\components\menu.html:116
 msgid "Language"
 msgstr ""
 
-#: .\administration\forms.py:52 .\administration\forms.py:85
-#: .\administration\forms.py:135 .\administration\forms.py:183
-#: .\bats\templates\bats\detail.html:46
+#: .\administration\forms.py:52 .\administration\forms.py:67
+#: .\administration\forms.py:95 .\administration\forms.py:145
+#: .\administration\forms.py:193 .\bats\templates\bats\detail.html:46
 msgid "Description"
 msgstr ""
 
@@ -134,119 +135,138 @@ msgstr ""
 msgid "Threats"
 msgstr ""
 
-#: .\administration\forms.py:65 .\administration\forms.py:142
-#: .\administration\forms.py:191
-#: .\administration\templates\administration\authors\list.html:108
-#: .\administration\templates\administration\bats\create.html:168
-#: .\administration\templates\administration\bats\update.html:178
-#: .\administration\templates\administration\projects\create.html:109
-#: .\administration\templates\administration\projects\update.html:123
-#: .\administration\templates\administration\visits\create.html:117
-#: .\administration\templates\administration\visits\update.html:132
+#: .\administration\forms.py:74 .\administration\forms.py:152
+#: .\administration\forms.py:201
+#: .\administration\templates\administration\authors\list.html:116
+#: .\administration\templates\administration\bats\create.html:174
+#: .\administration\templates\administration\bats\update.html:188
+#: .\administration\templates\administration\projects\create.html:108
+#: .\administration\templates\administration\projects\update.html:134
+#: .\administration\templates\administration\visits\create.html:122
+#: .\administration\templates\administration\visits\update.html:140
 #: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
 msgid "Image"
 msgstr ""
 
-#: .\administration\forms.py:96
+#: .\administration\forms.py:106
 msgid "Link"
 msgstr ""
 
-#: .\administration\forms.py:97
-#: .\administration\templates\administration\articles\list.html:83
+#: .\administration\forms.py:107
+#: .\administration\templates\administration\articles\list.html:85
 msgid "Author"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:5
-#: .\administration\templates\administration\articles\update.html:7
+#: .\administration\models.py:9
+msgid "Rich text editor field"
+msgstr ""
+
+#: .\administration\models.py:18
+msgid "Language field"
+msgstr ""
+
+#: .\administration\models.py:28
+msgid "Image field"
+msgstr ""
+
+#: .\administration\models.py:36
+msgid "Slug field"
+msgstr ""
+
+#: .\administration\models.py:47
+msgid "Name field"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:7
 #: .\administration\templates\administration\auth\login.html:7
 #: .\administration\templates\administration\authors\list.html:4
 #: .\administration\templates\administration\authors\update.html:5
 #: .\administration\templates\administration\bats\create.html:8
 #: .\administration\templates\administration\bats\list.html:4
-#: .\administration\templates\administration\bats\update.html:8
+#: .\administration\templates\administration\bats\update.html:5
 #: .\administration\templates\administration\dashboard.html:4
 #: .\administration\templates\administration\dashboard.html:15
-#: .\administration\templates\administration\projects\create.html:8
-#: .\administration\templates\administration\projects\list.html:4
-#: .\administration\templates\administration\projects\update.html:8
-#: .\administration\templates\administration\visits\create.html:8
-#: .\administration\templates\administration\visits\list.html:4
-#: .\administration\templates\administration\visits\update.html:7
-#: .\templates\inc\header.html:80 .\templates\inc\menu.html:13
-#: .\templates\inc\menu.html:80
+#: .\administration\templates\administration\projects\create.html:5
+#: .\administration\templates\administration\projects\list.html:2
+#: .\administration\templates\administration\projects\update.html:5
+#: .\administration\templates\administration\visits\create.html:4
+#: .\administration\templates\administration\visits\list.html:2
+#: .\administration\templates\administration\visits\update.html:4
+#: .\templates\components\header.html:85 .\templates\components\menu.html:16
+#: .\templates\components\menu.html:81
 msgid "Admin"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:5
-#: .\administration\templates\administration\articles\list.html:12
-#: .\administration\templates\administration\articles\list.html:73
-#: .\administration\templates\administration\articles\update.html:14
-#: .\base\templates\base\articles.html:4 .\base\templates\base\articles.html:15
-#: .\core\context_processors.py:21 .\core\context_processors.py:29
-#: .\templates\inc\footer.html:63
+#: .\administration\templates\administration\articles\list.html:7
+#: .\administration\templates\administration\articles\list.html:21
+#: .\administration\templates\administration\articles\list.html:75
+#: .\administration\templates\administration\articles\update.html:20
+#: .\base\templates\base\articles.html:1 .\base\templates\base\articles.html:17
+#: .\core\context_processors.py:22 .\core\context_processors.py:31
+#: .\templates\components\footer.html:58
 msgid "Articles"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:11
+#: .\administration\templates\administration\articles\list.html:17
 #: .\administration\templates\administration\articles\update.html:13
 #: .\administration\templates\administration\auth\login.html:7
-#: .\administration\templates\administration\authors\list.html:13
+#: .\administration\templates\administration\authors\list.html:17
 #: .\administration\templates\administration\authors\update.html:11
-#: .\administration\templates\administration\bats\create.html:14
-#: .\administration\templates\administration\bats\list.html:12
-#: .\administration\templates\administration\bats\update.html:14
+#: .\administration\templates\administration\bats\create.html:18
+#: .\administration\templates\administration\bats\list.html:17
+#: .\administration\templates\administration\bats\update.html:15
 #: .\administration\templates\administration\dashboard.html:4
-#: .\administration\templates\administration\projects\create.html:14
-#: .\administration\templates\administration\projects\list.html:12
-#: .\administration\templates\administration\projects\update.html:14
+#: .\administration\templates\administration\projects\create.html:15
+#: .\administration\templates\administration\projects\list.html:14
+#: .\administration\templates\administration\projects\update.html:15
 #: .\administration\templates\administration\visits\create.html:14
-#: .\administration\templates\administration\visits\list.html:13
-#: .\administration\templates\administration\visits\update.html:13
+#: .\administration\templates\administration\visits\list.html:15
+#: .\administration\templates\administration\visits\update.html:14
 msgid "Dashboard"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:17
+#: .\administration\templates\administration\articles\list.html:29
 msgid "Add article"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:59
-#: .\administration\templates\administration\articles\update.html:67
-#: .\administration\templates\administration\authors\list.html:88
+#: .\administration\templates\administration\articles\list.html:61
+#: .\administration\templates\administration\articles\update.html:75
+#: .\administration\templates\administration\authors\list.html:95
 #: .\administration\templates\administration\authors\update.html:108
-#: .\administration\templates\administration\bats\create.html:184
-#: .\administration\templates\administration\bats\update.html:203
+#: .\administration\templates\administration\bats\create.html:231
+#: .\administration\templates\administration\bats\update.html:253
 #: .\administration\templates\administration\projects\create.html:125
-#: .\administration\templates\administration\projects\update.html:148
-#: .\administration\templates\administration\visits\create.html:133
-#: .\administration\templates\administration\visits\update.html:157
+#: .\administration\templates\administration\projects\update.html:159
+#: .\administration\templates\administration\visits\create.html:139
+#: .\administration\templates\administration\visits\update.html:165
 msgid "Save"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:84
-#: .\administration\templates\administration\authors\list.html:109
-#: .\administration\templates\administration\bats\list.html:33
-#: .\administration\templates\administration\visits\list.html:32
+#: .\administration\templates\administration\articles\list.html:86
+#: .\administration\templates\administration\authors\list.html:117
+#: .\administration\templates\administration\bats\list.html:47
+#: .\administration\templates\administration\visits\list.html:43
 msgid "Operations"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:99
-#: .\administration\templates\administration\articles\update.html:22
-#: .\administration\templates\administration\authors\list.html:132
+#: .\administration\templates\administration\articles\list.html:101
+#: .\administration\templates\administration\articles\update.html:32
+#: .\administration\templates\administration\authors\list.html:142
 #: .\administration\templates\administration\authors\update.html:20
-#: .\administration\templates\administration\bats\list.html:53
-#: .\administration\templates\administration\bats\update.html:23
-#: .\administration\templates\administration\projects\list.html:43
-#: .\administration\templates\administration\projects\update.html:23
-#: .\administration\templates\administration\visits\list.html:44
-#: .\administration\templates\administration\visits\update.html:22
+#: .\administration\templates\administration\bats\list.html:67
+#: .\administration\templates\administration\bats\update.html:34
+#: .\administration\templates\administration\projects\list.html:54
+#: .\administration\templates\administration\projects\update.html:34
+#: .\administration\templates\administration\visits\list.html:55
+#: .\administration\templates\administration\visits\update.html:33
 msgid "Edit"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:105
-#: .\administration\templates\administration\authors\list.html:138
-#: .\administration\templates\administration\bats\list.html:59
-#: .\administration\templates\administration\projects\list.html:49
-#: .\administration\templates\administration\visits\list.html:50
+#: .\administration\templates\administration\articles\list.html:108
+#: .\administration\templates\administration\authors\list.html:149
+#: .\administration\templates\administration\bats\list.html:74
+#: .\administration\templates\administration\projects\list.html:61
+#: .\administration\templates\administration\visits\list.html:62
 #: .\venv\Lib\site-packages\django\forms\formsets.py:496
 msgid "Delete"
 msgstr ""
@@ -257,26 +277,26 @@ msgid "Login"
 msgstr ""
 
 #: .\administration\templates\administration\authors\list.html:4
-#: .\administration\templates\administration\authors\list.html:14
+#: .\administration\templates\administration\authors\list.html:21
 #: .\administration\templates\administration\authors\update.html:12
 msgid "Authors"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:19
-msgid "Add researcher"
+#: .\administration\templates\administration\authors\list.html:29
+msgid "Add author"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:43
+#: .\administration\templates\administration\authors\list.html:53
 #: .\administration\templates\administration\authors\update.html:53
 msgid "Researcher data for different languages"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:53
+#: .\administration\templates\administration\authors\list.html:60
 #: .\administration\templates\administration\authors\update.html:64
 msgid "Researcher Data"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:98
+#: .\administration\templates\administration\authors\list.html:106
 msgid "Researchers"
 msgstr ""
 
@@ -284,42 +304,50 @@ msgstr ""
 msgid "Add Bat"
 msgstr ""
 
-#: .\administration\templates\administration\bats\create.html:15
-#: .\administration\templates\administration\bats\list.html:13
-#: .\administration\templates\administration\bats\list.html:18
-#: .\administration\templates\administration\bats\list.html:20
-#: .\administration\templates\administration\bats\update.html:15
+#: .\administration\templates\administration\bats\create.html:25
+#: .\administration\templates\administration\bats\list.html:21
+#: .\administration\templates\administration\bats\list.html:27
+#: .\administration\templates\administration\bats\list.html:31
+#: .\administration\templates\administration\bats\update.html:22
 msgid "Species"
 msgstr ""
 
-#: .\administration\templates\administration\bats\create.html:16
-#: .\administration\templates\administration\bats\create.html:23
+#: .\administration\templates\administration\bats\create.html:29
+#: .\administration\templates\administration\bats\create.html:37
 msgid "Add species"
 msgstr ""
 
-#: .\administration\templates\administration\bats\create.html:79
-#: .\administration\templates\administration\bats\update.html:79
+#: .\administration\templates\administration\bats\create.html:90
+#: .\administration\templates\administration\bats\update.html:87
 msgid "Bat data for different languages"
 msgstr ""
 
-#: .\administration\templates\administration\bats\create.html:92
-#: .\administration\templates\administration\bats\update.html:90
+#: .\administration\templates\administration\bats\create.html:98
+#: .\administration\templates\administration\bats\update.html:95
 msgid "Bat Data"
 msgstr ""
 
-#: .\administration\templates\administration\bats\create.html:157
-#: .\administration\templates\administration\bats\update.html:167
-#: .\administration\templates\administration\projects\create.html:98
-#: .\administration\templates\administration\projects\update.html:112
-#: .\administration\templates\administration\visits\create.html:106
-#: .\administration\templates\administration\visits\update.html:121
+#: .\administration\templates\administration\bats\create.html:166
+#: .\administration\templates\administration\bats\update.html:180
+#: .\administration\templates\administration\projects\create.html:103
+#: .\administration\templates\administration\projects\update.html:125
+#: .\administration\templates\administration\visits\create.html:114
+#: .\administration\templates\administration\visits\update.html:132
 msgid "Additional images"
 msgstr ""
 
+#: .\administration\templates\administration\bats\create.html:191
+#: .\administration\templates\administration\bats\create.html:204
+#: .\administration\templates\administration\bats\update.html:214
+#: .\administration\templates\administration\bats\update.html:225
+msgid "Red Book Information"
+msgstr ""
+
 #: .\administration\templates\administration\bats\list.html:4
-#: .\base\templates\base\index.html:77 .\bats\templates\bats\index.html:4
-#: .\bats\templates\bats\index.html:15 .\core\context_processors.py:18
-#: .\core\context_processors.py:28 .\templates\inc\footer.html:54
+#: .\base\templates\base\index.html:77 .\bats\templates\bats\gallery.html:4
+#: .\bats\templates\bats\index.html:4 .\bats\templates\bats\index.html:23
+#: .\core\context_processors.py:19 .\core\context_processors.py:29
+#: .\templates\components\footer.html:49
 msgid "Bats"
 msgstr ""
 
@@ -327,122 +355,122 @@ msgstr ""
 msgid "Sections"
 msgstr ""
 
-#: .\administration\templates\administration\projects\create.html:8
-#: .\administration\templates\administration\projects\list.html:20
+#: .\administration\templates\administration\projects\create.html:5
+#: .\administration\templates\administration\projects\list.html:28
 msgid "Add Project"
 msgstr ""
 
-#: .\administration\templates\administration\projects\create.html:16
-#: .\administration\templates\administration\projects\create.html:23
+#: .\administration\templates\administration\projects\create.html:26
+#: .\administration\templates\administration\projects\create.html:34
 msgid "Add project"
 msgstr ""
 
-#: .\administration\templates\administration\projects\create.html:61
-#: .\administration\templates\administration\projects\update.html:65
+#: .\administration\templates\administration\projects\create.html:69
+#: .\administration\templates\administration\projects\update.html:73
 msgid "Project data for different languages"
 msgstr ""
 
-#: .\administration\templates\administration\projects\create.html:72
-#: .\administration\templates\administration\projects\update.html:76
+#: .\administration\templates\administration\projects\create.html:77
+#: .\administration\templates\administration\projects\update.html:83
 msgid "Project Data"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:8
+#: .\administration\templates\administration\visits\create.html:4
 msgid "Add Site Visit"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:16
-#: .\administration\templates\administration\visits\create.html:23
+#: .\administration\templates\administration\visits\create.html:25
+#: .\administration\templates\administration\visits\create.html:33
 msgid "Add site visit"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:61
-#: .\administration\templates\administration\visits\update.html:65
+#: .\administration\templates\administration\visits\create.html:68
+#: .\administration\templates\administration\visits\update.html:73
 msgid "Site Visit data for different languages"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:72
-#: .\administration\templates\administration\visits\update.html:76
+#: .\administration\templates\administration\visits\create.html:79
+#: .\administration\templates\administration\visits\update.html:81
 msgid "Site Visit Data"
 msgstr ""
 
-#: .\administration\views.py:71
+#: .\administration\views.py:82
 msgid "Bat added!"
 msgstr ""
 
-#: .\administration\views.py:73
+#: .\administration\views.py:84
 msgid "Bat cannot be added!"
 msgstr ""
 
-#: .\administration\views.py:97
+#: .\administration\views.py:116
 msgid "Bat updated!"
 msgstr ""
 
-#: .\administration\views.py:99
+#: .\administration\views.py:118
 msgid "Bat cannot be updated!"
 msgstr ""
 
-#: .\administration\views.py:119
+#: .\administration\views.py:140
 msgid "Researcher added!"
 msgstr ""
 
-#: .\administration\views.py:121
+#: .\administration\views.py:142
 msgid "Researcher cannot be added!"
 msgstr ""
 
-#: .\administration\views.py:146
+#: .\administration\views.py:171
 msgid "Researcher updated!"
 msgstr ""
 
-#: .\administration\views.py:148
+#: .\administration\views.py:173
 msgid "Researcher cannot be updated!"
 msgstr ""
 
-#: .\administration\views.py:162
+#: .\administration\views.py:187
 msgid "Article added!"
 msgstr ""
 
-#: .\administration\views.py:164
+#: .\administration\views.py:189
 msgid "Article cannot be added!"
 msgstr ""
 
-#: .\administration\views.py:183
+#: .\administration\views.py:209
 msgid "Article updated!"
 msgstr ""
 
-#: .\administration\views.py:185
+#: .\administration\views.py:211
 msgid "Article cannot be updated!"
 msgstr ""
 
-#: .\administration\views.py:215
+#: .\administration\views.py:243
 msgid "Project added!"
 msgstr ""
 
-#: .\administration\views.py:217
+#: .\administration\views.py:245
 msgid "Project cannot be added!"
 msgstr ""
 
-#: .\administration\views.py:241
+#: .\administration\views.py:273
 msgid "Project updated!"
 msgstr ""
 
-#: .\administration\views.py:243
+#: .\administration\views.py:275
 msgid "Project cannot be updated!"
 msgstr ""
 
-#: .\administration\views.py:275
+#: .\administration\views.py:310
 msgid "Site Visit added!"
 msgstr ""
 
-#: .\administration\views.py:277
+#: .\administration\views.py:312
 msgid "Site Visit cannot be added!"
 msgstr ""
 
-#: .\administration\views.py:301
+#: .\administration\views.py:340
 msgid "Site Visit updated!"
 msgstr ""
 
-#: .\administration\views.py:303
+#: .\administration\views.py:342
 msgid "Site Visit cannot be updated!"
 msgstr ""
 
@@ -451,19 +479,21 @@ msgid "Banner Title"
 msgstr ""
 
 #: .\base\data.py:5
-msgid "Banner Text"
+msgid ""
+"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio aut minus "
+"accusamus beatae quasi! Assumenda non mollitia possimus quam sed."
 msgstr ""
 
-#: .\base\data.py:8
+#: .\base\data.py:9
 msgid "Country Statistics"
 msgstr ""
 
-#: .\base\templates\base\articles.html:34
+#: .\base\templates\base\articles.html:41
 msgid "Visit"
 msgstr ""
 
 #: .\base\templates\base\index.html:5 .\bats\templates\bats\detail.html:27
-#: .\templates\inc\footer.html:51
+#: .\core\context_processors.py:17 .\templates\components\footer.html:46
 msgid "Home"
 msgstr ""
 
@@ -483,19 +513,18 @@ msgstr ""
 msgid "Recent Projects"
 msgstr ""
 
-#: .\base\templates\base\index.html:139 .\base\templates\base\index.html:158
-#: .\base\templates\base\index.html:192 .\base\templates\base\search.html:40
-#: .\base\templates\base\search.html:60 .\base\templates\base\search.html:94
-#: .\bats\templates\bats\index.html:40
+#: .\base\templates\base\index.html:139 .\base\templates\base\index.html:188
+#: .\base\templates\base\search.html:40 .\base\templates\base\search.html:60
+#: .\base\templates\base\search.html:94 .\bats\templates\bats\bat.html:5
 msgid "More"
 msgstr ""
 
-#: .\base\templates\base\index.html:174
+#: .\base\templates\base\index.html:170
 msgid "Recent Site Visits"
 msgstr ""
 
-#: .\base\templates\base\search.html:4 .\templates\inc\header.html:105
-#: .\templates\inc\menu.html:38
+#: .\base\templates\base\search.html:4 .\templates\components\header.html:110
+#: .\templates\components\menu.html:44
 msgid "Search"
 msgstr ""
 
@@ -519,48 +548,52 @@ msgstr ""
 msgid "Specie"
 msgstr ""
 
-#: .\bats\templates\bats\index.html:14
+#: .\bats\templates\bats\gallery.html:20 .\core\context_processors.py:30
+msgid "Gallery"
+msgstr ""
+
+#: .\bats\templates\bats\index.html:20
 msgid "All Species"
 msgstr ""
 
-#: .\bats\templates\bats\index.html:28
+#: .\bats\templates\bats\index.html:41
 msgid "All"
 msgstr ""
 
-#: .\core\context_processors.py:20
+#: .\core\context_processors.py:21
 msgid "Site visits"
 msgstr ""
 
-#: .\core\context_processors.py:22
+#: .\core\context_processors.py:23
 msgid "Our Researchers"
 msgstr ""
 
-#: .\core\settings.py:113
+#: .\core\settings.py:125
 msgid "English"
 msgstr ""
 
-#: .\core\settings.py:114
+#: .\core\settings.py:126
 msgid "Azerbaijani"
 msgstr ""
 
-#: .\templates\inc\footer.html:16 .\templates\inc\header.html:26
+#: .\templates\components\footer.html:16 .\templates\components\header.html:26
 msgid "Phone"
 msgstr ""
 
-#: .\templates\inc\footer.html:20
+#: .\templates\components\footer.html:20
 msgid "Email"
 msgstr ""
 
-#: .\templates\inc\footer.html:48
+#: .\templates\components\footer.html:43
 msgid "Menu"
 msgstr ""
 
-#: .\templates\inc\header.html:65 .\templates\inc\menu.html:22
-#: .\templates\inc\menu.html:98
+#: .\templates\components\header.html:70 .\templates\components\menu.html:28
+#: .\templates\components\menu.html:99
 msgid "Activities"
 msgstr ""
 
-#: .\templates\inc\header.html:98
+#: .\templates\components\header.html:103
 msgid "Logout"
 msgstr ""
 
@@ -1808,4 +1841,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
 msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\isort\main.py:158
+msgid "show this help message and exit"
 msgstr ""

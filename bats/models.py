@@ -2,6 +2,7 @@ from django.db import models
 from administration import models as administration_models
 from django import urls
 from core import helpers
+from django.conf import settings
 
 class Family(models.Model):
     name = administration_models.NameField(unique=True)
@@ -49,6 +50,10 @@ class Species(models.Model):
 
     def get_absolute_url(self):
         return urls.reverse("bats:detail", kwargs={"slug": self.slug})
+    
+    @property
+    def get_absolute_cover_image_url(self):
+        return "{0}{1}".format(settings.MEDIA_URL, self.cover_image.url)
 
     def save(self, *args, **kwargs):
         if not self.slug:

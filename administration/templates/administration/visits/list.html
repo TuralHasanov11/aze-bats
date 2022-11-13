@@ -1,8 +1,6 @@
-{% extends 'app.html' %} 
-{% load static %} 
-{% load i18n %}
-{% block title %}{% translate "Admin" %} - {% translate "Site Visits" %}{% endblock title %}
-{% block stylesheet %}
+{% extends 'app.html' %} {% load static %} {% load i18n %} 
+{% block title %}{% translate "Admin" %} - {% translate "Site Visits" %}{% endblock title %} 
+{%  block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} 
 {% block content %}
@@ -10,20 +8,30 @@
   <div class="container py-5">
     <div class="bottom-40">
       <ul class="breadcrumbs breadcrumbs--with-dot">
-        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:dashboard' %}">{% translate "Dashboard" %}</a></li>
-        <li class="breadcrumbs__item breadcrumbs__item--active">{% translate "Site Visits" %}</li>
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:dashboard' %}"
+            >{% translate "Dashboard" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">
+          {% translate "Site Visits" %}
+        </li>
       </ul>
     </div>
     <div class="row">
       <div class="col-xl-10">
         <h4 class="elements__title">{% translate "Site Visits" %}</h4>
-        <a class="button button--main button--rounded" href="{% url 'administration:visit-create'%}"
+        <a
+          class="button button--main button--rounded"
+          href="{% url 'administration:visit-create'%}"
           >{% translate "Site Visits" %}</a
         >
       </div>
     </div>
     <div class="container my-3">
-      {% include 'inc/messages.html' with messages=messages %}
+      {% include 'components/messages.html' with messages=messages %}
     </div>
     <div class="card card-body my-3">
       <div class="table-responsive">
@@ -50,7 +58,9 @@
                   type="button"
                   class="btn btn-danger btn-delete"
                   data-url="{% url 'administration:visit-update-delete' id=visit.id %}"
-                  >{% translate "Delete" %}</button>
+                >
+                  {% translate "Delete" %}
+                </button>
               </td>
             </tr>
             {% endfor %}
@@ -60,11 +70,9 @@
     </div>
   </div>
 </section>
-{% endblock content%}
-
-{% block scripts %}
+{% endblock content%} {% block scripts %}
 <script>
-  let csrftoken = '{{ csrf_token }}'
+  let csrftoken = "{{ csrf_token }}";
 </script>
 <script src="{% static 'js/delete-table-record.js' %}"></script>
 {% endblock scripts %}

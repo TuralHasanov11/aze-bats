@@ -3,36 +3,24 @@
 {% load static %}
 {% block title %}{% translate "Visits" %}{% endblock title %}
 {% block content %}
-<section class="promo-primary">
-    <picture>
-        <source srcset="{% static 'img/site-visits-bg.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/site-visits-bg.jpg' %}" alt="img"/>
-    </picture>
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="align-container">
-                    <div class="align-container__item">
-                        <h1 class="promo-primary__title"><span>{% translate "Site Visits" %}</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+{% with promo_image='img/site-visits-bg.jpg' promo_pre_title="" promo_title="Site Visits" %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
 
 <section class="section">
     <div class="container">
         <div class="row offset-margin">
             {% for visit in visits %}
             <div class="col-md-6 col-xl-4">
-                {% include "activities/visit_component.html" with visit=visit %}
+                {% include "components/visit.html" with visit=visit %}
             </div>
             {% endfor %}
             
         </div>
         <div class="row top-70">
             <div class="col-12">
-                {% include "inc/pagination.html" with pagination=visits %}
+                {% include "components/pagination.html" with pagination=visits %}
             </div>
         </div>
     </div>

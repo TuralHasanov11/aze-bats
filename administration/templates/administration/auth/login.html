@@ -27,10 +27,7 @@
         {% endif %}
         <form class="form" method="post">
             <div class="card card-body">
-                {% for hidden_field in form.hidden_fields %}
-                    {{hidden_field.errors}}
-                    {{hidden_field}}
-                {% endfor %}
+                {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
                 {{form.non_form_errors}}
                 <div class="row">
                     <div class="col-12 col-md-6 bottom-20">

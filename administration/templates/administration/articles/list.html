@@ -1,15 +1,25 @@
-{% extends 'app.html' %} {% load static %} {% load i18n %}
+{% extends 'app.html' %} 
+{% load static %} 
+{% load i18n %} 
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} 
-{% block title %}{% translate "Admin" %} - {% translate "Articles" %}{% endblock title %}
+{% block title %}{% translate "Admin" %} - {% translate "Articles" %}{% endblock title %} 
 {% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="bottom-40">
       <ul class="breadcrumbs breadcrumbs--with-dot">
-        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'administration:dashboard' %}">{% translate "Dashboard" %}</a></li>
-        <li class="breadcrumbs__item breadcrumbs__item--active">{% translate "Articles" %}</li>
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:dashboard' %}"
+            >{% translate "Dashboard" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">
+          {% translate "Articles" %}
+        </li>
       </ul>
     </div>
     <div class="row">
@@ -20,46 +30,36 @@
           </h2>
         </div>
         <div class="container my-3">
-          {% include 'inc/messages.html' with messages=messages %}
+          {% include 'components/messages.html' with messages=messages %}
         </div>
         <form class="form" method="post">
           <div class="card card-body">
-            {% for hidden_field in form.hidden_fields %}
-                {{hidden_field.errors}}
-                {{hidden_field}}
-            {% endfor %}
+            {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
             {{form.non_form_errors}}
             <div class="row">
               <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label
-                  class="form-label"
-                  for="{{ form.name.id_for_label }}"
+                <label class="form-label" for="{{ form.name.id_for_label }}"
                   >{{ form.name.label }}</label
                 >
-                {{form.name}}
-                {{ form.name.errors }}
+                {{form.name}} {{ form.name.errors }}
               </div>
               <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label
-                  class="form-label"
-                  for="{{ form.url.id_for_label }}"
+                <label class="form-label" for="{{ form.url.id_for_label }}"
                   >{{ form.url.label }}</label
                 >
-                {{form.url}}
-                {{ form.url.errors }}
+                {{form.url}} {{ form.url.errors }}
               </div>
               <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label
-                  class="form-label"
-                  for="{{ form.author.id_for_label }}"
+                <label class="form-label" for="{{ form.author.id_for_label }}"
                   >{{ form.author.label }}</label
                 >
-                {{form.author}}
-                {{ form.author.errors }}
+                {{form.author}} {{ form.author.errors }}
               </div>
-  
+
               <div class="col-12 bottom-20 text-center">
-                <button class="form__submit text_decoration-none" type="submit">{% translate "Save" %}</button>
+                <button class="form__submit text_decoration-none" type="submit">
+                  {% translate "Save" %}
+                </button>
               </div>
             </div>
           </div>
@@ -104,7 +104,9 @@
                   type="button"
                   class="btn btn-danger btn-delete"
                   data-url="{% url 'administration:article-update-delete' id=article.id %}"
-                  >{% translate "Delete" %}</button>
+                >
+                  {% translate "Delete" %}
+                </button>
               </td>
             </tr>
             {% endfor %}
@@ -115,12 +117,9 @@
   </div>
 </section>
 
-{% endblock content%}
-
-
-{% block scripts %}
+{% endblock content%} {% block scripts %}
 <script>
-  let csrftoken = '{{ csrf_token }}'
+  let csrftoken = "{{ csrf_token }}";
 </script>
 <script src="{% static 'js/delete-table-record.js' %}"></script>
 {% endblock scripts %}

@@ -26,10 +26,7 @@
       <div class="col-12">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
-          {% for hidden_field in form.hidden_fields %}
-            {{hidden_field.errors}}
-            {{hidden_field}}
-          {% endfor %}
+          {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
           {{form.non_form_errors}}
             <div class="card card-body bottom-40">
               <div class="row">
@@ -42,6 +39,7 @@
                   {{form.cover_image}}
                   <img
                     src="{{form.cover_image.value.url}}"
+                    class="my-2"
                     style="width: 60px; height: 60px"
                   />
                   {{ form.cover_image.errors }}
@@ -55,10 +53,7 @@
               <div class="card-body">
                 {{ attributes_formset.management_form }}
                 {% for formset_item in attributes_formset %}
-                  {% for hidden_field in formset_item.hidden_fields %}
-                    {{hidden_field.errors}}
-                    {{hidden_field}}
-                  {% endfor %}
+                {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %}
                   {{formset_item.non_form_errors}}
                   {{ formset_item.media }}
                   <h4>{% translate "Researcher Data" %} {{forloop.counter}}</h4>

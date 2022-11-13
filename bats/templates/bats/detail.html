@@ -2,22 +2,11 @@
 {% load i18n %}
 {% block title %}{{bat.name}}{% endblock title %}
 {% block content %}
-<section class="promo-primary">
-    <picture>
-        <source srcset="{{bat.cover_image.url}}" media="(min-width: 992px)"/><img class="img--bg" src="{{bat.cover_image.url}}" alt="img"/>
-    </picture>
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title"><a href="{% url 'bats:index' %}">{{bat.genus.name}}</a></span>
-                        <h1 class="promo-primary__title"><span>{{bat.name}}</span></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
+{% with promo_image=bat.cover_image.url promo_pre_title=bat.genus.name promo_title=bat.name %}
+{% include "components/promo_dynamic.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
 
 <section class="section blog-post">
     <div class="container">
@@ -31,17 +20,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="blog-post__top">
-                    <section class="section gallery no-padding-top no-padding-bottom">
-                        <div class="row gallery-masonry no-gutters">
-                            {% for image in bat.species_images.all %}
-                            <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
-                                <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{image.image.url}}" data-fancybox="gallery">
-                                    <img class="img--bg" src="{{image.image.url}}" alt="img"/>
-                                </a>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </section>
+                    {% include "components/gallery.html" with images=bat.species_images.all %}
                 </div>
                 <h4 class="blog-post__title">{% translate "Description" %}</h4>
                 {{bat.species_attributes_result.description|safe}}

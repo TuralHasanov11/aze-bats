@@ -1,11 +1,12 @@
 from ckeditor_uploader import fields as ckeditorFields
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 from core import helpers
 
 
 class RichTextEditorField(ckeditorFields.RichTextUploadingField):
-    description = "Rich text editor field"
+    description = _("Rich text editor field")
 
     def __init__(self, *args, **kwargs):
         kwargs['null'] = True
@@ -14,8 +15,8 @@ class RichTextEditorField(ckeditorFields.RichTextUploadingField):
 
 
 class LanguageField(models.CharField):
-    description = "Language field"
-
+    description = _("Language field")
+    
     def __init__(self, *args, **kwargs):
         kwargs['max_length'] = 2
         kwargs['choices'] = settings.LANGUAGES
@@ -24,7 +25,7 @@ class LanguageField(models.CharField):
 
 
 class ImageField(models.ImageField):
-    description = "Image field"
+    description = _("Image field")
 
     def __init__(self, *args, **kwargs):
         kwargs['upload_to'] = helpers.uploadImageLocation
@@ -32,7 +33,7 @@ class ImageField(models.ImageField):
 
 
 class SlugField(models.SlugField):
-    description = "Slug field"
+    description = _("Slug field")
 
     def __init__(self, *args, **kwargs):
         kwargs['max_length'] = 255
@@ -43,7 +44,7 @@ class SlugField(models.SlugField):
 
 
 class NameField(models.CharField):
-    description = "Name field"
+    description = _("Name field")
 
     def __init__(self, *args, **kwargs):
         kwargs['max_length'] = 200

@@ -1,49 +1,49 @@
-{% extends 'app.html' %}
-{% load static %}
-{% load i18n %}
-{% block title %}{% translate "Bats" %}{% endblock title %}
+{% extends 'app.html' %} 
+{% load static %} 
+{% load i18n %} 
+{% block title %} {% translate "Bats" %} {% endblock title %} 
 {% block content %}
-<section class="promo-primary">
-    <picture>
-        <source srcset="{% static 'img/bats-bg.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/bats-bg.jpg' %}" alt="img"/>
-    </picture>
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title">{% translate "All Species" %}</span>
-                        <h1 class="promo-primary__title"><span>{% translate "Bats" %}</span></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+{% with promo_image="img/bats-bg.jpg" promo_pre_title="All Species" promo_title="Bats" %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
 
 <section class="section animals">
-    <div class="container">
-        <div class="row align-items-center bottom-30">
-            <div class="col-12">
-                <ul class="filter-panel justify-content-start">
-                    <li class="filter-panel__item {% if not request.GET.genus %}filter-panel__item--active{% endif %}"><a href="{% url 'bats:index' %}"><span>{% translate "All" %}</span></a></li>
-                    {% for gen in genus %}
-                    <li class="filter-panel__item {% if request.GET.genus == gen.slug %}filter-panel__item--active{% endif %}"><a href="{% url 'bats:index' %}?genus={{gen.slug}}"><span>{{gen.name}}</span></a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <div class="row no-gutters left-3 right-3">
-            {% for bat in bats %}
-            <div class="col-12 col-md-6 col-xl-4">
-                {% include "bats/bat.html" with bat=bat %}
-            </div>
-            {% endfor %}
-
-            <div class="col-12 py-5">
-                {% include "inc/pagination.html" with pagination=bats %}
-            </div>
-        </div>
+  <div class="container">
+    <div class="row align-items-center bottom-30">
+      <div class="col-12">
+        <ul class="filter-panel justify-content-start">
+          <li
+            class="filter-panel__item {% if not request.GET.genus %}filter-panel__item--active{% endif %}"
+          >
+            <a href="{% url 'bats:index' %}"
+              ><span>{% translate "All" %}</span></a
+            >
+          </li>
+          {% for gen in genus %}
+          <li
+            class="filter-panel__item {% if request.GET.genus == gen.slug %}filter-panel__item--active{% endif %}"
+          >
+            <a href="{% url 'bats:index' %}?genus={{gen.slug}}"
+              ><span>{{gen.name}}</span></a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
+    <div class="row no-gutters left-3 right-3">
+      {% for bat in bats %}
+      <div class="col-12 col-md-6 col-xl-4">
+        {% include "components/bat.html" with bat=bat %}
+      </div>
+      {% endfor %}
+
+      <div class="col-12 py-5">
+        {% include "components/pagination.html" with pagination=bats %}
+      </div>
+    </div>
+  </div>
 </section>
 
 {% endblock content %}

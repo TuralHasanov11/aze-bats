@@ -4,115 +4,10 @@
 {% block title %}
 {% translate "Home" %}{% endblock title %}
 {% block content %}
-<section class="promo promo--front-3">
-  <div class="promo-slider promo-slider--style-2">
-    <div class="promo-slider__item promo-slider__item--style-2">
-      <picture>
-        <source srcset="{% static 'img/banner.jpg' %}" media="(min-width: 992px)" />
-        <img class="img--bg" src="{% static 'img/banner.jpg' %}" alt="img" />
-      </picture>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-xl-7">
-            <div class="align-container">
-              <div class="align-container__item">
-                <div class="promo-slider__wrapper-1">
-                  <h2 class="promo-slider__title">
-                    <span>{{banner.title}}</span>
-                  </h2>
-                </div>
-                <div class="promo-slider__wrapper-2">
-                  <p class="promo-slider__subtitle">
-                    {{banner.text}}
-                  </p>
-                </div>
-                <div class="promo-slider__wrapper-3">
-                  <a
-                    class="button button--rounded promo-slider__button button--main"
-                    href="{% url 'bats:index' %}"
-                    >{% translate "See bats" %}</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="promo-pannel">
-          <a
-            class="video-trigger"
-            href="{{banner.video_url}}"
-            ><img
-              class="img--bg"
-              src="{% static 'img/video-block.jpg' %}"
-              alt="image" /><span class="video-trigger__icon"
-              ><span>{% translate "Watch our work" %}</span
-              ><i class="fa fa-play" aria-hidden="true"></i></span
-          ></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section about-terrarium no-padding-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-5 col-xl-7 px-5 py-2">
-        <div class="heading heading--style-2 heading--green">
-          <h2 class="heading__title">
-            <span>{% translate "Our country" %}</span>
-          </h2>
-        </div>
-        <p class="bottom-40"><strong>{{country_statistics}}</strong></p>
-        <div class="row offset-30">
-          <div class="col-sm-4">
-            <div class="counter-item counter-item--front">
-              <div class="counter-item__top">
-                <h6 class="counter-item__title">{% translate "Bats" %}</h6>
-              </div>
-              <div class="counter-item__lower">
-                <span class="js-counter color--green">{{batCount}}</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="counter-item counter-item--front">
-              <div class="counter-item__top">
-                <h6 class="counter-item__title">{% translate "Projects" %}</h6>
-              </div>
-              <div class="counter-item__lower">
-                <span class="js-counter color--green">{{projectCount}}</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="counter-item counter-item--front">
-              <div class="counter-item__top">
-                <h6 class="counter-item__title">{% translate "Site Visits" %}</h6>
-              </div>
-              <div class="counter-item__lower">
-                <span class="js-counter color--green">{{visitCount}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-7 col-xl-5">
-        <img
-          class="w-100"
-          src="{% static 'img/map.jpg' %}"
-          alt="img"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+{% include "components/banner.html" with banner=banner %}
+
+{% include "components/statistics.html" with statistics=statistics %}
 
 {% if projects %}
 <section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
@@ -132,14 +27,7 @@
     <div class="slider-holder__wrapper">
       <div class="destination-slider">
         {% for project in projects %}
-        <div class="destination-slider__item">
-          <div class="destination-item destination-item--style-2"><img class="img--bg" src="{{project.cover_image.url}}" alt="img"/>
-            <div class="destination-item__details">
-              <h6 class="destination-item__title">{{project.name}}</h6>
-              <a class="destination-item__link" href="{% url 'activities:project' slug=project.slug %}">{% translate "More" %}</a>
-            </div>
-          </div>
-        </div>
+          {% include "components/slider/project.html" with project=project %}
         {% endfor %}
       </div>
     </div>
@@ -149,11 +37,12 @@
 
 {% if bats %}
 <section class="section animals">
+
   <div class="container">
       <div class="row no-gutters left-3 right-3">
           {% for bat in bats %}
           <div class="col-12 col-md-6 col-xl-4">
-              {% include "bats/bat.html" with bat=bat %}
+              {% include "components/bat.html" with bat=bat %}
           </div>
           {% endfor %}
       </div>
@@ -179,18 +68,8 @@
     <div class="slider-holder__wrapper">
       <div class="donation-slider">
         {% for visit in visits %}
-        <div class="donation-slider__item">
-          <div class="donate-box donate-box--green"><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
-            <div class="donate-box__inner">
-              <div class="heading">
-                <h2 class="heading__title no-margin-bottom"><span>{{visit.name}}</span></h2>
-              </div>
-              <a class="donate-box__link" href="{% url 'activities:visit' slug=visit.slug %}">{% translate "More" %}</a>
-            </div>
-          </div>
-        </div>
+          {% include "components/slider/visit.html" with visit=visit %}
         {% endfor %}
-
       </div>
     </div>
   </div>
@@ -201,40 +80,7 @@
 <section class="section testimonials testimonials--style-1 testimonials--green">
   <div class="container">
     {% for author in authors %}
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-12 d-lg-block">
-        <div class="testimonials__img">
-          <img class="img--bg" src="{{author.cover_image.url}}" alt="img" />
-        </div>
-      </div>
-      <div class="col-lg-8 col-md-6 col-12">
-        <div class="row align-items-center">
-          <div class="col-md-7">
-            <div class="heading heading--primary">
-              <h2 class="heading__title">
-                <span>{{author.author_attributes_result.name}}</span>
-              </h2>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div
-              class="testimonials--style-1__dots dots--style-2 text-md-right"
-            ></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="testimonials-slider testimonials-slider--style-1">
-              <div class="testimonials-slider__item">
-                <div class="testimonials-slider__text">
-                  {{author.author_attributes_result.description|safe}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      {% include "components/author.html" with author=author %}
     {% endfor %}
   </div>
 </section>

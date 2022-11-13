@@ -14,6 +14,7 @@ def config_vars(request):
 def menu(request):
     return {
         "menu":{
+            "home":{"route":"base:index", "text": _("Home")},
             "admin":[
                 {"route":"administration:bat-list", "text": _("Bats")},
                 {"route":"administration:project-list", "text": _("Projects")},
@@ -26,6 +27,7 @@ def menu(request):
                 {"route":"activities:visits", "text": _("Site Visits")},
             ],
             "bats":{"route":"bats:index", "text": _("Bats")},
+            "gallery":{"route":"bats:gallery", "text": _("Gallery")},
             "articles":{"route":"base:articles", "text": _("Articles")},
         }
     }

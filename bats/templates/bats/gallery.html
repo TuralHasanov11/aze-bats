@@ -1,0 +1,26 @@
+{% extends 'app.html' %} 
+{% load static %} 
+{% load i18n %} 
+{% block title %} {% translate "Bats" %} {% endblock title %} 
+{% block content %}
+
+{% with promo_image="img/bats-bg.jpg" promo_pre_title="Images" promo_title="Gallery" %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
+
+<section class="section gallery">
+  <div class="row gallery-masonry no-gutters">
+    {% for bat in bats %}
+    <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
+      <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{bat.cover_image.url}}" data-fancybox="gallery">
+        <img class="img--bg" src="{{bat.cover_image.url}}" alt="{{bat.name}}"/>
+        <div class="gallery-masonry__description">
+          <span>{{bat.genus.name}}</span><span>{{bat.name}}</span>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

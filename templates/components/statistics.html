@@ -1,0 +1,56 @@
+{% load i18n %}
+{% load static %}
+
+<section class="section about-terrarium no-padding-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-xl-7 px-5 py-2">
+        <div class="heading heading--style-2 heading--green">
+          <h2 class="heading__title">
+            <span>{% translate "Our country" %}</span>
+          </h2>
+        </div>
+        <p class="bottom-40"><strong>{{statistics.country_statistics}}</strong></p>
+        <div class="row offset-30">
+          <div class="col-sm-4">
+            <div class="counter-item counter-item--front">
+              <div class="counter-item__top">
+                <h6 class="counter-item__title">{% translate "Bats" %}</h6>
+              </div>
+              <div class="counter-item__lower">
+                <span class="js-counter color--green">{{statistics.bat_count}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="counter-item counter-item--front">
+              <div class="counter-item__top">
+                <h6 class="counter-item__title">{% translate "Projects" %}</h6>
+              </div>
+              <div class="counter-item__lower">
+                <span class="js-counter color--green">{{statistics.project_count}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="counter-item counter-item--front">
+              <div class="counter-item__top">
+                <h6 class="counter-item__title">{% translate "Site Visits" %}</h6>
+              </div>
+              <div class="counter-item__lower">
+                <span class="js-counter color--green">{{statistics.visit_count}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-7 col-xl-5">
+        <img
+          class="w-100"
+          src="{% static 'img/map.jpg' %}"
+          alt="img"
+        />
+      </div>
+    </div>
+  </div>
+</section>

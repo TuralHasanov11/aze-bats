@@ -1,0 +1,12 @@
+{% load i18n %} 
+
+<div class="donation-slider__item">
+  <div class="donate-box donate-box--green"><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
+    <div class="donate-box__inner">
+      <div class="heading">
+        <h2 class="heading__title no-margin-bottom"><span>{{visit.name}}</span></h2>
+      </div>
+      <a class="donate-box__link" href="{% url 'activities:visit' slug=visit.slug %}">{% translate "More" %}</a>
+    </div>
+  </div>
+</div>

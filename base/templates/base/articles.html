@@ -1,46 +1,20 @@
-{% extends 'app.html' %} 
-{% load i18n %}
-{% load static %}
-{% block title %}{% translate "Articles" %}{% endblock title %}
+{% extends 'app.html' %} {% load i18n %} {% load static %} {% block title %}{% translate "Articles" %}{% endblock title %} 
 {% block content %}
-<section class="promo-primary">
-    <picture>
-        <source srcset="{% static 'img/articles-bg.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/articles-bg.jpg' %}" alt="img"/>
-    </picture>
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="align-container">
-                    <div class="align-container__item">
-                        <h1 class="promo-primary__title"><span>{% translate "Articles" %}</span></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+{% with promo_image='img/articles-bg.jpg' promo_pre_title='' promo_title="Articles" %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
 
 <section class="section no-padding-top">
-    <div class="container py-5">
-        <div class="row">
-            {% for article in articles %}
-            <div class="col-lg-12">
-                <div class="pricing-item pricing-item--style-2">
-                    <div class="row align-items-center">
-                        <div class="col-lg-9">
-                            <h6 class="pricing-item__plan">{{article.name}}</h6>
-                        </div>
-                        <div class="col-lg-3 col-xl-2 text-lg-right">
-                            <a class="pricing-item__button button button--main" target="_blank" href="{{article.url}}">{% translate "Visit" %}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="col-12 text-center">
-                {% include "inc/pagination.html" with pagination=articles %}
-            </div>
-        </div>
+  <div class="container py-5">
+    <div class="row">
+      {% for article in articles %}
+        {% include "components/article.html" with article=article %}
+      {% endfor %}
+      <div class="col-12 text-center">
+        {% include "components/pagination.html" with pagination=articles %}
+      </div>
     </div>
+  </div>
 </section>
 {% endblock content %}

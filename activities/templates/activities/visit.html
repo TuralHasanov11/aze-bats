@@ -3,45 +3,26 @@
 {% load static %}
 {% block title %}{{visit.name}}{% endblock title %}
 {% block content %}
-<section class="promo-primary">
-    <picture>
-        <source srcset="{{visit.cover_image.url}}" media="(min-width: 992px)"/><img class="img--bg" src="{{visit.cover_image.url}}" alt="img"/>
-    </picture>
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="align-container">
-                    <div class="align-container__item"><span class="promo-primary__pre-title"><a href="{% url 'activities:visits' %}">{% translate "Site Visit" %}</a></span>
-                        <h1 class="promo-primary__title"><span>{{visit.name}}</span></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+{% with promo_image=visit.cover_image.url promo_pre_title="Site Visit" promo_title=visit.name %}
+{% include "components/promo_dynamic.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
+
 <section class="section event-details">
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-1 col-xl-8 offset-xl-2">
                 <div class="bottom-50">
-                    <section class="section gallery no-padding-top no-padding-bottom">
-                        <div class="row gallery-masonry no-gutters">
-                            {% for image in visit.site_visit_images.all %}
-                            <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
-                                <a class="gallery-masonry__img gallery-masonry__item--height-1" href="{{image.image.url}}" data-fancybox="gallery">
-                                    <img class="img--bg" src="{{image.image.url}}" alt="img"/>
-                                </a>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </section>
+                    {% include "components/gallery.html" with images=visit.site_visit_images.all %}
+
                 </div>
                 <div>
-                    {{visit.species_attributes_result.description|safe}}
+                    <h4 class="blog-post__title">{% translate "Description" %}</h4>
+                    {{visit.site_visit_attributes_result.description|safe}}
                 </div>
                 <div>
                     <h4 class="blog-post__title">{% translate "Results" %}</h4>
-                    {{visit.species_attributes_result.results|safe}}
+                    {{visit.site_visit_attributes_result.results|safe}}
                 </div>
             </div>
         </div>

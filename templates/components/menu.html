@@ -7,6 +7,9 @@
 <div class="menu-dropdown menu-dropdown--front-3">
   <div class="menu-dropdown__inner" data-value="start">
     <div class="screen screen--start">
+      <div class="screen__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.home.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url menu.home.route %}">{{menu.home.text}}</a>
+      </div>
       <div class="screen__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.bats.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.bats.route %}">{{menu.bats.text}}</a></div>
       {% if user.is_authenticated %}
       <div class="screen__item screen--trigger {% if 'administration' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="admin">
@@ -17,6 +20,9 @@
         ></span>
       </div>
       {% endif %}
+      <div class="screen__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.gallery.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url menu.gallery.route %}">{{menu.gallery.text}}</a>
+      </div>
       <div class="screen__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.articles.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.articles.route %}">{{menu.articles.text}}</a></div>
       <div class="screen__item screen--trigger {% if 'activities' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="activities">
         <span>{% translate "Activities" %}</span

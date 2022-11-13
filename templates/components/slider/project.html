@@ -1,0 +1,10 @@
+{% load i18n %} 
+
+<div class="destination-slider__item">
+  <div class="destination-item destination-item--style-2"><img class="img--bg" src="{{project.cover_image.url}}" alt="img"/>
+    <div class="destination-item__details">
+      <h6 class="destination-item__title">{{project.name}}</h6>
+      <a class="destination-item__link" href="{% url 'activities:project' slug=project.slug %}">{% translate "More" %}</a>
+    </div>
+  </div>
+</div>

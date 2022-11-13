@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load static %}
+<section class="promo-primary">
+  <picture>
+    <source
+      srcset="{{promo_image}}"
+      media="(min-width: 992px)"
+    />
+    <img class="img--bg" src="{{promo_image}}" alt="img" />
+  </picture>
+  <div class="container">
+    <div class="row">
+      <div class="col-auto">
+        <div class="align-container">
+          <div class="align-container__item">
+            <span class="promo-primary__pre-title"
+              >{% translate promo_pre_title %}</span
+            >
+            <h1 class="promo-primary__title">
+              <span>{% translate promo_title %}</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
